@@ -5,7 +5,7 @@ import Link from 'next/link';
 const gifexpert = () => {
   return (
     <div className="w-full">
-      <div className="w-screen h-[40vh] lg:h-[50vh] relative">
+      <div className="w-full h-[40vh] lg:h-[50vh] relative">
         <div className="absolute top-0 left-0 w-full h-[40vh] lg:h-[50vh] bg-black/80 z-10" />
         <Image
           className="absolute"
@@ -20,7 +20,7 @@ const gifexpert = () => {
         </div>
       </div>
 
-      <div className="max-w-[1240px] mx-auto py-2 px-10 xl:px-0 grid md:grid-cols-7 gap-8 pt-8">
+      <div className="max-w-[1240px] mb-4 mx-auto py-2 px-10 xl:px-0 grid md:grid-cols-7 gap-8 pt-8">
         <div className="col-span-5">
           <p>Project</p>
           <h2>Overview</h2>
@@ -61,7 +61,7 @@ const gifexpert = () => {
           </div>
         </div>
         <Link href="/#projects">
-          <p className="underline w-fit py-1 px-2 cursor-pointer">Back</p>
+          <span className="underline w-fit py-1 px-2 cursor-pointer">Back</span>
         </Link>
       </div>
     </div>
