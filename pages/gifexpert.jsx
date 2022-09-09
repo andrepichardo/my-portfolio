@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import gifexpertIMG from '../public/projects/gifexpertapp.png';
-import { RiRadioButtonFill } from 'react-icons/ri';
+import { RiArrowLeftSLine, RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 const gifexpert = () => {
   return (
@@ -14,7 +14,7 @@ const gifexpert = () => {
           src={gifexpertIMG}
           alt=""
         />
-        <div className="absolute text-white p-2 z-10 top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <div className="absolute text-white p-2 z-10 top-[70%] px-10 xl:px-0 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
           <h2 className="py-2">GifExpertApp</h2>
           <h3>ReactJS / Vite / Tailwind </h3>
         </div>
@@ -61,7 +61,10 @@ const gifexpert = () => {
           </div>
         </div>
         <Link href="/#projects">
-          <span className="underline w-fit py-1 px-2 cursor-pointer">Back</span>
+          <span className="hover:underline flex items-center underline-offset-4 w-fit py-1 px-2 cursor-pointer">
+            <RiArrowLeftSLine />
+            Back
+          </span>
         </Link>
       </div>
     </div>
