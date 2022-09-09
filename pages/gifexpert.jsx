@@ -20,10 +20,9 @@ const gifexpert = () => {
         </div>
       </div>
 
-      <div className="max-w-[1240px] mb-4 mx-auto py-2 px-10 xl:px-0 grid md:grid-cols-7 gap-8 pt-8">
+      <div className="max-w-[1240px] mb-4 mx-auto py-2 px-10 xl:px-0 grid md:grid-cols-7 gap-8 pt-4">
         <div className="col-span-5">
-          <p>Project</p>
-          <h2>Overview</h2>
+          <h2 className="mb-2">Overview</h2>
           <p>
             This app was built using ReactJS and TailwindCSS. Users are able to
             search for GIFs of any subject given. You will be able to view a
@@ -48,7 +47,7 @@ const gifexpert = () => {
         <div className="col-span-5 md:col-span-2 shadow-xl rounded-xl shadow-gray-400 p-4">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Technologies</p>
-            <div className="grid grid-cols-3 md:grid-cols-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1">
               <p className="text-gray-600 py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 React

@@ -29,15 +29,22 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const handleShadow = () => {
-      if (window.scrollY >= 90) {
-        setShadow(true);
-      } else {
+    if (router.asPath === '/gifexpert') {
+      const handleShadow = () => {
         setShadow(false);
-      }
-    };
-    window.addEventListener('scroll', handleShadow);
-  }, []);
+      };
+      window.addEventListener('scroll', handleShadow);
+    } else {
+      const handleShadow = () => {
+        if (window.scrollY >= 90) {
+          setShadow(true);
+        } else {
+          setShadow(false);
+        }
+      };
+      window.addEventListener('scroll', handleShadow);
+    }
+  }, [router]);
 
   return (
     <div
