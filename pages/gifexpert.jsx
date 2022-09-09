@@ -30,8 +30,20 @@ const gifexpert = () => {
             maximum of 20 results per search. It was made possible with the help
             of GIPHY API.
           </p>
-          <button className="px-8 py-2 mt-4 mr-5">Demo</button>
-          <button className="px-8 py-2 mt-4">Code</button>
+          <a
+            href="https://gif-expert-dre.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="px-8 py-2 mt-4 mr-5">Demo</button>
+          </a>
+          <a
+            href="https://github.com/andrepichardo/04-gif-expert-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="px-8 py-2 mt-4">Code</button>{' '}
+          </a>
         </div>
         <div className="col-span-5 md:col-span-2 shadow-xl rounded-xl shadow-gray-400 p-4">
           <div className="p-2">
