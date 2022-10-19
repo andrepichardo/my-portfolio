@@ -4,7 +4,7 @@ import gifexpert from '../public/projects/gifexpertapp.png';
 const Projects = () => {
   return (
     <div id="projects" className="w-full border-b-2">
-      <div className="max-w-[1240px] px-10 xl:px-0 mx-auto py-16">
+      <div className="max-w-[1240px] px-10 xl:px-0 mx-auto py-24">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Projects
         </p>

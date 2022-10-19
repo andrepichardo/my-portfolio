@@ -21,7 +21,7 @@ const gifexpert = () => {
       </div>
 
       <div className="max-w-[1240px] mb-4 mx-auto py-2 px-10 xl:px-0 grid md:grid-cols-7 gap-8 pt-4">
-        <div className="col-span-5">
+        <div className="col-span-5 flex flex-col gap-3">
           <h2 className="mb-2">Overview</h2>
           <p>
             This app was built using ReactJS and TailwindCSS. Users are able to
@@ -29,20 +29,22 @@ const gifexpert = () => {
             maximum of 20 results per search. It was made possible with the help
             of GIPHY API.
           </p>
-          <a
-            href="https://gif-expert-dre.netlify.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="px-8 py-2 mt-4 mr-5">Demo</button>
-          </a>
-          <a
-            href="https://github.com/andrepichardo/04-gif-expert-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="px-8 py-2 mt-4">Code</button>{' '}
-          </a>
+          <div>
+            <a
+              href="https://gif-expert-dre.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="px-8 py-2 mt-4 mr-5">Demo</button>
+            </a>
+            <a
+              href="https://github.com/andrepichardo/04-gif-expert-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="px-8 py-2 mt-4">Code</button>{' '}
+            </a>
+          </div>
         </div>
         <div className="col-span-5 md:col-span-2 shadow-xl rounded-xl shadow-gray-400 p-4">
           <div className="p-2">
@@ -72,7 +74,7 @@ const gifexpert = () => {
           </div>
         </div>
         <Link href="/#projects">
-          <span className="hover:underline flex items-center underline-offset-4 w-fit py-1 px-2 cursor-pointer">
+          <span className="hover:underline w-fit flex items-center underline-offset-4 py-1 px-2 cursor-pointer">
             <RiArrowLeftSLine />
             Back
           </span>

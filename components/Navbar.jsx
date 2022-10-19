@@ -36,7 +36,7 @@ const Navbar = () => {
       window.addEventListener('scroll', handleShadow);
     } else {
       const handleShadow = () => {
-        if (window.scrollY >= 90) {
+        if (window.scrollY >= window.innerHeight * 0.04) {
           setShadow(true);
         } else {
           setShadow(false);
@@ -128,39 +128,56 @@ const Navbar = () => {
               </Link>
               <div
                 onClick={handleNav}
-                className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
+                className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer active:scale-95 transition-all"
               >
                 <AiOutlineClose />
               </div>
             </div>
             <div className="border-b border-gray-300 my-4">
-              <p className="w-full py-4">Let&apos;s build something together</p>
+              <p className="w-full py-4">
+                Let&apos;s build something together!
+              </p>
             </div>
           </div>
           <div className="py-4 flex flex-col justify-between h-[80%] ">
-            <ul className="uppercase">
+            <ul className="uppercase flex flex-col gap-1 list-disc list-inside">
               <Link href="/">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                >
                   Home
                 </li>
               </Link>
               <Link href="/#about">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                >
                   About
                 </li>
               </Link>
               <Link href="/#skills">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                >
                   Skills
                 </li>
               </Link>
               <Link href="/#projects">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                >
                   Projects
                 </li>
               </Link>
               <Link href="/#contact">
-                <li onClick={() => setNav(false)} className="py-4 text-sm">
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-1.5"
+                >
                   Contact
                 </li>
               </Link>
@@ -169,18 +186,18 @@ const Navbar = () => {
               <p className="uppercase tracking-widest text-[#5651e5]">
                 Let&apos;s Connect
               </p>
-              <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <FaLinkedinIn />
+              <div className="flex items-center justify-between my-4 w-full">
+                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <FaLinkedinIn className="w-5 h-5 text-blue-800" />
                 </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <FaGithub />
+                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <FaGithub className="w-5 h-5 text-blue-800" />
                 </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <AiOutlineMail />
+                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <AiOutlineMail className="w-5 h-5 text-blue-800" />
                 </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300">
-                  <BsPersonLinesFill />
+                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
                 </div>
               </div>
             </div>

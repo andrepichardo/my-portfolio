@@ -15,7 +15,7 @@ const Main = () => {
           </h1>
           <h1 className="py-2 text-gray-700">A Front-End Web Developer</h1>
           <p className="py-4 textgray-600 max-w-[85%] md:max-w-[70%] m-auto">
-            I&apos;m a 24 years old dominican front-end web developer,
+            I&apos;m a 25 years old dominican front-end web developer,
             specializing in building (and occasionally designing) great digital
             experiences. Currently, I&apos;m focused on developing responsive,
             user-friendly front-end web applications while expanding my
