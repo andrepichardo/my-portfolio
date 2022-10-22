@@ -36,7 +36,7 @@ const Navbar = () => {
       window.addEventListener('scroll', handleShadow);
     } else {
       const handleShadow = () => {
-        if (window.scrollY >= window.innerHeight * 0.04) {
+        if (window.scrollY >= window.innerHeight * 0.1) {
           setShadow(true);
         } else {
           setShadow(false);

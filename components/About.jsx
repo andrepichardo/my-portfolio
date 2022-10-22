@@ -14,24 +14,21 @@ const About = () => {
             About
           </p>
           <h2 className="py-4">Who I Am</h2>
-          <p className="py-2 text-gray-600">
-            &#47;&#47; I am not your normal developer
+          <p className="py-2 text-justify font-light text-[17px] text-black">
+            I specialize in building responsive front-end web applications that
+            connect with API&apos;s and other backend technologies. Though I am
+            most proficient in building front-end applications using HTML, CSS,
+            Javascript and React, I am a quick learner and can pick up new tech
+            stacks as needed. I believe that being a great developer is not
+            using one specific language, but choosing the best tool for the job.
           </p>
-          <p className="py-2 text-gray-600 text-justify">
-            I have spent the last 12 years in the fire service working as a
-            professional firefighter/paramedic. I have always had a knack for
-            technology and working with computers. In 2019 I started working
-            with HTML and CSS to make some minor edits on a small business
-            website that I was operating. What I thought was just a few small
-            edits turned into a love for programming.
-          </p>
-          <p className="py-2 text-gray-600 text-justify">
-            Fascinated with how intricate programming can be I was quickly drawn
-            to learn more. I started learning javascript and was even more
-            enthused with making websites interactive. I then started
-            freelancing for e-commerce companies on the Shopify platform. I am
-            now spending my time building projects with React JS, Firebase, and
-            learning new technologies.
+          <p className="py-2 text-justify font-light text-[17px] text-black">
+            As an Electronics and Communications engineer, my career as a
+            programmer started in 2019 when I was working as a QA Software
+            Tester for a telecom company. There I started learning HTML, CSS and
+            Javascript to fix some minor UI and programming issues in some of
+            their projects, and in 2021 I officially got my first job as a
+            frontend developer in the company I currently work for.
           </p>
           <Link href="/#projects">
             <p className="py-2 text-gray-600 underline cursor-pointer">

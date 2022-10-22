@@ -7,7 +7,7 @@ const ProjectItem = ({ title, bgImage, projectUrl }) => {
       <Image
         width={600}
         height={400}
-        className="rounded-xl group-hover:opacity-10"
+        className="rounded-xl group-hover:opacity-10 transition-all duration-300"
         src={bgImage}
         alt="/"
       />
@@ -17,7 +17,7 @@ const ProjectItem = ({ title, bgImage, projectUrl }) => {
         </h3>
         <p className="pb-4 pt-2 text-white text-center">React JS</p>
         <Link href={projectUrl}>
-          <p className="text-center p-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer">
+          <p className="text-center p-3 rounded-lg bg-white text-gray-700 hover:bg-[#eedeee] transition-all font-bold text-lg cursor-pointer">
             More Info
           </p>
         </Link>

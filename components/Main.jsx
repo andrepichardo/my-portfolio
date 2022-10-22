@@ -14,20 +14,31 @@ const Main = () => {
             Hi, I&apos;m <span className="text-[#5651e5]">André</span>
           </h1>
           <h1 className="py-2 text-gray-700">A Front-End Web Developer</h1>
-          <p className="py-4 textgray-600 max-w-[85%] md:max-w-[70%] m-auto">
+          <p className="py-4 textgray-600 max-w-[85%] md:max-w-[60%] m-auto font-thin text-black">
             I&apos;m a 25 years old dominican front-end web developer,
             specializing in building (and occasionally designing) great digital
-            experiences. Currently, I&apos;m focused on developing responsive,
-            user-friendly front-end web applications while expanding my
-            knowledge learning back-end technologies.
+            experiences. Currently focused on building responsive front-end web
+            applications integrating back-end technologies.
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-              <FaLinkedinIn className="w-5 h-5 text-blue-800" />
-            </div>
-            <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-              <FaGithub className="w-5 h-5 text-blue-800" />
-            </div>
+            <a
+              href="https://www.linkedin.com/in/andre-pichardo/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                <FaLinkedinIn className="w-5 h-5 text-blue-800" />
+              </div>
+            </a>
+            <a
+              href="https://github.com/andrepichardo"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                <FaGithub className="w-5 h-5 text-blue-800" />
+              </div>
+            </a>
             <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
               <AiOutlineMail className="w-5 h-5 text-blue-800" />
             </div>

@@ -22,9 +22,11 @@ const Contact = () => {
                 <Image className="rounded-xl " src={contact} alt="/" />
               </div>
               <div className="flex flex-col justify-center pb-4">
-                <h2 className="pt-3">André Pichardo</h2>
-                <p>Front-End Developer</p>
-                <p className="py-4 text-lg">
+                <h2 className="py-2">André Pichardo</h2>
+                <p className="text-justify font-light text-[17px] text-black">
+                  Front-End Developer
+                </p>
+                <p className="py-4 text-lg text-justify font-light text-[17px] text-black">
                   I am available for freelance & full-time positions. Feel free
                   to contact me and let&apos;s talk.
                 </p>
