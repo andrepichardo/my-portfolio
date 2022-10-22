@@ -34,12 +34,24 @@ const Contact = () => {
               <div className="flex flex-col">
                 <p className="uppercase pt-8 pb-3">Connect With Me</p>
                 <div className="flex items-center justify-between max-w-[330px] m-auto py-4 w-full">
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaLinkedinIn className="w-5 h-5 text-blue-800" />
-                  </div>
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaGithub className="w-5 h-5 text-blue-800" />
-                  </div>
+                  <a
+                    href="https://www.linkedin.com/in/andre-pichardo/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                      <FaLinkedinIn className="w-5 h-5 text-blue-800" />
+                    </div>
+                  </a>
+                  <a
+                    href="https://github.com/andrepichardo"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                      <FaGithub className="w-5 h-5 text-blue-800" />
+                    </div>
+                  </a>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                     <AiOutlineMail className="w-5 h-5 text-blue-800" />
                   </div>

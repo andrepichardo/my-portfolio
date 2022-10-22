@@ -68,27 +68,27 @@ const Navbar = () => {
         <div>
           <ul style={{ color: `${linkColor}` }} className="hidden md:flex">
             <Link href="/">
-              <li className="ml-10 text-sm uppercase border-b-2 border-transparent hover:border-blue-400 transition-all">
+              <li className="ml-10 text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
                 Home
               </li>
             </Link>
             <Link href="/#about">
-              <li className="ml-10 text-sm uppercase border-b-2 border-transparent hover:border-blue-400 transition-all">
+              <li className="ml-10 text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
                 About
               </li>
             </Link>
             <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase border-b-2 border-transparent hover:border-blue-400 transition-all">
+              <li className="ml-10 text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
                 Skills
               </li>
             </Link>
             <Link href="/#projects">
-              <li className="ml-10 text-sm uppercase border-b-2 border-transparent hover:border-blue-400 transition-all">
+              <li className="ml-10 text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
                 Projects
               </li>
             </Link>
             <Link href="/#contact">
-              <li className="ml-10 text-sm uppercase border-b-2 border-transparent hover:border-blue-400 transition-all">
+              <li className="ml-10 text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
                 Contact
               </li>
             </Link>
@@ -187,12 +187,24 @@ const Navbar = () => {
                 Let&apos;s Connect
               </p>
               <div className="flex items-center justify-between my-4 w-full">
-                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
-                  <FaLinkedinIn className="w-5 h-5 text-blue-800" />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
-                  <FaGithub className="w-5 h-5 text-blue-800" />
-                </div>
+                <a
+                  href="https://www.linkedin.com/in/andre-pichardo/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <FaLinkedinIn className="w-5 h-5 text-blue-800" />
+                  </div>
+                </a>
+                <a
+                  href="https://github.com/andrepichardo"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <FaGithub className="w-5 h-5 text-blue-800" />
+                  </div>
+                </a>
                 <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
                   <AiOutlineMail className="w-5 h-5 text-blue-800" />
                 </div>
