@@ -105,14 +105,16 @@ const Navbar = () => {
 
       <div
         className={
-          nav ? 'md:hidden fixed left-0 top-0 w-full h-full bg-black/60' : ''
+          nav
+            ? 'md:hidden fixed left-0 top-0 w-full h-full min-h-screen bg-black/60'
+            : ''
         }
       >
         <div
           className={
             nav
-              ? 'md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-full bg-[#ecf0f3] p-5 xs:p-10 transition-all duration-1000'
-              : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] bg-[#ecf0f3] h-full p-5 xs:p-10 transition-all duration-1000'
+              ? 'md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-full min-h-screen bg-[#ecf0f3] p-5 xs:p-10 transition-all duration-1000'
+              : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] bg-[#ecf0f3] h-full min-h-screen p-5 xs:p-10 transition-all duration-1000'
           }
         >
           <div>
