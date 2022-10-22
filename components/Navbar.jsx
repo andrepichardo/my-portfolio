@@ -113,8 +113,8 @@ const Navbar = () => {
         <div
           className={
             nav
-              ? 'md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-full min-h-screen bg-[#ecf0f3] p-5 xs:p-10 transition-all duration-1000'
-              : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] bg-[#ecf0f3] h-full min-h-screen p-5 xs:p-10 transition-all duration-1000'
+              ? 'md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-full min-h-screen bg-[#ecf0f3] px-5 py-10 xs:p-10 transition-all duration-1000'
+              : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] bg-[#ecf0f3] h-full min-h-screen px-5 py-10 xs:p-10 transition-all duration-1000'
           }
         >
           <div>
@@ -141,7 +141,7 @@ const Navbar = () => {
               </p>
             </div>
           </div>
-          <div className="py-4 flex flex-col justify-between h-[80%] ">
+          <div className="py-2 xs:py-4 flex flex-col justify-between h-[80%]">
             <ul className="uppercase flex flex-col gap-1 list-disc list-inside">
               <Link href="/">
                 <li
@@ -188,7 +188,7 @@ const Navbar = () => {
               <p className="uppercase tracking-widest text-[#5651e5]">
                 Let&apos;s Connect
               </p>
-              <div className="flex items-center justify-between gap-2 xs:gap-0 my-4 w-full">
+              <div className="flex items-center justify-between flex-wrap xs:flex-nowrap gap-2 xs:gap-0 my-4 w-full">
                 <a
                   href="https://www.linkedin.com/in/andre-pichardo/"
                   target="_blank"
