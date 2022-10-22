@@ -15,21 +15,6 @@ const Projects = () => {
             bgImage={gifexpert}
             projectUrl="/gifexpert"
           />
-          <ProjectItem
-            title="GifExpertApp"
-            bgImage={gifexpert}
-            projectUrl="/gifexpert"
-          />
-          <ProjectItem
-            title="GifExpertApp"
-            bgImage={gifexpert}
-            projectUrl="/gifexpert"
-          />
-          <ProjectItem
-            title="GifExpertApp"
-            bgImage={gifexpert}
-            projectUrl="/gifexpert"
-          />
         </div>
       </div>
     </div>
