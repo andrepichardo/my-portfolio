@@ -16,7 +16,7 @@ const Contact = () => {
         <h2 className="py-4">Get In Touch</h2>
         <div className="grid lg:grid-cols-5 gap-8">
           {/* left */}
-          <div className="lg:col-span-2 flex  w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4 py-10">
+          <div className="lg:col-span-2 flex  w-full h-full shadow-xl shadow-gray-400 rounded-xl px-5 py-10">
             <div className="lg:p-4 h-full flex flex-col justify-between">
               <div className=" flex rounded-xl ease-in duration-300 hover:scale-95">
                 <Image className="rounded-xl " src={contact} alt="/" />
@@ -33,13 +33,13 @@ const Contact = () => {
               </div>
               <div className="flex flex-col">
                 <p className="uppercase pt-8 pb-3">Connect With Me</p>
-                <div className="flex items-center justify-between max-w-[330px] m-auto py-4 w-full">
+                <div className="flex items-center justify-between max-w-[330px] gap-1 xs:gap-0 m-auto py-4 w-full">
                   <a
                     href="https://www.linkedin.com/in/andre-pichardo/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaLinkedinIn className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
@@ -48,14 +48,14 @@ const Contact = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaGithub className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                     <AiOutlineMail className="w-5 h-5 text-blue-800" />
                   </div>
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                     <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
                   </div>
                 </div>
@@ -63,14 +63,14 @@ const Contact = () => {
             </div>
           </div>
           {/* right */}
-          <div className="lg:col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
-            <div className="p-4">
-              <form>
-                <div className="grid md:grid-cols-2 gap-4 w-full py-2">
+          <div className="lg:col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl px-3 lg:p-4">
+            <div className="w-full py-4 ">
+              <form className="">
+                <div className="grid md:grid-cols-2 gap-4 px-2">
                   <div className="flex flex-col">
-                    <label className="uppercase text-sm py-2">Name</label>
+                    <label className="uppercase text-sm py-2">Full Name</label>
                     <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300 outline-none"
+                      className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 outline-none"
                       type="text"
                     />
                   </div>
@@ -79,32 +79,34 @@ const Contact = () => {
                       Phone Number
                     </label>
                     <input
-                      className="border-2 rounded-lg p-3 flex border-gray-300 outline-none"
+                      className="border-2 w-full rounded-lg flex  px-2  py-3 border-gray-300 outline-none"
                       type="text"
                     />
                   </div>
                 </div>
-                <div className="flex flex-col py-2">
+                <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Email</label>
                   <input
-                    className="border-2 rounded-lg p-3 flex border-gray-300 outline-none"
+                    className="border-2 rounded-lg w-full flex  px-2 py-3 border-gray-300 outline-none"
                     type="email"
                   />
                 </div>
-                <div className="flex flex-col py-2">
+                <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Subject</label>
                   <input
-                    className="border-2 rounded-lg p-3 flex border-gray-300 outline-none"
+                    className="border-2 rounded-lg w-full flex px-2  py-3 border-gray-300 outline-none"
                     type="text"
                   />
                 </div>
-                <div className="flex flex-col py-2">
+                <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Message</label>
-                  <textarea className="border-2 rounded-lg p-3 border-gray-300 outline-none min-h-[265px] max-h-[265px]" />
+                  <textarea className="border-2 resize-none w-full px-2 py-3 rounded-lg border-gray-300 outline-none min-h-[175px] max-h-[175px] sm:min-h-[225px] sm:max-h-[225px]" />
                 </div>
-                <button className="w-full p-4 text-gray-100 mt-4">
-                  Send Message
-                </button>
+                <div className="flex p-2">
+                  <button className="w-full p-4 text-gray-100 mt-4">
+                    Send Message
+                  </button>
+                </div>
               </form>
             </div>
           </div>

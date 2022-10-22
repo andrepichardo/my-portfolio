@@ -36,7 +36,7 @@ const Navbar = () => {
       window.addEventListener('scroll', handleShadow);
     } else {
       const handleShadow = () => {
-        if (window.scrollY >= window.innerHeight * 0.1) {
+        if (window.scrollY >= window.innerHeight * 0.07) {
           setShadow(true);
         } else {
           setShadow(false);
@@ -105,14 +105,14 @@ const Navbar = () => {
 
       <div
         className={
-          nav ? 'md:hidden fixed left-0 top-0 w-full h-screen bg-black/70' : ''
+          nav ? 'md:hidden fixed left-0 top-0 w-full h-full bg-black/60' : ''
         }
       >
         <div
           className={
             nav
-              ? 'md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-full bg-[#ecf0f3] p-10 ease-in duration-500'
-              : 'fixed left-[-100%] w-[75%] sm:w-[60%] md:w-[45%] h-full top-0 ease-in duration-300'
+              ? 'md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-full bg-[#ecf0f3] p-5 xs:p-10 transition-all duration-1000'
+              : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] bg-[#ecf0f3] h-full p-5 xs:p-10 transition-all duration-1000'
           }
         >
           <div>
@@ -134,7 +134,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="border-b border-gray-300 my-4">
-              <p className="w-full py-4">
+              <p className="w-full py-4 text-sm xs:text-base">
                 Let&apos;s build something together!
               </p>
             </div>
@@ -144,7 +144,7 @@ const Navbar = () => {
               <Link href="/">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
                 >
                   Home
                 </li>
@@ -152,7 +152,7 @@ const Navbar = () => {
               <Link href="/#about">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
                 >
                   About
                 </li>
@@ -160,7 +160,7 @@ const Navbar = () => {
               <Link href="/#skills">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
                 >
                   Skills
                 </li>
@@ -168,7 +168,7 @@ const Navbar = () => {
               <Link href="/#projects">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-2"
+                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
                 >
                   Projects
                 </li>
@@ -176,23 +176,23 @@ const Navbar = () => {
               <Link href="/#contact">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#c2d9ff] rounded-md pl-1.5"
+                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-1.5"
                 >
                   Contact
                 </li>
               </Link>
             </ul>
-            <div>
+            <div className="">
               <p className="uppercase tracking-widest text-[#5651e5]">
                 Let&apos;s Connect
               </p>
-              <div className="flex items-center justify-between my-4 w-full">
+              <div className="flex items-center justify-between gap-2 xs:gap-0 my-4 w-full">
                 <a
                   href="https://www.linkedin.com/in/andre-pichardo/"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                     <FaLinkedinIn className="w-5 h-5 text-blue-800" />
                   </div>
                 </a>
@@ -201,14 +201,14 @@ const Navbar = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                     <FaGithub className="w-5 h-5 text-blue-800" />
                   </div>
                 </a>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                   <AiOutlineMail className="w-5 h-5 text-blue-800" />
                 </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
+                <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                   <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
                 </div>
               </div>

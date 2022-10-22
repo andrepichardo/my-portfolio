@@ -32,7 +32,7 @@ const About = () => {
             I&apos;m also working on personal projects too.
           </p>
           <Link href="/#projects">
-            <p className="py-2 text-gray-600 underline cursor-pointer">
+            <p className="py-2 text-gray-600 underline text-sm md:text-base cursor-pointer">
               Check out some of my latest projects.
             </p>
           </Link>
