@@ -141,7 +141,7 @@ const Navbar = () => {
               </p>
             </div>
           </div>
-          <div className="py-2 xs:py-4 flex flex-col justify-between h-[80%]">
+          <div className="py-2 xs:py-4 flex flex-col gap-20">
             <ul className="uppercase flex flex-col gap-1 list-disc list-inside">
               <Link href="/">
                 <li
