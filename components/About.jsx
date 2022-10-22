@@ -28,8 +28,8 @@ const About = () => {
             Tester for a telecom company. There I started learning HTML, CSS and
             Javascript to fix some minor UI and programming issues in some of
             their projects, and in 2021 I officially got my first job as a
-            frontend developer in the company I currently work for, while
-            I&apos;m also working on personal projects too.
+            frontend developer at the company I currently work for, while
+            I&apos;m also working on personal projects as well.
           </p>
           <Link href="/#projects">
             <p className="py-2 text-gray-600 underline text-sm md:text-base cursor-pointer">
