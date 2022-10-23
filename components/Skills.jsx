@@ -11,7 +11,7 @@ import node from '../public/assets/skills/node.png';
 const Skills = () => {
   return (
     <div id="skills" className="w-full border-b-2 lg:h-screen px-2 py-24">
-      <div className="max-w-[1240px] px-10 xl:px-0 mx-auto flex flex-col justify-center h-full">
+      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 mx-auto flex flex-col justify-center h-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Skills
         </p>

@@ -31,15 +31,27 @@ const Navbar = () => {
   useEffect(() => {
     if (router.asPath === '/gifexpert') {
       const handleShadow = () => {
-        setShadow(false);
+        if (window.scrollY >= window.innerHeight * 0.3) {
+          setShadow(true);
+          setNavBg('#ecf0f3');
+          setLinkColor('#1f2937');
+        } else {
+          setShadow(false);
+          setNavBg('transparent');
+          setLinkColor('#ecf0f3');
+        }
       };
       window.addEventListener('scroll', handleShadow);
     } else {
       const handleShadow = () => {
         if (window.scrollY >= window.innerHeight * 0.07) {
           setShadow(true);
+          setNavBg('#ecf0f3');
+          setLinkColor('#1f2937');
         } else {
           setShadow(false);
+          setNavBg('#ecf0f3');
+          setLinkColor('#1f2937');
         }
       };
       window.addEventListener('scroll', handleShadow);
@@ -142,11 +154,11 @@ const Navbar = () => {
             </div>
           </div>
           <div className="py-2 xs:py-4 flex flex-col gap-20">
-            <ul className="uppercase flex flex-col gap-1 list-disc list-inside">
+            <ul className="uppercase flex flex-col gap-1">
               <Link href="/">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
+                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
                 >
                   Home
                 </li>
@@ -154,7 +166,7 @@ const Navbar = () => {
               <Link href="/#about">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
+                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
                 >
                   About
                 </li>
@@ -162,7 +174,7 @@ const Navbar = () => {
               <Link href="/#skills">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
+                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
                 >
                   Skills
                 </li>
@@ -170,7 +182,7 @@ const Navbar = () => {
               <Link href="/#projects">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-2"
+                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
                 >
                   Projects
                 </li>
@@ -178,7 +190,7 @@ const Navbar = () => {
               <Link href="/#contact">
                 <li
                   onClick={() => setNav(false)}
-                  className="py-4 text-sm hover:bg-[#a2b4d2] rounded-md pl-1.5"
+                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
                 >
                   Contact
                 </li>
