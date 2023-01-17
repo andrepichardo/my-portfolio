@@ -12,11 +12,9 @@ const gifexpert = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="w-full h-[40vh] lg:h-[50vh] relative">
-        <div className="absolute top-0 left-0 w-full h-[40vh] lg:h-[50vh] bg-black/80 z-10" />
+        <div className="absolute top-0 left-0 w-full h-[40vh] lg:h-[50vh] bg-black/80 z-10"></div>
         <Image
-          className="absolute"
-          layout="fill"
-          objectFit="cover"
+          className="absolute object-cover w-full h-[40vh] lg:h-[50vh]"
           src={gifexpertIMG}
           alt=""
         />
