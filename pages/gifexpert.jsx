@@ -3,7 +3,7 @@ import gifexpertIMG from '../public/projects/gifexpertapp.png';
 import { RiArrowLeftSLine, RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 import Head from 'next/head';
-const gifexpert = () => {
+const GifExpert = () => {
   return (
     <div className="w-full">
       <Head>
@@ -39,14 +39,18 @@ const gifexpert = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="px-8 py-2 w-full">DEMO</button>
+              <button className="px-8 py-2 w-full hover:opacity-80 transition-all">
+                DEMO
+              </button>
             </a>
             <a
               href="https://github.com/andrepichardo/gif-expert-app"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="px-8 py-2 w-full">CODE</button>
+              <button className="px-8 py-2 w-full hover:opacity-80 transition-all">
+                CODE
+              </button>
             </a>
           </div>
         </div>
@@ -88,4 +92,4 @@ const gifexpert = () => {
   );
 };
 
-export default gifexpert;
+export default GifExpert;
