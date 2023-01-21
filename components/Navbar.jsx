@@ -28,6 +28,16 @@ const Navbar = () => {
     setNav(!nav);
   };
 
+  if (typeof window !== 'undefined') {
+    if (nav === true) {
+      document.documentElement.style.overflowY = 'hidden';
+      document.body.scroll = 'no';
+    } else {
+      document.documentElement.style.overflowY = 'scroll';
+      document.body.scroll = 'yes';
+    }
+  }
+
   useEffect(() => {
     if (router.asPath === '/gifexpert') {
       const handleShadow = () => {
@@ -110,125 +120,133 @@ const Navbar = () => {
             onClick={handleNav}
             className="md:hidden cursor-pointer"
           >
-            <AiOutlineMenu size={25} />
+            <AiOutlineMenu size={28} />
           </div>
         </div>
       </div>
 
       <div
         className={
-          nav
-            ? 'md:hidden fixed left-0 top-0 w-full h-full min-h-screen bg-black/60'
-            : ''
+          nav ? 'fixed left-0 top-0 w-full h-full min-h-screen bg-black/60' : ''
         }
       >
-        <div
-          className={
-            nav
-              ? 'md:hidden fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-full min-h-screen bg-[#ecf0f3] px-5 py-10 xs:p-10 transition-all duration-1000'
-              : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] bg-[#ecf0f3] h-full min-h-screen px-5 py-10 xs:p-10 transition-all duration-1000'
-          }
-        >
-          <div>
-            <div className="flex items-center justify-between">
-              <Link href="/">
-                <Image
-                  className="cursor-pointer"
-                  src={logo}
-                  alt="/"
-                  width="80"
-                  height="45"
-                />
-              </Link>
-              <div
-                onClick={handleNav}
-                className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer active:scale-95 transition-all"
-              >
-                <AiOutlineClose />
+        <div className="flex">
+          <div
+            className={
+              nav
+                ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] h-full min-h-screen bg-[#ecf0f3] px-5 py-10 xs:p-10 transition-all duration-1000'
+                : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] bg-[#ecf0f3] h-full min-h-screen px-5 py-10 xs:p-10 transition-all duration-1000'
+            }
+          >
+            <div>
+              <div className="flex items-center justify-between">
+                <Link href="/">
+                  <Image
+                    className="cursor-pointer"
+                    src={logo}
+                    alt="/"
+                    width="80"
+                    height="45"
+                  />
+                </Link>
+                <div
+                  onClick={handleNav}
+                  className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer active:scale-95 transition-all"
+                >
+                  <AiOutlineClose />
+                </div>
+              </div>
+              <div className="border-b border-gray-300 my-4">
+                <p className="w-full py-4 text-sm xs:text-base">
+                  Let&apos;s build something together!
+                </p>
               </div>
             </div>
-            <div className="border-b border-gray-300 my-4">
-              <p className="w-full py-4 text-sm xs:text-base">
-                Let&apos;s build something together!
-              </p>
-            </div>
-          </div>
-          <div className="py-2 xs:py-4 flex flex-col gap-20">
-            <ul className="uppercase flex flex-col gap-1">
-              <Link href="/">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
-                >
-                  Home
-                </li>
-              </Link>
-              <Link href="/#about">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
-                >
-                  About
-                </li>
-              </Link>
-              <Link href="/#skills">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
-                >
-                  Skills
-                </li>
-              </Link>
-              <Link href="/#projects">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
-                >
-                  Projects
-                </li>
-              </Link>
-              <Link href="/#contact">
-                <li
-                  onClick={() => setNav(false)}
-                  className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
-                >
-                  Contact
-                </li>
-              </Link>
-            </ul>
-            <div className="">
-              <p className="uppercase tracking-widest text-[#5651e5]">
-                Let&apos;s Connect
-              </p>
-              <div className="flex items-center justify-between flex-wrap xs:flex-nowrap gap-2 xs:gap-0 my-4 w-full">
-                <a
-                  href="https://www.linkedin.com/in/andre-pichardo/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+            <div className="py-2 xs:py-4 flex flex-col gap-20">
+              <ul className="uppercase flex flex-col gap-1">
+                <Link href="/">
+                  <li
+                    onClick={() => setNav(false)}
+                    className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
+                  >
+                    Home
+                  </li>
+                </Link>
+                <Link href="/#about">
+                  <li
+                    onClick={() => setNav(false)}
+                    className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
+                  >
+                    About
+                  </li>
+                </Link>
+                <Link href="/#skills">
+                  <li
+                    onClick={() => setNav(false)}
+                    className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
+                  >
+                    Skills
+                  </li>
+                </Link>
+                <Link href="/#projects">
+                  <li
+                    onClick={() => setNav(false)}
+                    className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
+                  >
+                    Projects
+                  </li>
+                </Link>
+                <Link href="/#contact">
+                  <li
+                    onClick={() => setNav(false)}
+                    className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
+                  >
+                    Contact
+                  </li>
+                </Link>
+              </ul>
+              <div className="">
+                <p className="uppercase tracking-widest text-[#5651e5]">
+                  Let&apos;s Connect
+                </p>
+                <div className="flex items-center justify-between flex-wrap xs:flex-nowrap gap-2 xs:gap-0 my-4 w-full">
+                  <a
+                    href="https://www.linkedin.com/in/andre-pichardo/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                      <FaLinkedinIn className="w-5 h-5 text-blue-800" />
+                    </div>
+                  </a>
+                  <a
+                    href="https://github.com/andrepichardo"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                      <FaGithub className="w-5 h-5 text-blue-800" />
+                    </div>
+                  </a>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaLinkedinIn className="w-5 h-5 text-blue-800" />
+                    <AiOutlineMail className="w-5 h-5 text-blue-800" />
                   </div>
-                </a>
-                <a
-                  href="https://github.com/andrepichardo"
-                  target="_blank"
-                  rel="noreferrer"
-                >
                   <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaGithub className="w-5 h-5 text-blue-800" />
+                    <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
                   </div>
-                </a>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
-                  <AiOutlineMail className="w-5 h-5 text-blue-800" />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
-                  <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div
+          onClick={handleNav}
+          className={
+            nav
+              ? 'w-full h-full min-h-screen'
+              : 'w-full h-full min-h-screen hidden'
+          }
+        ></div>
       </div>
     </div>
   );

@@ -17,10 +17,9 @@ const Main = () => {
             A Front-End Web Developer
           </h1>
           <p className=" textgray-600 max-w-[90%] md:max-w-[60%] m-auto font-thin text-black">
-            I&apos;m a 24 years old dominican front-end web developer,
+            I&apos;m a 25 years old dominican front-end web developer,
             specializing in building (and occasionally designing) great digital
-            experiences. Currently focused on developing responsive front-end
-            web applications while learning back-end technologies.
+            experiences.
           </p>
           <div className="flex items-center justify-around w-full gap-1 xs:gap-4 max-w-[330px] m-auto mt-3">
             <a

@@ -17,19 +17,21 @@ const About = () => {
           <p className="py-2 text-justify font-light text-[17px] text-black">
             I specialize in building responsive front-end web applications that
             connect with API&apos;s and other backend technologies. Though I am
-            most proficient in building front-end applications using HTML, CSS,
-            Javascript and React, I am a quick learner and can pick up new tech
-            stacks as needed. I believe that being a great developer is not
-            using one specific language, but choosing the best tool for the job.
+            most proficient in building front-end applications using mostly
+            Next.js, TailwindCSS and MaterialUI, I am a quick learner and can
+            pick up new tech stacks as needed. I believe that being a great
+            developer is not using one specific language, but choosing the best
+            tool for the job. At the moment, mostly focused on developing
+            responsive front-end web applications while learning back-end
+            technologies.
           </p>
           <p className="py-2 text-justify font-light text-[17px] text-black">
-            As an Electronics and Communications engineer, my career as a
-            programmer started in 2019 when I was working as a QA Software
-            Tester for a telecom company. There I started learning HTML, CSS and
-            Javascript to fix some minor UI and programming issues in some of
-            their projects, and in 2021 I officially got my first job as a
-            frontend developer at the company I currently work for, while
-            I&apos;m also working on personal projects as well.
+            Being an Electronics engineer, my career as a programmer started in
+            2019 when I was working as a QA Software Tester for a local telecom
+            company. There I started learning HTML, CSS and Javascript to fix
+            some minor UI and programming issues in some of their projects, and
+            in 2021 I officially got my first job as a frontend developer at the
+            company I currently work for.
           </p>
           <Link href="/#projects">
             <p className="py-2 text-gray-600 underline text-sm md:text-base cursor-pointer">
