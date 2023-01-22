@@ -5,8 +5,89 @@ import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import contact from '../public/assets/contact.jpg';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import { useState } from 'react';
 
 const Contact = () => {
+  // States for contact form fields
+  const [fullname, setFullname] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  //   Form validation state
+  const [errors, setErrors] = useState({});
+
+  //   Setting button text on form submission
+  const [buttonText, setButtonText] = useState('Send Message');
+
+  // Setting success or failure messages states
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showFailureMessage, setShowFailureMessage] = useState(false);
+
+  // Validation check method
+  const handleValidation = () => {
+    let tempErrors = {};
+    let isValid = true;
+
+    if (fullname.length <= 0) {
+      tempErrors['fullname'] = true;
+      isValid = false;
+    }
+    if (email.length <= 0) {
+      tempErrors['email'] = true;
+      isValid = false;
+    }
+    if (subject.length <= 0) {
+      tempErrors['subject'] = true;
+      isValid = false;
+    }
+    if (message.length <= 0) {
+      tempErrors['message'] = true;
+      isValid = false;
+    }
+
+    setErrors({ ...tempErrors });
+    console.log('errors', errors);
+    return isValid;
+  };
+
+  //   Handling form submit
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let isValidForm = handleValidation();
+
+    if (isValidForm) {
+      setButtonText('Sending');
+      const res = await fetch('/api/sendgrid', {
+        body: JSON.stringify({
+          email: email,
+          fullname: fullname,
+          subject: subject,
+          message: message,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      });
+
+      const { error } = await res.json();
+      if (error) {
+        console.log(error);
+        setShowSuccessMessage(false);
+        setShowFailureMessage(true);
+        setButtonText('Send Message');
+        return;
+      }
+      setShowSuccessMessage(true);
+      setShowFailureMessage(false);
+      setButtonText('Send Message');
+    }
+    console.log(fullname, email, subject, message);
+  };
+
   return (
     <div id="contact" className="w-full lg:h-screen">
       <div className="max-w-[1240px] m-auto px-5 xs:px-10 py-24 w-full">
@@ -65,30 +146,27 @@ const Contact = () => {
           {/* right */}
           <div className="lg:col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl px-3 lg:p-4">
             <div className="w-full py-4 ">
-              <form className="">
-                <div className="grid md:grid-cols-2 gap-4 px-2">
-                  <div className="flex flex-col">
-                    <label className="uppercase text-sm py-2">Full Name</label>
-                    <input
-                      className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 outline-none"
-                      type="text"
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <label className="uppercase text-sm py-2">
-                      Phone Number
-                    </label>
-                    <input
-                      className="border-2 w-full rounded-lg flex  px-2  py-3 border-gray-300 outline-none"
-                      type="text"
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="flex flex-col">
+                <div className="flex flex-col p-2">
+                  <label className="uppercase text-sm py-2">Full Name</label>
+                  <input
+                    className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 outline-none"
+                    type="text"
+                    value={fullname}
+                    onChange={(e) => {
+                      setFullname(e.target.value);
+                    }}
+                  />
                 </div>
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Email</label>
                   <input
                     className="border-2 rounded-lg w-full flex  px-2 py-3 border-gray-300 outline-none"
                     type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="flex flex-col p-2">
@@ -96,17 +174,40 @@ const Contact = () => {
                   <input
                     className="border-2 rounded-lg w-full flex px-2  py-3 border-gray-300 outline-none"
                     type="text"
+                    value={subject}
+                    onChange={(e) => {
+                      setSubject(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Message</label>
-                  <textarea className="border-2 resize-none w-full px-2 py-3 rounded-lg border-gray-300 outline-none min-h-[175px] max-h-[175px] sm:min-h-[225px] sm:max-h-[225px]" />
+                  <textarea
+                    value={message}
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
+                    className="border-2 resize-none w-full px-2 py-3 rounded-lg border-gray-300 outline-none min-h-[175px] max-h-[175px] sm:min-h-[225px] sm:max-h-[225px]"
+                  />
                 </div>
                 <div className="flex p-2">
-                  <button className="w-full p-4 text-gray-100 mt-4">
-                    Send Message
+                  <button
+                    type="submit"
+                    className="w-full p-4 text-gray-100 mt-4 buttonForm"
+                  >
+                    {buttonText}
                   </button>
                 </div>
+                {showFailureMessage ? (
+                  <div>Error al intentar enviar correo</div>
+                ) : (
+                  ''
+                )}
+                {showSuccessMessage ? (
+                  <div>Correo enviado correctamente</div>
+                ) : (
+                  ''
+                )}
               </form>
             </div>
           </div>
