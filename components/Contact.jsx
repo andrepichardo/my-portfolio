@@ -79,11 +79,21 @@ const Contact = () => {
         setShowSuccessMessage(false);
         setShowFailureMessage(true);
         setButtonText('Send Message');
+        // Reset form fields
+        setFullname('');
+        setEmail('');
+        setMessage('');
+        setSubject('');
         return;
       }
       setShowSuccessMessage(true);
       setShowFailureMessage(false);
       setButtonText('Send Message');
+      // Reset form fields
+      setFullname('');
+      setEmail('');
+      setMessage('');
+      setSubject('');
     }
     console.log(fullname, email, subject, message);
   };
@@ -157,6 +167,9 @@ const Contact = () => {
                       setFullname(e.target.value);
                     }}
                   />
+                  {errors?.fullname && (
+                    <p className="text-red-500">Full name cannot be empty.</p>
+                  )}
                 </div>
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Email</label>
@@ -168,6 +181,9 @@ const Contact = () => {
                       setEmail(e.target.value);
                     }}
                   />
+                  {errors?.email && (
+                    <p className="text-red-500">Email cannot be empty.</p>
+                  )}
                 </div>
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Subject</label>
@@ -179,6 +195,9 @@ const Contact = () => {
                       setSubject(e.target.value);
                     }}
                   />
+                  {errors?.subject && (
+                    <p className="text-red-500">Subject cannot be empty.</p>
+                  )}
                 </div>
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Message</label>
@@ -189,6 +208,11 @@ const Contact = () => {
                     }}
                     className="border-2 resize-none w-full px-2 py-3 rounded-lg border-gray-300 outline-none min-h-[175px] max-h-[175px] sm:min-h-[225px] sm:max-h-[225px]"
                   />
+                  {errors?.message && (
+                    <p className="text-red-500">
+                      Message body cannot be empty.
+                    </p>
+                  )}
                 </div>
                 <div className="flex p-2">
                   <button
