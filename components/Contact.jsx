@@ -2,12 +2,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn, FaSpinner } from 'react-icons/fa';
 import contact from '../public/assets/contact.jpg';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { useState } from 'react';
+import { toast, Toaster } from 'react-hot-toast';
 
 const Contact = () => {
+  const success = () =>
+    toast.success('Message sent successfully!', {
+      id: 'success',
+    });
+  const error = () =>
+    toast.error('Message could not be sent.', {
+      id: 'error',
+    });
+
   // States for contact form fields
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
@@ -47,7 +57,6 @@ const Contact = () => {
     }
 
     setErrors({ ...tempErrors });
-    console.log('errors', errors);
     return isValid;
   };
 
@@ -59,7 +68,11 @@ const Contact = () => {
     let isValidForm = handleValidation();
 
     if (isValidForm) {
-      setButtonText('Sending');
+      setButtonText(
+        <div className="w-full flex justify-center items-center gap-1.5">
+          Sending <FaSpinner className="animate-spin" />
+        </div>
+      );
       const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({
           email: email,
@@ -75,7 +88,6 @@ const Contact = () => {
 
       const { error } = await res.json();
       if (error) {
-        console.log(error);
         setShowSuccessMessage(false);
         setShowFailureMessage(true);
         setButtonText('Send Message');
@@ -94,8 +106,8 @@ const Contact = () => {
       setEmail('');
       setMessage('');
       setSubject('');
+      return;
     }
-    console.log(fullname, email, subject, message);
   };
 
   return (
@@ -221,17 +233,14 @@ const Contact = () => {
                   >
                     {buttonText}
                   </button>
+                  <Toaster position="top-right" reverseOrder={false} />
+                  {showFailureMessage
+                    ? error() && setShowFailureMessage(false)
+                    : ''}
+                  {showSuccessMessage
+                    ? success() && setShowSuccessMessage(false)
+                    : ''}
                 </div>
-                {showFailureMessage ? (
-                  <div>Error al intentar enviar correo</div>
-                ) : (
-                  ''
-                )}
-                {showSuccessMessage ? (
-                  <div>Correo enviado correctamente</div>
-                ) : (
-                  ''
-                )}
               </form>
             </div>
           </div>
