@@ -3,13 +3,11 @@ import Link from 'next/link';
 
 const ProjectItem = ({ title, bgImage, projectUrl }) => {
   return (
-    <div className="relative flex items-center justify-center w-full shadow-xl shadow-gray-400 rounded-xl p-3 group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff]">
+    <div className="relative flex items-center justify-center w-full shadow-xl min-h-[400px] shadow-gray-400 rounded-xl group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff]">
       <Image
-        width={600}
-        height={400}
-        className="rounded-xl group-hover:opacity-10 transition-all duration-300"
+        className="rounded-xl group-hover:opacity-10 transition-all duration-300 h-full w-full"
         src={bgImage}
-        alt="/"
+        alt="Project Image"
       />
       <div className="absolute hidden group-hover:block top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
         <h3 className="text-2xl text-white tracking-wider text-center">
