@@ -160,9 +160,11 @@ const Contact = () => {
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
-                  </div>
+                  <Link href="/resume">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                      <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

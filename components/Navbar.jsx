@@ -112,6 +112,11 @@ const Navbar = () => {
                 Projects
               </li>
             </Link>
+            <Link href="/resume">
+              <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
+                Resume
+              </li>
+            </Link>
             <Link href="/#contact">
               <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
                 Contact
@@ -236,9 +241,11 @@ const Navbar = () => {
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
-                  <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
-                  </div>
+                  <Link onClick={() => setNav(false)} href="/resume">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                      <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
