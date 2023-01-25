@@ -231,7 +231,7 @@ const Navbar = () => {
                       <FaGithub className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
-                  <Link href="/#contact">
+                  <Link onClick={() => setNav(false)} href="/#contact">
                     <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
