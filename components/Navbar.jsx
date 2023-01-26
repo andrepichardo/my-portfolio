@@ -92,35 +92,29 @@ const Navbar = () => {
             style={{ color: `${linkColor}` }}
             className="hidden md:flex gap-10"
           >
-            <Link href="/">
-              <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
-                Home
-              </li>
+            <Link href="/" class="group text-sm uppercase">
+              Home
+              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#about">
-              <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
-                About
-              </li>
+            <Link href="/#about" class="group text-sm uppercase">
+              About
+              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#skills">
-              <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
-                Skills
-              </li>
+            <Link href="/#skills" class="group text-sm uppercase">
+              Skills
+              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#projects">
-              <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
-                Projects
-              </li>
+            <Link href="/#projects" class="group text-sm uppercase">
+              Projects
+              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/resume">
-              <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
-                Resume
-              </li>
+            <Link href="/resume" class="group text-sm uppercase">
+              Resume
+              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#contact">
-              <li className="text-sm uppercase hover:transition-all border-b-2 border-transparent hover:border-blue-400 transition-all">
-                Contact
-              </li>
+            <Link href="/#contact" class="group text-sm uppercase">
+              Contact
+              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
           </ul>
           <div
@@ -170,7 +164,7 @@ const Navbar = () => {
                 </p>
               </div>
             </div>
-            <div className="py-2 xs:py-4 flex flex-col gap-20">
+            <div className="py-2 xs:py-4 flex flex-col gap-12">
               <ul className="uppercase flex flex-col gap-1">
                 <Link href="/">
                   <li
@@ -202,6 +196,14 @@ const Navbar = () => {
                     className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
                   >
                     Projects
+                  </li>
+                </Link>
+                <Link href="/resume">
+                  <li
+                    onClick={() => setNav(false)}
+                    className="py-4 text-sm rounded-md text-black hover:text-[#5651e5] transition-all"
+                  >
+                    Resume
                   </li>
                 </Link>
                 <Link href="/#contact">

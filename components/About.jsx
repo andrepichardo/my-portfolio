@@ -26,12 +26,13 @@ const About = () => {
             technologies.
           </p>
           <p className="py-2 text-justify font-light text-[17px] text-black">
-            Being an Electronics engineer, my career as a programmer started in
-            2019 when I was working as a QA Software Tester for a local telecom
-            company. There I started learning HTML, CSS and Javascript to fix
-            some minor UI and programming issues in some of their projects, and
-            in 2021 I officially got my first job as a frontend developer at the
-            company I currently work for.
+            Graduated as an Electronic and Telecommunications engineer in 2019,
+            my career as a programmer began that same year when I started
+            working as a QA Software Tester for a local telecom company. There I
+            started learning HTML, CSS and Javascript to fix some minor UI and
+            programming issues in some of their projects, and in 2021 I
+            officially got my first job as a frontend developer at the company I
+            currently work for.
           </p>
           <Link href="/#projects">
             <p className="py-2 text-gray-600 underline text-sm md:text-base cursor-pointer">
