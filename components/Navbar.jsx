@@ -82,7 +82,7 @@ const Navbar = () => {
           <Image
             className="cursor-pointer"
             src={logo}
-            alt="/"
+            alt="Logo"
             width="75"
             height="50"
           />
@@ -92,29 +92,29 @@ const Navbar = () => {
             style={{ color: `${linkColor}` }}
             className="hidden md:flex gap-10"
           >
-            <Link href="/" class="group text-sm uppercase">
+            <Link href="/" className="group text-sm uppercase">
               Home
-              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#about" class="group text-sm uppercase">
+            <Link href="/#about" className="group text-sm uppercase">
               About
-              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#skills" class="group text-sm uppercase">
+            <Link href="/#skills" className="group text-sm uppercase">
               Skills
-              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#projects" class="group text-sm uppercase">
+            <Link href="/#projects" className="group text-sm uppercase">
               Projects
-              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/resume" class="group text-sm uppercase">
+            <Link href="/resume" className="group text-sm uppercase">
               Resume
-              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#contact" class="group text-sm uppercase">
+            <Link href="/#contact" className="group text-sm uppercase">
               Contact
-              <span class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
+              <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
           </ul>
           <div
@@ -146,7 +146,7 @@ const Navbar = () => {
                   <Image
                     className="cursor-pointer"
                     src={logo}
-                    alt="/"
+                    alt="Logo"
                     width="80"
                     height="45"
                   />

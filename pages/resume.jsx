@@ -13,7 +13,7 @@ const Resume = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="max-w-[940px] mx-auto p-2 pt-[120px]">
+      <div className="max-w-[940px] mx-auto px-5 xs:px-10 xl:px-0 pt-[120px]">
         <h2 className="text-center">Resume</h2>
         <div className="bg-[#d0d4d6] my-4 p-4 w-full flex justify-between items-center">
           <h2 className="text-center">André Pichardo</h2>
@@ -47,7 +47,7 @@ const Resume = () => {
             <p>Complex Problem Solving</p>
           </div>
         </div>
-        <p>
+        <p className="text-justify">
           Analytical, innovative, and motivated web development professional
           with experience in customer service, team leadership, and
           organizational effectiveness in fast-paced and challenging
