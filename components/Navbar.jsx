@@ -219,6 +219,7 @@ const Navbar = () => {
                 </p>
                 <div className="flex items-center justify-between flex-wrap xs:flex-nowrap gap-2 xs:gap-0 my-4 w-full">
                   <a
+                    className="rounded-full"
                     href="https://www.linkedin.com/in/andre-pichardo/"
                     target="_blank"
                     rel="noreferrer"
@@ -228,6 +229,7 @@ const Navbar = () => {
                     </div>
                   </a>
                   <a
+                    className="rounded-full"
                     href="https://github.com/andrepichardo"
                     target="_blank"
                     rel="noreferrer"
@@ -236,12 +238,20 @@ const Navbar = () => {
                       <FaGithub className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
-                  <Link onClick={() => setNav(false)} href="/#contact">
+                  <Link
+                    className="rounded-full"
+                    onClick={() => setNav(false)}
+                    href="/#contact"
+                  >
                     <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
-                  <Link onClick={() => setNav(false)} href="/resume">
+                  <Link
+                    className="rounded-full"
+                    onClick={() => setNav(false)}
+                    href="/resume"
+                  >
                     <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                       <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
                     </div>

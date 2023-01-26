@@ -24,6 +24,7 @@ const Main = () => {
           </p>
           <div className="flex items-center justify-around w-full gap-1 xs:gap-4 max-w-[330px] m-auto mt-3">
             <a
+              className="rounded-full"
               href="https://www.linkedin.com/in/andre-pichardo/"
               target="_blank"
               rel="noreferrer"
@@ -33,6 +34,7 @@ const Main = () => {
               </div>
             </a>
             <a
+              className="rounded-full"
               href="https://github.com/andrepichardo"
               target="_blank"
               rel="noreferrer"
@@ -41,12 +43,12 @@ const Main = () => {
                 <FaGithub className="w-5 h-5 text-blue-800" />
               </div>
             </a>
-            <Link href="/#contact">
+            <Link className="rounded-full" href="/#contact">
               <div className="rounded-full shadow-lg shadow-gray-400 p-4 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                 <AiOutlineMail className="w-5 h-5 text-blue-800" />
               </div>
             </Link>
-            <Link href="/resume">
+            <Link className="rounded-full" href="/resume">
               <div className="rounded-full shadow-lg shadow-gray-400 p-4 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                 <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
               </div>
