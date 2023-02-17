@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import gifexpertIMG from '../public/projects/gifexpertapp.png';
+import supabaseIMG from '../public/projects/linkspaceapp.png';
 import { RiArrowLeftSLine, RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 import Head from 'next/head';
-const GifExpert = () => {
+const LinkSpace = () => {
   return (
     <div className="w-full">
       <Head>
-        <title>André Pichardo | GifExpertApp</title>
+        <title>André Pichardo | LinkSpaceApp</title>
         <meta
           name="description"
           content="Dominican front-end web developer, specializing in building great digital experiences."
@@ -18,12 +18,12 @@ const GifExpert = () => {
         <div className="absolute top-0 left-0 w-full h-[40vh] lg:h-[50vh] bg-black/80 z-10"></div>
         <Image
           className="absolute object-cover w-full h-[40vh] lg:h-[50vh]"
-          src={gifexpertIMG}
+          src={supabaseIMG}
           alt=""
         />
         <div className="absolute text-white p-2 z-10 top-[70%] px-5 xs:px-10 xl:px-0 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <h2 className="py-2">GifExpertApp</h2>
-          <h3>ReactJS / Tailwind / GIPHY API </h3>
+          <h2 className="py-2">LinkSpaceApp</h2>
+          <h3>NextJS / Tailwind / Supabase </h3>
         </div>
       </div>
 
@@ -31,14 +31,18 @@ const GifExpert = () => {
         <div className="col-span-5 flex flex-col gap-3 text-justify">
           <h2 className="mb-2">Overview</h2>
           <p>
-            This app was built using ReactJS and TailwindCSS. Users are able to
-            search for GIFs of any subject given. You will be able to view a
-            maximum of 20 results per search. It was made possible with the help
-            of GIPHY API.
+            A nice Link-management app inspired by <i>Linktree</i>. This app was
+            built using NextJS and TailwindCSS for the frontend, and Supabase as
+            backend technology. Users are able to create an account with a
+            unique username. As soon as you sign in, you will be able to create
+            your personal links by entering the <i>Link Name</i> & <i>URL</i>,
+            and of course, upload your own <i>Profile Picture</i>. Share your
+            profile&apos;s URL to anyone so they can access all your important
+            links.
           </p>
           <div className="flex w-full flex-wrap gap-4 items-center justify-center xs:justify-start mt-4">
             <a
-              href="https://gif-expert-dre.netlify.app"
+              href="https://link-space.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -47,7 +51,7 @@ const GifExpert = () => {
               </button>
             </a>
             <a
-              href="https://github.com/andrepichardo/gif-expert-app"
+              href="https://github.com/andrepichardo/linktree-clone"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -63,7 +67,7 @@ const GifExpert = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1">
               <p className="text-gray-600 py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
-                React
+                NextJS
               </p>
               <p className="text-gray-600 py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
@@ -71,15 +75,11 @@ const GifExpert = () => {
               </p>
               <p className="text-gray-600 py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
-                Vite
+                Supabase
               </p>
               <p className="text-gray-600 py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
-                JavaScript
-              </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
-                <RiRadioButtonFill className="shrink-0" />
-                GIPHY API
+                TypeScript
               </p>
             </div>
           </div>
@@ -95,4 +95,4 @@ const GifExpert = () => {
   );
 };
 
-export default GifExpert;
+export default LinkSpace;

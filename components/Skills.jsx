@@ -6,7 +6,7 @@ import react from '../public/assets/skills/react.png';
 import next from '../public/assets/skills/nextjs.png';
 import tailwind from '../public/assets/skills/tailwind.png';
 import materialUI from '../public/assets/skills/material-ui.svg';
-import node from '../public/assets/skills/node.png';
+import supabase from '../public/assets/skills/supabase.svg';
 
 const Skills = () => {
   return (
@@ -80,20 +80,20 @@ const Skills = () => {
           <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
-                <Image src={materialUI} width={64} height={64} alt="MUI" />
+                <Image src={supabase} width={64} height={64} alt="Node" />
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h3>MaterialUI</h3>
+                <h3>Supabase</h3>
               </div>
             </div>
           </div>
           <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
-                <Image src={node} width={64} height={64} alt="Node" />
+                <Image src={materialUI} width={64} height={64} alt="MUI" />
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h3>NodeJS</h3>
+                <h3>MaterialUI</h3>
               </div>
             </div>
           </div>

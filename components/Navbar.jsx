@@ -15,7 +15,7 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.asPath === '/gifexpert') {
+    if (router.asPath === '/gifexpert' || router.asPath === '/linkspace') {
       setNavBg('transparent');
       setLinkColor('#ecf0f3');
     } else {
@@ -39,7 +39,7 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    if (router.asPath === '/gifexpert') {
+    if (router.asPath === '/gifexpert' || router.asPath === '/linkspace') {
       const handleShadow = () => {
         if (window.scrollY >= window.innerHeight * 0.3) {
           setShadow(true);
