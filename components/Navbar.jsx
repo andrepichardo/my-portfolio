@@ -226,7 +226,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaLinkedinIn className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
@@ -236,7 +236,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaGithub className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
@@ -245,7 +245,7 @@ const Navbar = () => {
                     onClick={() => setNav(false)}
                     href="/#contact"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
@@ -254,7 +254,7 @@ const Navbar = () => {
                     onClick={() => setNav(false)}
                     href="/resume"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-3 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
                       <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
