@@ -135,7 +135,9 @@ const Contact = () => {
                 </p>
               </div>
               <div className="flex flex-col">
-                <p className="uppercase pt-8 pb-3">Connect With Me</p>
+                <p className="uppercase pt-8 pb-3 text-lg font-light text-black">
+                  Connect With Me
+                </p>
                 <div className="flex items-center justify-between max-w-[400px] flex-wrap gap-1 gap-y-4 xs:gap-0 m-auto py-4 w-full">
                   <a
                     className="rounded-full"
