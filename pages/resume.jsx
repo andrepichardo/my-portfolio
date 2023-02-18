@@ -61,26 +61,26 @@ const Resume = () => {
           <h5 className="text-center underline text-[18px] py-2">Skills</h5>
           <p className="py-2">
             <span className="font-bold">Technical Skills</span>
-            <span className="px-2">|</span>Web Development
-            <span className="px-2">|</span>HTML
-            <span className="px-2">|</span>CSS
-            <span className="px-2">|</span>Javascript
-            <span className="px-2">|</span>React
-            <span className="px-2">|</span>NextJS
-            <span className="px-2">|</span>PostgreSQL
+            <span className="px-2">|</span> Web Development
+            <span className="px-2">|</span> HTML
+            <span className="px-2">|</span> CSS
+            <span className="px-2">|</span> Javascript
+            <span className="px-2">|</span> React
+            <span className="px-2">|</span> NextJS
+            <span className="px-2">|</span> PostgreSQL
             <span className="px-2">|</span> Redux
-            <span className="px-2">|</span>TailwindCSS
-            <span className="px-2">|</span>Supabase
-            <span className="px-2">|</span>Firebase
-            <span className="px-2">|</span>RESTAPI
+            <span className="px-2">|</span> TailwindCSS
+            <span className="px-2">|</span> Supabase
+            <span className="px-2">|</span> Firebase
+            <span className="px-2">|</span> RESTAPI
           </p>
           <p className="py-2">
             <span className="font-bold">Soft Skills</span>
-            <span className="px-2">|</span>Communication
-            <span className="px-2">|</span>Teamwork
-            <span className="px-2">|</span>Organization
-            <span className="px-2">|</span>Problem Solving
-            <span className="px-2">|</span>Flexibility
+            <span className="px-2">|</span> Communication
+            <span className="px-2">|</span> Teamwork
+            <span className="px-2">|</span> Organization
+            <span className="px-2">|</span> Problem Solving
+            <span className="px-2">|</span> Flexibility
           </p>
         </div>
 
