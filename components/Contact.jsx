@@ -253,14 +253,15 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center pt-12">
-          <Link href="/">
-            <div className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer hover:scale-110 ease-in duration-300">
-              <HiOutlineChevronDoubleUp
-                className="m-auto text-[#5651e5]"
-                size={30}
-              />
-            </div>
+        <div className="flex justify-center pt-16">
+          <Link
+            className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer animate-bounce hover:scale-110 ease-in duration-300"
+            href="/"
+          >
+            <HiOutlineChevronDoubleUp
+              className="m-auto text-[#5651e5]"
+              size={30}
+            />
           </Link>
         </div>
       </div>
