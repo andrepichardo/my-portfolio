@@ -136,11 +136,11 @@ const Navbar = () => {
           <div
             className={
               nav
-                ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] h-full min-h-screen bg-[#ecf0f3] px-5 py-10 xs:p-10 transition-all duration-1000'
-                : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] bg-[#ecf0f3] h-full min-h-screen px-5 py-10 xs:p-10 transition-all duration-1000'
+                ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto h-full min-h-screen bg-[#ecf0f3] px-5 py-8 xs:px-10 transition-all duration-1000'
+                : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] h-full min-h-screen px-5 py-8 xs:p-10 transition-all duration-1000'
             }
           >
-            <div>
+            <div className="flex flex-col">
               <div className="flex items-center justify-between">
                 <Link onClick={() => setNav(false)} href="/">
                   <Image
@@ -164,7 +164,7 @@ const Navbar = () => {
                 </p>
               </div>
             </div>
-            <div className="py-2 xs:py-4 flex flex-col gap-12">
+            <div className=" flex flex-col justify-between gap-8 h-full">
               <ul className="uppercase flex flex-col gap-1">
                 <Link href="/">
                   <li
@@ -219,7 +219,7 @@ const Navbar = () => {
                 <p className="uppercase tracking-widest text-[#5651e5]">
                   Let&apos;s Connect
                 </p>
-                <div className="flex items-center justify-between flex-wrap gap-2 xs:gap-1 my-4 w-full">
+                <div className="flex items-center justify-between flex-wrap gap-2 mt-4 w-full">
                   <a
                     className="rounded-full"
                     href="https://www.linkedin.com/in/andre-pichardo/"
