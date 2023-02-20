@@ -219,7 +219,7 @@ const Navbar = () => {
                 <p className="uppercase tracking-widest text-[#5651e5]">
                   Let&apos;s Connect
                 </p>
-                <div className="flex items-center justify-between flex-wrap xs:flex-nowrap gap-2 xs:gap-0 my-4 w-full">
+                <div className="flex items-center justify-between flex-wrap gap-2 xs:gap-1 my-4 w-full">
                   <a
                     className="rounded-full"
                     href="https://www.linkedin.com/in/andre-pichardo/"
