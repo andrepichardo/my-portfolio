@@ -16,7 +16,7 @@ const Skills = () => {
           Skills
         </p>
         <h2 className="py-4">What I Can Do</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
