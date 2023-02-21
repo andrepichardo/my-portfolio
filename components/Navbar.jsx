@@ -164,7 +164,7 @@ const Navbar = () => {
                 </p>
               </div>
             </div>
-            <div className=" flex flex-col justify-between gap-8 mb-14 xs:mb-0 h-full">
+            <div className=" flex flex-col sticky justify-between gap-8 xs:mb-0 h-full">
               <ul className="uppercase flex flex-col gap-1">
                 <Link href="/">
                   <li
