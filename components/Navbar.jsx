@@ -136,8 +136,8 @@ const Navbar = () => {
           <div
             className={
               nav
-                ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] min-h-screen h-screen  px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000'
-                : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3]  min-h-screen h-screen px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000'
+                ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] h-full min-h-screen  px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000'
+                : 'fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] h-full min-h-screen px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000'
             }
           >
             <div className="flex flex-col">
@@ -164,7 +164,7 @@ const Navbar = () => {
                 </p>
               </div>
             </div>
-            <div className=" flex flex-col justify-between gap-8 xs:mb-0 h-full">
+            <div className=" flex flex-col justify-between gap-8 mb-14 xs:mb-0 h-full">
               <ul className="uppercase flex flex-col gap-1">
                 <Link href="/">
                   <li
@@ -262,15 +262,15 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div
-            onClick={handleNav}
-            className={
-              nav
-                ? 'w-full h-full min-h-screen'
-                : 'w-full h-full min-h-screen hidden'
-            }
-          ></div>
         </div>
+        <div
+          onClick={handleNav}
+          className={
+            nav
+              ? 'w-full h-full min-h-screen'
+              : 'w-full h-full min-h-screen hidden'
+          }
+        ></div>
       </div>
     </div>
   );
