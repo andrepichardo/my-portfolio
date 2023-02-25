@@ -3,12 +3,15 @@
 @tailwind utilities;
 
 html {
+  height: -webkit-fill-available;
   scroll-behavior: smooth !important;
 }
 
 @layer base {
   body {
     @apply bg-[#ecf0f3] text-[#1f2937] tracking-wide;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 
   h1,
