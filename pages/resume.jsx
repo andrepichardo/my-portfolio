@@ -15,22 +15,24 @@ const Resume = () => {
 
       <div className="max-w-[940px] mx-auto px-5 xs:px-10 xl:px-0 pt-[120px]">
         <h2 className="text-center">Resume</h2>
-        <div className="bg-[#d0d4d6] my-4 p-4 w-full flex justify-between items-center">
-          <h2 className="text-center">André Pichardo</h2>
-          <div className="flex">
+        <div className="bg-[#d0d4d6] my-4 p-4 w-full flex justify-between flex-wrap gap-2 items-center">
+          <h2 className="text-xl xs:text-3xl md:text-4xl">André Pichardo</h2>
+          <div className="flex gap-2 items-center">
             <a
               href="https://www.linkedin.com/in/andre-pichardo/"
               target="_blank"
               rel="noreferrer"
+              className="p-0.5 xs:p-1"
             >
-              <FaLinkedinIn size={20} style={{ marginRight: '1rem' }} />
+              <FaLinkedinIn className="w-4 h-4 xs:w-5 xs:h-5 md:w-6 md:h-6 " />
             </a>
             <a
               href="https://github.com/andrepichardo"
               target="_blank"
               rel="noreferrer"
+              className="p-0.5 xs:p-1"
             >
-              <FaGithub size={20} style={{ marginRight: '1rem' }} />
+              <FaGithub className="w-4 h-4 xs:w-5 xs:h-5 md:w-6 md:h-6 " />
             </a>
           </div>
         </div>
