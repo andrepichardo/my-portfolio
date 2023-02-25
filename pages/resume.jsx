@@ -99,19 +99,19 @@ const Resume = () => {
           <p className="py-1 italic">
             Front End Web Developer (Aug 2021 - Current)
           </p>
-          <ul className="list-disc list-outside px-7 py-1 leading-relaxed">
-            <li>
+          <ul className="list-disc list-outside px-7 py-1 leading-relaxed text-justify">
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Development using mostly React.js, TypeScript & TailwindCSS.
             </li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Create mobile responsive web applications with special attention
               and implementation of SEO, UI/UX and clean code.
             </li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Troubleshoot issues and concerns found in QA Testing process, such
               as functionality and design changes as needed.
             </li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Work along with other developers to create and implement multiple
               technologies and programs.
             </li>
@@ -127,21 +127,21 @@ const Resume = () => {
           <p className="py-1 italic">
             Software QA Tester (Jul 2019 - Aug 2021)
           </p>
-          <ul className="list-disc list-outside px-7 py-1 leading-relaxed">
-            <li>
+          <ul className="list-disc list-outside px-7 py-1 leading-relaxed text-justify">
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Carrying out different QA tests to guarantee the correct operation
               of the new FW and SW that were deployed throughout the Headend
               network (TV clients).
             </li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Identification of errors / bugs to later be reported and corrected
               with the developer team.
             </li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Constant communication with foreign developers from Europe (in
               English).
             </li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Weekly reports with the results of the tests carried out on the
               latest version of FW / SW released.
             </li>
@@ -162,17 +162,19 @@ const Resume = () => {
           <p className="py-1 italic">
             Warehouse Assistant (May 2019 - Jul 2019)
           </p>
-          <ul className="list-disc list-outside px-7 py-1 leading-relaxed">
-            <li>
+          <ul className="list-disc list-outside px-7 py-1 leading-relaxed text-justify">
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Assist with receiving, unloading, counting and stocking physical
               inventory in the warehouse.
             </li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Ensure orders are processed efficiently and that the delivery of
               materials meets business timelines.
             </li>
-            <li>Pack item according to specified packing guidelines.</li>
-            <li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
+              Pack item according to specified packing guidelines.
+            </li>
+            <li className="cursor-pointer hover:shadow-md hover:rounded-lg p-2">
               Inspect items to ensure they&apos;re not damaged or faulty and
               adjust inventory accordingly.
             </li>
