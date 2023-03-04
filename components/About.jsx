@@ -32,7 +32,7 @@ const About = () => {
             started learning HTML, CSS and Javascript to fix some minor UI and
             programming issues in some of their projects, and in 2021 I
             officially got my first job as a frontend developer at the company I
-            currently work for. In my spare time, I like to play video games,
+            currently work for. In my spare time, I like to play videogames,
             exercise, watch movies and hang out with friends.
           </p>
           <Link href="/#projects">
