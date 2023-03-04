@@ -33,7 +33,7 @@ const Navbar = () => {
       document.documentElement.style.overflowY = 'hidden';
       document.body.scroll = 'no';
     } else {
-      document.documentElement.style.overflowY = 'scroll';
+      document.documentElement.style.overflowY = 'auto';
       document.body.scroll = 'yes';
     }
   }
@@ -129,7 +129,9 @@ const Navbar = () => {
 
       <div
         className={
-          nav ? 'fixed left-0 top-0 w-full h-full min-h-screen bg-black/60' : ''
+          nav
+            ? 'fixed left-0 top-0 w-full h-full min-h-screen bg-black/60 transition-all duration-500'
+            : 'fixed left-0 top-0 w-full h-full min-h-screen bg-none transition-all duration-500 invisible'
         }
       >
         <div className="flex">
