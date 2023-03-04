@@ -17,7 +17,7 @@ const Main = () => {
           <h1 className=" text-gray-700 mb-3 px-3">
             A Front-End Web Developer
           </h1>
-          <p className=" textgray-600 max-w-[90%] md:max-w-[60%] m-auto font-thin text-black">
+          <p className=" textgray-600 max-w-[90%] md:max-w-[60%] m-auto font-light text-black">
             I&apos;m a 25 years old dominican front-end web developer,
             specializing in building (and occasionally designing) great digital
             experiences.
