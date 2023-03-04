@@ -180,7 +180,7 @@ const Contact = () => {
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Full Name</label>
                   <input
-                    className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 outline-none"
+                    className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 transition-all focus:border-[#5651e5]/50 outline-none"
                     type="text"
                     value={fullname}
                     onChange={(e) => {
@@ -194,7 +194,7 @@ const Contact = () => {
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Email</label>
                   <input
-                    className="border-2 rounded-lg w-full flex  px-2 py-3 border-gray-300 outline-none"
+                    className="border-2 rounded-lg w-full flex  px-2 py-3 border-gray-300 transition-all focus:border-[#5651e5]/50 outline-none"
                     type="email"
                     value={email}
                     onChange={(e) => {
@@ -208,7 +208,7 @@ const Contact = () => {
                 <div className="flex flex-col p-2">
                   <label className="uppercase text-sm py-2">Subject</label>
                   <input
-                    className="border-2 rounded-lg w-full flex px-2  py-3 border-gray-300 outline-none"
+                    className="border-2 rounded-lg w-full flex px-2  py-3 border-gray-300 transition-all focus:border-[#5651e5]/50 outline-none"
                     type="text"
                     value={subject}
                     onChange={(e) => {
@@ -226,7 +226,7 @@ const Contact = () => {
                     onChange={(e) => {
                       setMessage(e.target.value);
                     }}
-                    className="border-2 resize-none w-full px-2 py-3 rounded-lg border-gray-300 outline-none min-h-[175px] max-h-[175px] sm:min-h-[225px] sm:max-h-[225px]"
+                    className="border-2 resize-none w-full px-2 py-3 rounded-lg transition-all border-gray-300 focus:border-[#5651e5]/50 outline-none min-h-[175px] max-h-[175px] sm:min-h-[225px] sm:max-h-[225px]"
                   />
                   {errors?.message && (
                     <p className="text-red-500">
@@ -237,7 +237,7 @@ const Contact = () => {
                 <div className="flex p-2">
                   <button
                     type="submit"
-                    className="w-full p-4 text-gray-100 mt-4 buttonForm"
+                    className="w-full p-4 text-gray-100 mt-4 buttonForm hover:opacity-80 transition-all"
                   >
                     {buttonText}
                   </button>
