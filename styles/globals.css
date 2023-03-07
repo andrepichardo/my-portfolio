@@ -33,11 +33,11 @@ html {
   }
 
   button {
-    @apply shadow-xl shadow-gray-400 dark:shadow-gray-700 hover:from-[#726ee7] hover:to-[#8badf6] rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3];
+    @apply shadow-xl shadow-gray-400 dark:shadow-gray-900/80 hover:from-[#726ee7] hover:to-[#8badf6] rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3];
   }
 
   .buttonForm {
-    @apply shadow-xl shadow-gray-400 dark:shadow-gray-700 hover:from-[#726ee7] hover:to-[#8badf6] rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3];
+    @apply shadow-xl shadow-gray-400 dark:shadow-gray-900/80 hover:from-[#726ee7] hover:to-[#8badf6] rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3];
   }
 }
 

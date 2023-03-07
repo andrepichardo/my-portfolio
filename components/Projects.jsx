@@ -4,7 +4,7 @@ import linkspace from '../public/projects/linkspaceapp.png';
 
 const Projects = () => {
   return (
-    <div id="projects" className="w-full border-b-2">
+    <div id="projects" className="w-full border-b-2 dark:border-[#2a374a]">
       <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 mx-auto py-24">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Projects
