@@ -24,7 +24,7 @@ const Navbar = () => {
     if (currentTheme == 'dark') {
       return (
         <BsSun
-          className="w-6 h-6 text-[#5651e5]"
+          className="w-6 h-6 text-[#5651e5] hover:text-[#807cf2] transition-all active:scale-90"
           role="button"
           onClick={() => setTheme('light')}
         />
@@ -32,7 +32,7 @@ const Navbar = () => {
     } else {
       return (
         <BsMoon
-          className="w-6 h-6 text-[#5651e5]"
+          className="w-6 h-6 text-[#5651e5] hover:text-[#9592f3] transition-all active:scale-90"
           role="button"
           onClick={() => setTheme('dark')}
         />
