@@ -14,7 +14,7 @@ const About = () => {
             About
           </p>
           <h2 className="py-4">Who I Am</h2>
-          <p className="py-2 text-justify font-light text-[17px] text-black">
+          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
             I specialize in building responsive front-end web applications that
             connect with API&apos;s and other backend technologies. Though I am
             most proficient in building front-end applications using mostly
@@ -25,7 +25,7 @@ const About = () => {
             responsive front-end web applications while learning back-end
             technologies.
           </p>
-          <p className="py-2 text-justify font-light text-[17px] text-black">
+          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
             Graduated as an Electronic and Telecommunications engineer in 2019,
             my career as a programmer began that same year when I started
             working as a QA Software Tester for a local telecom company. There I
@@ -36,12 +36,12 @@ const About = () => {
             exercise, watch movies and hang out with friends.
           </p>
           <Link href="/#projects">
-            <p className="py-2 text-gray-600 underline text-sm md:text-base cursor-pointer">
+            <p className="py-2 text-gray-600 dark:text-[#abb8c2] transition-all duration-300 underline text-sm md:text-base cursor-pointer">
               Check out some of my latest projects.
             </p>
           </Link>
         </div>
-        <div className="w-full h-auto m-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">
+        <div className="w-full h-auto m-auto shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">
           <Image className="rounded-md" src={andrePP} alt="Andre" />
         </div>
       </div>

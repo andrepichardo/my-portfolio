@@ -15,7 +15,7 @@ const Resume = () => {
 
       <div className="max-w-[940px] mx-auto px-5 xs:px-10 xl:px-0 pt-[120px]">
         <h2 className="text-center">Resume</h2>
-        <div className="bg-[#d0d4d6] my-4 p-4 w-full flex justify-between flex-wrap gap-2 items-center">
+        <div className="bg-[#d0d4d6] dark:bg-[#2a374a] transition-all my-4 p-4 w-full flex justify-between flex-wrap gap-2 items-center">
           <h2 className="text-xl xs:text-3xl md:text-4xl">André Pichardo</h2>
           <div className="flex gap-2 items-center">
             <a

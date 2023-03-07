@@ -119,23 +119,23 @@ const Contact = () => {
         <h2 className="py-4">Get In Touch</h2>
         <div className="flex flex-col lg:grid lg:grid-cols-5 gap-8">
           {/* left */}
-          <div className="lg:col-span-2 flex  w-full h-full shadow-xl shadow-gray-400 rounded-xl px-5 py-10">
+          <div className="lg:col-span-2 flex  w-full h-full shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl px-5 py-10">
             <div className="lg:p-4 h-full flex flex-col justify-between">
               <div className=" flex rounded-xl ease-in duration-300 hover:scale-95">
                 <Image className="rounded-xl " src={contact} alt="/" />
               </div>
               <div className="flex flex-col justify-center pb-4">
                 <h2 className="py-2">André Pichardo</h2>
-                <p className="text-justify font-light text-[17px] text-black">
+                <p className="text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
                   Front-End Developer
                 </p>
-                <p className="py-4 text-lg text-justify font-light text-[17px] text-black">
+                <p className="py-4 text-lg text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
                   I am available for freelance & full-time positions. Feel free
                   to contact me and let&apos;s talk.
                 </p>
               </div>
               <div className="flex flex-col">
-                <p className="uppercase pt-8 pb-3 text-lg font-light text-black">
+                <p className="uppercase pt-8 pb-3 text-lg font-light text-black dark:text-[#ecf0f3] transition-all duration-300">
                   Connect With Me
                 </p>
                 <div className="flex items-center justify-between max-w-[400px] flex-wrap gap-1 gap-y-4 xs:gap-0 m-auto py-4 w-full">
@@ -145,7 +145,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaLinkedinIn className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
@@ -155,17 +155,17 @@ const Contact = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <FaGithub className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
                   <Link className="rounded-full" href="/#contact">
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
                   <Link className="rounded-full" href="/resume">
-                    <div className="rounded-full shadow-lg shadow-gray-400 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
                       <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
@@ -174,7 +174,7 @@ const Contact = () => {
             </div>
           </div>
           {/* right */}
-          <div className="lg:col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl px-3 lg:p-4">
+          <div className="lg:col-span-3 w-full h-auto shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl px-3 lg:p-4">
             <div className="w-full py-4">
               <form onSubmit={handleSubmit} className="flex flex-col">
                 <div className="flex flex-col p-2">
@@ -237,7 +237,7 @@ const Contact = () => {
                 <div className="flex p-2">
                   <button
                     type="submit"
-                    className="w-full p-4 text-gray-100 mt-4 buttonForm hover:opacity-80 transition-all"
+                    className="w-full p-4 mt-4 buttonForm transition-all"
                   >
                     {buttonText}
                   </button>
@@ -255,7 +255,7 @@ const Contact = () => {
         </div>
         <div className="flex justify-center pt-16">
           <Link
-            className="rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer animate-bounce hover:scale-110 ease-in duration-300"
+            className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900/80 p-4 cursor-pointer animate-bounce hover:scale-110 ease-in duration-300"
             href="/"
           >
             <HiOutlineChevronDoubleUp

@@ -17,7 +17,7 @@ const Skills = () => {
         </p>
         <h2 className="py-4">What I Can Do</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={html} width={64} height={64} alt="HTML" />
@@ -27,7 +27,7 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={css} width={64} height={64} alt="CSS" />
@@ -37,7 +37,7 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={javascript} width={64} height={64} alt="JS" />
@@ -47,7 +47,7 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={react} width={64} height={64} alt="React" />
@@ -57,7 +57,7 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={next} width={64} height={64} alt="Next" />
@@ -67,7 +67,7 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={tailwind} width={64} height={64} alt="TW" />
@@ -77,7 +77,7 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={supabase} width={64} height={64} alt="Node" />
@@ -87,7 +87,7 @@ const Skills = () => {
               </div>
             </div>
           </div>
-          <div className="p-6 flex justify-center shadow-xl rounded-xl hover:scale-105 ease-in duration-300">
+          <div className="p-6 flex justify-center shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105 ease-in duration-300">
             <div className="grid grid-cols-2 gap-4 w-full justify-center items-center">
               <div className="m-auto flex">
                 <Image src={materialUI} width={64} height={64} alt="MUI" />

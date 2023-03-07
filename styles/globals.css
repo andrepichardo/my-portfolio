@@ -8,7 +8,7 @@ html {
 
 @layer base {
   body {
-    @apply bg-[#ecf0f3] text-[#1f2937] tracking-wide;
+    @apply bg-[#ecf0f3] dark:bg-[#1f2937] transition-all duration-300 text-[#1f2937] dark:text-[#ecf0f3] tracking-wide;
   }
 
   h1,
@@ -33,11 +33,11 @@ html {
   }
 
   button {
-    @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white;
+    @apply shadow-xl shadow-gray-400 dark:shadow-gray-700 hover:from-[#726ee7] hover:to-[#8badf6] rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3];
   }
 
   .buttonForm {
-    @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white;
+    @apply shadow-xl shadow-gray-400 dark:shadow-gray-700 hover:from-[#726ee7] hover:to-[#8badf6] rounded-xl uppercase bg-gradient-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3];
   }
 }
 

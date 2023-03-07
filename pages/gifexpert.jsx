@@ -42,18 +42,14 @@ const GifExpert = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="px-8 py-2 w-full hover:opacity-80 transition-all">
-                DEMO
-              </button>
+              <button className="px-8 py-2 w-full transition-all">DEMO</button>
             </a>
             <a
               href="https://github.com/andrepichardo/gif-expert-app"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="px-8 py-2 w-full hover:opacity-80 transition-all">
-                CODE
-              </button>
+              <button className="px-8 py-2 w-full transition-all">CODE</button>
             </a>
           </div>
         </div>
@@ -61,23 +57,23 @@ const GifExpert = () => {
           <div className="p-2">
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1">
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 React
               </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 Tailwind
               </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 Vite
               </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 JavaScript
               </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 GIPHY API
               </p>

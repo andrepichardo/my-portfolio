@@ -46,18 +46,14 @@ const LinkSpace = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="px-8 py-2 w-full hover:opacity-80 transition-all">
-                DEMO
-              </button>
+              <button className="px-8 py-2 w-full">DEMO</button>
             </a>
             <a
               href="https://github.com/andrepichardo/linktree-clone"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="px-8 py-2 w-full hover:opacity-80 transition-all">
-                CODE
-              </button>
+              <button className="px-8 py-2 w-full">CODE</button>
             </a>
           </div>
         </div>
@@ -65,19 +61,19 @@ const LinkSpace = () => {
           <div className="p-2">
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1">
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 NextJS
               </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 Tailwind
               </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 Supabase
               </p>
-              <p className="text-gray-600 py-2 flex items-center gap-1">
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 TypeScript
               </p>
