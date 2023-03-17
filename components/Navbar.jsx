@@ -63,10 +63,8 @@ const Navbar = () => {
   if (typeof window !== 'undefined') {
     if (nav === true) {
       document.documentElement.style.overflowY = 'hidden';
-      document.body.scroll = 'no';
     } else {
       document.documentElement.style.overflowY = 'auto';
-      document.body.scroll = 'yes';
     }
   }
 
