@@ -1,10 +1,14 @@
 import ProjectItem from './ProjectItem';
 import gifexpert from '../public/projects/gifexpertapp.png';
 import linkspace from '../public/projects/linkspaceapp.png';
+import becas from '../public/projects/becatufuturo.png';
 
 const Projects = () => {
   return (
-    <div id="projects" className="w-full border-b-2 dark:border-[#2a374a]">
+    <div
+      id="projects"
+      className="w-full md:min-h-screen h-full flex items-center border-b-2 dark:border-[#2a374a]"
+    >
       <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 mx-auto py-24">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Projects
@@ -22,6 +26,12 @@ const Projects = () => {
             bgImage={gifexpert}
             projectUrl="/gifexpert"
             technologies="ReactJS | Tailwind | GIPHY API"
+          />
+          <ProjectItem
+            title="Beca tu Futuro"
+            bgImage={becas}
+            projectUrl="/becas"
+            technologies="ReactJS | Tailwind | Redux"
           />
         </div>
       </div>

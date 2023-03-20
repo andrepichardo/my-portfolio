@@ -5,7 +5,7 @@ const ProjectItem = ({ title, bgImage, projectUrl, technologies }) => {
   return (
     <div className="relative flex items-center justify-center w-full h-full shadow-xl xl:min-h-[390px] lg:min-h-[350px] lg:max-h-[400px] md:min-h-[285px] md:max-h-[285px] sm:min-h-[300px]  xs:min-h-[250px] xs:max-h-[250px] min-h-[220px] max-h-[220px] shadow-gray-400 dark:shadow-gray-900/80 rounded-xl group hover:bg-gradient-to-r from-[#5651e5] to-[#709dff]">
       <Image
-        className="rounded-xl object-cover group-hover:opacity-10 transition-all duration-300 h-full w-full"
+        className="rounded-xl object-cover group-hover:opacity-10 transition-all duration-500 h-full w-full"
         src={bgImage}
         alt="Project Image"
       />

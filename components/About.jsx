@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import andrePP from '../public/assets/LosCacaosPP.jpg';
+import { FiChevronDown } from 'react-icons/fi';
 
 const About = () => {
   return (
@@ -35,10 +36,14 @@ const About = () => {
             currently work for. In my spare time, I like to play videogames,
             exercise, watch movies and hang out with friends.
           </p>
-          <Link href="/#projects">
-            <p className="py-2 text-gray-600 dark:text-[#abb8c2] transition-all duration-300 underline text-sm md:text-base cursor-pointer">
+          <Link
+            className="flex w-fit items-center text-gray-600 dark:text-[#abb8c2] hover:text-gray-400 dark:hover:text-[#78848d] transition-all duration-300"
+            href="/#projects"
+          >
+            <p className="py-2 underline underline-offset-2 text-sm md:text-base cursor-pointer">
               Check out some of my latest projects.
             </p>
+            <FiChevronDown />
           </Link>
         </div>
         <div className="w-full h-auto m-auto shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">

@@ -69,7 +69,11 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    if (router.asPath === '/gifexpert' || router.asPath === '/linkspace') {
+    if (
+      router.asPath === '/gifexpert' ||
+      router.asPath === '/linkspace' ||
+      router.asPath === '/becas'
+    ) {
       const handleShadow = () => {
         if (window.scrollY >= window.innerHeight * 0.3) {
           setShadow(true);
@@ -101,7 +105,9 @@ const Navbar = () => {
   return (
     <div
       className={
-        router.asPath === '/gifexpert' || router.asPath === '/linkspace'
+        router.asPath === '/gifexpert' ||
+        router.asPath === '/linkspace' ||
+        router.asPath === '/becas'
           ? shadow
             ? `fixed w-full h-20 shadow-xl z-[100] bg-[${navBg}] dark:bg-[#1f2937] transition-all duration-300`
             : `fixed w-full h-20 z-[100] bg-[${navBg}] transition-all duration-300`

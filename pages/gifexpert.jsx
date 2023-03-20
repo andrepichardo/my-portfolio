@@ -53,7 +53,7 @@ const GifExpert = () => {
             </a>
           </div>
         </div>
-        <div className="col-span-5 md:col-span-2 shadow-xl rounded-xl shadow-gray-400 dark:shadow-gray-900/80 p-4">
+        <div className="col-span-5 md:col-span-2 h-fit shadow-xl rounded-xl shadow-gray-400 dark:shadow-gray-900/80 p-4">
           <div className="p-2">
             <p className="text-center font-bold pb-2">Technologies</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1">
@@ -80,7 +80,7 @@ const GifExpert = () => {
             </div>
           </div>
         </div>
-        <Link href="/#projects">
+        <Link className="w-fit" href="/#projects">
           <span className="hover:underline  flex items-center underline-offset-4 py-1 cursor-pointer">
             <RiArrowLeftSLine />
             Back
