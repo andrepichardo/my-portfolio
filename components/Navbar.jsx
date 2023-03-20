@@ -47,7 +47,11 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.asPath === '/gifexpert' || router.asPath === '/linkspace') {
+    if (
+      router.asPath === '/gifexpert' ||
+      router.asPath === '/linkspace' ||
+      router.asPath === '/becas'
+    ) {
       setNavBg('transparent');
       setLinkColor('#ecf0f3');
     } else {
