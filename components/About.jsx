@@ -16,10 +16,10 @@ const About = () => {
           </p>
           <h2 className="py-4">Who I Am</h2>
           <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
-            Graduated as an Electronic and Telecommunications engineer in 2019,
-            my career as a programmer began that same year when I started
-            working as a QA Software Tester for a local telecom company. There I
-            started learning HTML, CSS and Javascript to fix some minor UI and
+            Graduated as an Electronics and Communications engineer in 2019, my
+            career as a programmer began that same year when I started working
+            as a QA Software Tester for a local telecom company. There I started
+            learning HTML, CSS and Javascript to fix some minor UI and
             programming issues in some of their projects. Some time later in
             2021, I officially got my first job as a frontend developer at the
             company I currently work for. In my spare time, I like to play
