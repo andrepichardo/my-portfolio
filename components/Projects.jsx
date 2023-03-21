@@ -10,7 +10,7 @@ const Projects = () => {
       id="projects"
       className="w-full md:min-h-screen h-full flex items-center border-b-2 dark:border-[#2a374a]"
     >
-      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 mx-auto py-24">
+      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 w-full mx-auto py-24">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Projects
         </p>
