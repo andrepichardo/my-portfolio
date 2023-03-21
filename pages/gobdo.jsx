@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import becas from '../public/projects/becatufuturo.png';
+import gobdo from '../public/projects/gobdo.png';
 import { RiArrowLeftSLine, RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 import Head from 'next/head';
-const Becas = () => {
+const Gobdo = () => {
   return (
     <div className="w-full">
       <Head>
-        <title>André Pichardo | Beca tu Futuro</title>
+        <title>André Pichardo | Gob.do</title>
         <meta
           name="description"
           content="Dominican front-end web developer, specializing in building great digital experiences."
@@ -18,12 +18,12 @@ const Becas = () => {
         <div className="absolute top-0 left-0 w-full h-[40vh] lg:h-[50vh] bg-black/80 z-10"></div>
         <Image
           className="absolute object-cover w-full h-[40vh] lg:h-[50vh]"
-          src={becas}
+          src={gobdo}
           alt=""
         />
         <div className="absolute text-white p-2 z-10 top-[70%] px-5 xs:px-10 xl:px-0 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <h2 className="py-2">Beca tu Futuro</h2>
-          <h3>ReactJS / Tailwind / Redux </h3>
+          <h2 className="py-2">Gob.do Portal</h2>
+          <h3>NextJS / Tailwind / React Query </h3>
         </div>
       </div>
 
@@ -31,13 +31,13 @@ const Becas = () => {
         <div className="col-span-5 flex flex-col gap-3 text-justify">
           <h2 className="mb-2">Overview</h2>
           <p>
-            A web application created with the purpose of providing thousands of
-            students from the <i>Dominican Republic</i> the opportunity to apply
-            for both national and international scholarships. Also, after
-            applying for a scholarship, you can follow up on it, knowing the
-            status of your application at all times. I worked on this portal
-            together with other excellent frontend and backend developers, from
-            whom I learned a lot throughout it.
+            The official <i>Portal of Services of the Dominican Government</i>,
+            a platform that brings together all the available services of the
+            State in a digital way, to facilitate the citizen all the
+            bureaucratic processes that correspond to each service. As expected,
+            As expected, I worked on this project together with other great
+            frontend and backend developers, which made this experience more
+            enjoyable.
           </p>
           <p>
             <b>Note</b>: The repository of this project is private, since it
@@ -46,7 +46,7 @@ const Becas = () => {
           </p>
           <div className="flex w-full flex-wrap gap-4 items-center justify-center xs:justify-start mt-4">
             <a
-              href="https://becas.gob.do/"
+              href="https://www.gob.do/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -60,7 +60,7 @@ const Becas = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1">
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
-                ReactJS
+                NextJS
               </p>
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
@@ -76,7 +76,7 @@ const Becas = () => {
               </p>
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
-                Redux
+                React Query
               </p>
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
@@ -96,4 +96,4 @@ const Becas = () => {
   );
 };
 
-export default Becas;
+export default Gobdo;

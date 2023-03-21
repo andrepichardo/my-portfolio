@@ -2,6 +2,7 @@ import ProjectItem from './ProjectItem';
 import gifexpert from '../public/projects/gifexpertapp.png';
 import linkspace from '../public/projects/linkspaceapp.png';
 import becas from '../public/projects/becatufuturo.png';
+import gobdo from '../public/projects/gobdo.png';
 
 const Projects = () => {
   return (
@@ -20,6 +21,12 @@ const Projects = () => {
             bgImage={linkspace}
             projectUrl="/linkspace"
             technologies="NextJS | Tailwind | Supabase"
+          />
+          <ProjectItem
+            title="Gob.do Portal"
+            bgImage={gobdo}
+            projectUrl="/gobdo"
+            technologies="NextJS | Tailwind | React Query"
           />
           <ProjectItem
             title="GifExpertApp"

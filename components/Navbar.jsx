@@ -50,7 +50,8 @@ const Navbar = () => {
     if (
       router.asPath === '/gifexpert' ||
       router.asPath === '/linkspace' ||
-      router.asPath === '/becas'
+      router.asPath === '/becas' ||
+      router.asPath === '/gobdo'
     ) {
       setNavBg('transparent');
       setLinkColor('#ecf0f3');
@@ -76,7 +77,8 @@ const Navbar = () => {
     if (
       router.asPath === '/gifexpert' ||
       router.asPath === '/linkspace' ||
-      router.asPath === '/becas'
+      router.asPath === '/becas' ||
+      router.asPath === '/gobdo'
     ) {
       const handleShadow = () => {
         if (window.scrollY >= window.innerHeight * 0.3) {
@@ -111,7 +113,8 @@ const Navbar = () => {
       className={
         router.asPath === '/gifexpert' ||
         router.asPath === '/linkspace' ||
-        router.asPath === '/becas'
+        router.asPath === '/becas' ||
+        router.asPath === '/gobdo'
           ? shadow
             ? `fixed w-full h-20 shadow-xl z-[100] bg-[${navBg}] dark:bg-[#1f2937] transition-all duration-300`
             : `fixed w-full h-20 z-[100] bg-[${navBg}] transition-all duration-300`

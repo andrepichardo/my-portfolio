@@ -96,7 +96,7 @@ const Skills = () => {
                 <Image src={materialUI} width={64} height={64} alt="MUI" />
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h3>MaterialUI</h3>
+                <h3>Material UI</h3>
               </div>
             </div>
           </div>

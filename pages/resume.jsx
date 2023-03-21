@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaDownload, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 const Resume = () => {
   return (
@@ -18,6 +18,13 @@ const Resume = () => {
         <div className="bg-[#d0d4d6] dark:bg-[#2a374a] transition-all my-4 p-4 w-full flex justify-between flex-wrap gap-2 items-center">
           <h2 className="text-xl xs:text-3xl md:text-4xl">André Pichardo</h2>
           <div className="flex gap-2 items-center">
+            <a
+              href="Resume-André-Pichardo.pdf"
+              download
+              className="p-0.5 xs:p-1"
+            >
+              <FaDownload className="w-3.5 h-3.5 xs:w-4 xs:h-4 md:w-5 md:h-5 " />
+            </a>
             <a
               href="https://www.linkedin.com/in/andre-pichardo/"
               target="_blank"
