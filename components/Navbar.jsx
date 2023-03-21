@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import logo from '../public/assets/AP-Logo2.svg';
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn, FaSpinner } from 'react-icons/fa';
 import { BsMoon, BsPersonLinesFill, BsSun } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -134,7 +134,7 @@ const Navbar = () => {
           />
         </Link>
         <div className="flex items-center gap-10">
-          {renderThemeChanger()}
+          {renderThemeChanger() || <FaSpinner className="animate-spin" />}
           <ul
             style={{ color: `${linkColor}` }}
             className={`hidden md:flex gap-10 dark:text-[#ecf0f3] transition-all duration-300`}

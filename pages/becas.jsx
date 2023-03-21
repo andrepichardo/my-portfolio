@@ -41,8 +41,7 @@ const Becas = () => {
           </p>
           <p>
             <b>Note</b>: The repository of this project is private, since it
-            belongs to the government of the Dominican Republic, so I
-            couldn&apos;t share it here.
+            belongs to the government of the Dominican Republic.
           </p>
           <div className="flex w-full flex-wrap gap-4 items-center justify-center xs:justify-start mt-4">
             <a

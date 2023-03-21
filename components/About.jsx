@@ -16,25 +16,24 @@ const About = () => {
           </p>
           <h2 className="py-4">Who I Am</h2>
           <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
-            I specialize in building responsive front-end web applications that
-            connect with API&apos;s and other backend technologies. Though I am
-            most proficient in building front-end applications using mostly
-            Next.js, TailwindCSS and MaterialUI, I am a quick learner and can
-            pick up new tech stacks as needed. I believe that being a great
-            developer is not using one specific language, but choosing the best
-            tool for the job. At the moment, mostly focused on developing
-            responsive front-end web applications while learning back-end
-            technologies.
-          </p>
-          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
             Graduated as an Electronic and Telecommunications engineer in 2019,
             my career as a programmer began that same year when I started
             working as a QA Software Tester for a local telecom company. There I
             started learning HTML, CSS and Javascript to fix some minor UI and
-            programming issues in some of their projects, and in 2021 I
-            officially got my first job as a frontend developer at the company I
-            currently work for. In my spare time, I like to play videogames,
-            exercise, watch movies and hang out with friends.
+            programming issues in some of their projects. Some time later in
+            2021, I officially got my first job as a frontend developer at the
+            company I currently work for. In my spare time, I like to play
+            videogames, exercise, watch movies and hang out with friends.
+          </p>
+          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
+            I am concentrated on building awesome web applications that connect
+            with API&apos;s and other backend technologies. Though I am most
+            proficient in building front-end applications using mostly React
+            with Next.js, TailwindCSS and MongoDB, I am a quick learner and can
+            pick up new tech stacks as needed. I believe that being a great
+            developer is not using one specific language, but choosing the best
+            tool for the job. At the moment, focused on front-end development,
+            while learning back-end technologies.
           </p>
           <Link
             className="flex w-fit items-center text-gray-600 dark:text-[#abb8c2] hover:text-gray-400 dark:hover:text-[#78848d] transition-all duration-300"

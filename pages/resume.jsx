@@ -79,8 +79,8 @@ const Resume = () => {
             <span className="px-2">|</span> PostgreSQL
             <span className="px-2">|</span> Redux
             <span className="px-2">|</span> TailwindCSS
+            <span className="px-2">|</span> MongoDB
             <span className="px-2">|</span> Supabase
-            <span className="px-2">|</span> Firebase
             <span className="px-2">|</span> RESTAPI
           </p>
           <p className="py-2">
