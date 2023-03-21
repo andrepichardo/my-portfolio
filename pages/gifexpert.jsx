@@ -31,10 +31,10 @@ const GifExpert = () => {
         <div className="col-span-5 flex flex-col gap-3 text-justify">
           <h2 className="mb-2">Overview</h2>
           <p>
-            This app was built using ReactJS and TailwindCSS. Users are able to
-            search for GIFs of any subject given. You will be able to view a
-            maximum of 20 results per search. It was made possible with the help
-            of GIPHY API.
+            A simple and friendly GIF Search Engine app. This project was built
+            using ReactJS, TailwindCSS, with the help of GIPHY API. Users are
+            able to search for GIFs of any subject given. Also will be able to
+            view a maximum of 20 results per search.
           </p>
           <div className="flex w-full flex-wrap gap-4 items-center justify-center xs:justify-start mt-4">
             <a
