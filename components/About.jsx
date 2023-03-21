@@ -28,12 +28,12 @@ const About = () => {
           <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
             I am concentrated on building awesome web applications that connect
             with API&apos;s and other backend technologies. Though I am most
-            proficient in building front-end applications using mostly React
-            with Next.js, TailwindCSS and MongoDB, I am a quick learner and can
-            pick up new tech stacks as needed. I believe that being a great
-            developer is not using one specific language, but choosing the best
-            tool for the job. At the moment, focused on front-end development,
-            while learning back-end technologies.
+            proficient in creating websites using primarily React with Next.js,
+            TailwindCSS and MongoDB, I am a quick learner and can pick up new
+            tech stacks as needed. I believe that being a great developer is not
+            using one specific language, but choosing the best tool for the job.
+            At the moment, focused on front-end development, while learning
+            back-end technologies.
           </p>
           <Link
             className="flex w-fit items-center text-gray-600 dark:text-[#abb8c2] hover:text-gray-400 dark:hover:text-[#78848d] transition-all duration-300"
