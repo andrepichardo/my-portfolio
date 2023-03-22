@@ -35,9 +35,8 @@ const Gobdo = () => {
             a platform that brings together all the available services of the
             State in a digital way, to facilitate the citizen all the
             bureaucratic processes that correspond to each service. As expected,
-            As expected, I worked on this project together with other great
-            frontend and backend developers, which made this experience more
-            enjoyable.
+            I worked on this project together with other great frontend and
+            backend developers, which made this experience a lot more enjoyable.
           </p>
           <p>
             <b>Note</b>: The repository of this project is private, since it
