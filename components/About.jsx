@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import andrePP from '../public/assets/LosCacaosPP.jpg';
+import andrePP from '../public/assets/PortfolioPicture.jpg';
 import { FiChevronDown } from 'react-icons/fi';
 
 const About = () => {
