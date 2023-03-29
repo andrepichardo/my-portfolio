@@ -115,7 +115,7 @@ const Contact = () => {
       id="contact"
       className="w-full md:min-h-screen h-full flex flex-col justify-center items-center"
     >
-      <div className="max-w-[1240px] m-auto px-5 xs:px-10 xl:px-0 py-24 w-full">
+      <div className="max-w-[1240px] m-auto px-5 xs:px-10 xl:px-0 pt-24 pb-10 w-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Contact
         </p>

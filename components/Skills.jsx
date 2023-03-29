@@ -12,9 +12,9 @@ const Skills = () => {
   return (
     <div
       id="skills"
-      className="w-full h-full md:min-h-screen border-b-2 dark:border-[#2a374a] py-24"
+      className="w-full h-full md:min-h-screen flex items-center border-b-2 dark:border-[#2a374a] py-24"
     >
-      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 mx-auto flex flex-col justify-center h-full">
+      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 mx-auto flex flex-col justify-center w-full h-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Skills
         </p>
