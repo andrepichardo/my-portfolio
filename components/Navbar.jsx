@@ -50,6 +50,7 @@ const Navbar = () => {
     if (
       router.asPath === '/gifexpert' ||
       router.asPath === '/linkspace' ||
+      router.asPath === '/thatseries' ||
       router.asPath === '/becas' ||
       router.asPath === '/gobdo'
     ) {
@@ -77,6 +78,7 @@ const Navbar = () => {
     if (
       router.asPath === '/gifexpert' ||
       router.asPath === '/linkspace' ||
+      router.asPath === '/thatseries' ||
       router.asPath === '/becas' ||
       router.asPath === '/gobdo'
     ) {
@@ -113,6 +115,7 @@ const Navbar = () => {
       className={
         router.asPath === '/gifexpert' ||
         router.asPath === '/linkspace' ||
+        router.asPath === '/thatseries' ||
         router.asPath === '/becas' ||
         router.asPath === '/gobdo'
           ? shadow
@@ -139,27 +142,27 @@ const Navbar = () => {
             style={{ color: `${linkColor}` }}
             className={`hidden md:flex gap-10 dark:text-[#ecf0f3] transition-all duration-300`}
           >
-            <Link href="/" className="group text-sm uppercase">
+            <Link href="/" className="text-sm uppercase group">
               Home
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#about" className="group text-sm uppercase">
+            <Link href="/#about" className="text-sm uppercase group">
               About
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#skills" className="group text-sm uppercase">
+            <Link href="/#skills" className="text-sm uppercase group">
               Skills
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#projects" className="group text-sm uppercase">
+            <Link href="/#projects" className="text-sm uppercase group">
               Projects
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/resume" className="group text-sm uppercase">
+            <Link href="/resume" className="text-sm uppercase group">
               Resume
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
-            <Link href="/#contact" className="group text-sm uppercase">
+            <Link href="/#contact" className="text-sm uppercase group">
               Contact
               <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
             </Link>
@@ -213,8 +216,8 @@ const Navbar = () => {
                 </p>
               </div>
             </div>
-            <div className=" flex flex-col justify-between gap-8 xs:mb-0 h-full">
-              <ul className="uppercase flex flex-col gap-1">
+            <div className="flex flex-col justify-between h-full gap-8 xs:mb-0">
+              <ul className="flex flex-col gap-1 uppercase">
                 <Link href="/">
                   <li
                     onClick={() => setNav(false)}
@@ -268,14 +271,14 @@ const Navbar = () => {
                 <p className="uppercase tracking-widest text-[#5651e5]">
                   Let&apos;s Connect
                 </p>
-                <div className="flex items-center justify-between flex-wrap gap-2 mt-4 w-full">
+                <div className="flex flex-wrap items-center justify-between w-full gap-2 mt-4">
                   <a
                     className="rounded-full"
                     href="https://www.linkedin.com/in/andre-pichardo/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
                       <FaLinkedinIn className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
@@ -285,7 +288,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
                       <FaGithub className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
@@ -294,7 +297,7 @@ const Navbar = () => {
                     onClick={() => setNav(false)}
                     href="/#contact"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
@@ -303,7 +306,7 @@ const Navbar = () => {
                     onClick={() => setNav(false)}
                     href="/resume"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-4 xs:p-5 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
                       <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>

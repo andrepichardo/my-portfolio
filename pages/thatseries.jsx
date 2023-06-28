@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import linkspaceIMG from '../public/projects/linkspaceapp.png';
+import thatseriesIMG from '../public/projects/thatseries.png';
 import { RiArrowLeftSLine, RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 import Head from 'next/head';
@@ -7,7 +7,7 @@ const LinkSpace = () => {
   return (
     <div className="w-full">
       <Head>
-        <title>André Pichardo | LinkSpaceApp</title>
+        <title>André Pichardo | ThatSeriesApp</title>
         <meta
           name="description"
           content="Dominican front-end web developer, specializing in building great digital experiences."
@@ -18,12 +18,12 @@ const LinkSpace = () => {
         <div className="absolute top-0 left-0 w-full h-[40vh] lg:h-[50vh] bg-black/80 z-10"></div>
         <Image
           className="absolute object-cover w-full h-[40vh] lg:h-[50vh]"
-          src={linkspaceIMG}
+          src={thatseriesIMG}
           alt=""
         />
         <div className="absolute text-white p-2 z-10 top-[70%] px-5 xs:px-10 xl:px-0 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <h2 className="py-2">LinkSpaceApp</h2>
-          <h3>NextJS / Tailwind / Supabase </h3>
+          <h2 className="py-2">ThatSeriesApp</h2>
+          <h3>NextJS / Tailwind / React Query </h3>
         </div>
       </div>
 
@@ -31,25 +31,25 @@ const LinkSpace = () => {
         <div className="flex flex-col col-span-5 gap-3 text-justify">
           <h2 className="mb-2">Overview</h2>
           <p>
-            A nice Link-management app inspired by <i>Linktree</i>. This app was
-            built using NextJS and TailwindCSS for the frontend, and Supabase as
-            backend technology. Users are able to create an account with a
-            unique username. As soon as you sign in, you will be able to create
-            your personal links by entering the <i>Link Name</i> & <i>URL</i>,
-            and of course, upload your own <i>Profile Picture</i>. Share your
-            profile&apos;s URL to anyone so they can access all your important
-            links.
+            A simple and friendly application built with Next.js that connects
+            to the <i>EpisoDate API</i>, allowing users to search for and
+            navigate through many TV shows. Users can also view detailed
+            information about a specific TV show, including the release date,
+            genre, episodes, and more. It is worth mentioning that this has a
+            nice pagination, showing 20 results per query and keeping the
+            information of the pages already seen cached, thanks to{' '}
+            <i>React Query</i>.
           </p>
           <div className="flex flex-wrap items-center justify-center w-full gap-4 mt-4 xs:justify-start">
             <a
-              href="https://link-space.vercel.app/"
+              href="https://thatseries-app.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="w-full px-8 py-2">DEMO</button>
             </a>
             <a
-              href="https://github.com/andrepichardo/linktree-clone"
+              href="https://github.com/andrepichardo/thatseries-app"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -71,7 +71,11 @@ const LinkSpace = () => {
               </p>
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
-                Supabase
+                DaisyUI
+              </p>
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
+                <RiRadioButtonFill className="shrink-0" />
+                React Query
               </p>
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />

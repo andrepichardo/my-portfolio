@@ -3,6 +3,7 @@ import gifexpert from '../public/projects/gifexpertapp.png';
 import linkspace from '../public/projects/linkspaceapp.png';
 import becas from '../public/projects/becatufuturo.png';
 import gobdo from '../public/projects/gobdo.png';
+import thatseries from '../public/projects/thatseries.png';
 
 const Projects = () => {
   return (
@@ -15,7 +16,13 @@ const Projects = () => {
           Projects
         </p>
         <h2 className="py-4">What I&apos;ve Built</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-8 md:grid-cols-2">
+          <ProjectItem
+            title="ThatSeriesApp"
+            bgImage={thatseries}
+            projectUrl="/thatseries"
+            technologies="NextJS | Tailwind | React Query"
+          />
           <ProjectItem
             title="LinkSpaceApp"
             bgImage={linkspace}
