@@ -39,7 +39,7 @@ async function sendEmail(req, res) {
     return res.status(error.statusCode || 500).json({ error: error.message });
   }
 
-  return res.status(200).json({ error: 'Error' });
+  return res.status(200).json({ status: 'Message Sent!' });
 }
 
 export default sendEmail;
