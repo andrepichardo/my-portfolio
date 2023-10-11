@@ -113,32 +113,32 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="w-full md:min-h-screen h-full flex flex-col justify-center items-center"
+      className="flex flex-col items-center justify-center w-full h-full md:min-h-screen"
     >
       <div className="max-w-[1240px] m-auto px-5 xs:px-10 xl:px-0 pt-24 pb-10 w-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Contact
         </p>
         <h2 className="py-4">Get In Touch</h2>
-        <div className="flex flex-col lg:grid lg:grid-cols-5 gap-8">
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-5">
           {/* left */}
-          <div className="lg:col-span-2 flex  w-full h-full shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl px-5 py-10">
-            <div className="lg:p-4 h-full flex flex-col justify-between">
-              <div className=" flex rounded-xl ease-in duration-300 hover:scale-95">
+          <div className="flex w-full h-full px-5 py-10 shadow-xl lg:col-span-2 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl">
+            <div className="flex flex-col justify-between h-full lg:p-4">
+              <div className="flex duration-300 ease-in  rounded-xl hover:scale-95">
                 <Image className="rounded-xl " src={contact} alt="/" />
               </div>
               <div className="flex flex-col justify-center pb-4">
                 <h2 className="py-2">André Pichardo</h2>
-                <p className="text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
+                <p className="text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all">
                   Front-End Developer
                 </p>
-                <p className="py-4 text-lg text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
+                <p className="py-4 text-lg text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all ">
                   I am available for freelance & full-time positions. Feel free
                   to contact me and let&apos;s talk.
                 </p>
               </div>
               <div className="flex flex-col">
-                <p className="uppercase pt-8 pb-3 text-lg font-light text-black dark:text-[#ecf0f3] transition-all duration-300">
+                <p className="uppercase pt-8 pb-3 text-lg font-light text-black dark:text-[#ecf0f3] transition-all">
                   Connect With Me
                 </p>
                 <div className="flex items-center justify-between max-w-[400px] flex-wrap gap-1 gap-y-4 xs:gap-0 m-auto py-4 w-full">
@@ -148,7 +148,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
                       <FaLinkedinIn className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
@@ -158,17 +158,17 @@ const Contact = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
                       <FaGithub className="w-5 h-5 text-blue-800" />
                     </div>
                   </a>
                   <Link className="rounded-full" href="/#contact">
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
                       <AiOutlineMail className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
                   <Link className="rounded-full" href="/resume">
-                    <div className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900 p-5 xs:p-6 cursor-pointer hover:scale-110 ease-in duration-300">
+                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
                       <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
                     </div>
                   </Link>
@@ -177,11 +177,11 @@ const Contact = () => {
             </div>
           </div>
           {/* right */}
-          <div className="lg:col-span-3 w-full h-auto shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl px-3 lg:p-4">
+          <div className="w-full h-auto px-3 shadow-xl lg:col-span-3 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl lg:p-4">
             <div className="w-full py-4">
               <form onSubmit={handleSubmit} className="flex flex-col">
                 <div className="flex flex-col p-2">
-                  <label className="uppercase text-sm py-2">Full Name</label>
+                  <label className="py-2 text-sm uppercase">Full Name</label>
                   <input
                     className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
                     type="text"
@@ -195,7 +195,7 @@ const Contact = () => {
                   )}
                 </div>
                 <div className="flex flex-col p-2">
-                  <label className="uppercase text-sm py-2">Email</label>
+                  <label className="py-2 text-sm uppercase">Email</label>
                   <input
                     className="border-2 rounded-lg w-full flex  px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
                     type="email"
@@ -209,7 +209,7 @@ const Contact = () => {
                   )}
                 </div>
                 <div className="flex flex-col p-2">
-                  <label className="uppercase text-sm py-2">Subject</label>
+                  <label className="py-2 text-sm uppercase">Subject</label>
                   <input
                     className="border-2 rounded-lg w-full flex px-2  py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
                     type="text"
@@ -223,7 +223,7 @@ const Contact = () => {
                   )}
                 </div>
                 <div className="flex flex-col p-2">
-                  <label className="uppercase text-sm py-2">Message</label>
+                  <label className="py-2 text-sm uppercase">Message</label>
                   <textarea
                     value={message}
                     onChange={(e) => {
@@ -240,7 +240,7 @@ const Contact = () => {
                 <div className="flex p-2">
                   <button
                     type="submit"
-                    className="w-full p-4 mt-4 buttonForm transition-all"
+                    className="w-full p-4 mt-4 transition-all buttonForm"
                   >
                     {buttonText}
                   </button>
@@ -258,7 +258,7 @@ const Contact = () => {
         </div>
         <div className="flex justify-center pt-16">
           <Link
-            className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900/80 p-4 cursor-pointer animate-bounce hover:scale-110 ease-in duration-300"
+            className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900/80 animate-bounce hover:scale-110"
             href="/"
           >
             <HiOutlineChevronDoubleUp

@@ -4,6 +4,7 @@ import linkspace from '../public/projects/linkspaceapp.png';
 import becas from '../public/projects/becatufuturo.png';
 import gobdo from '../public/projects/gobdo.png';
 import thatseries from '../public/projects/thatseries.png';
+import ThoughthubIMG from '../public/projects/thoughthub.png';
 
 const Projects = () => {
   return (
@@ -16,7 +17,13 @@ const Projects = () => {
           Projects
         </p>
         <h2 className="py-4">What I&apos;ve Built</h2>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <ProjectItem
+            title="ThoughtHub"
+            bgImage={ThoughthubIMG}
+            projectUrl="/thoughthub"
+            technologies="NextJS | PostgreSQL | Prisma"
+          />
           <ProjectItem
             title="ThatSeriesApp"
             bgImage={thatseries}

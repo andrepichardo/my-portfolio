@@ -52,6 +52,7 @@ const Navbar = () => {
       router.asPath === '/linkspace' ||
       router.asPath === '/thatseries' ||
       router.asPath === '/becas' ||
+      router.asPath === '/thoughthub' ||
       router.asPath === '/gobdo'
     ) {
       setNavBg('transparent');
@@ -79,6 +80,7 @@ const Navbar = () => {
       router.asPath === '/gifexpert' ||
       router.asPath === '/linkspace' ||
       router.asPath === '/thatseries' ||
+      router.asPath === '/thoughthub' ||
       router.asPath === '/becas' ||
       router.asPath === '/gobdo'
     ) {
@@ -117,6 +119,7 @@ const Navbar = () => {
         router.asPath === '/linkspace' ||
         router.asPath === '/thatseries' ||
         router.asPath === '/becas' ||
+        router.asPath === '/thoughthub' ||
         router.asPath === '/gobdo'
           ? shadow
             ? `fixed w-full h-20 shadow-xl z-[100] bg-[${navBg}] dark:bg-[#1f2937] transition-all duration-300`
@@ -140,7 +143,7 @@ const Navbar = () => {
           {renderThemeChanger() || <FaSpinner className="animate-spin" />}
           <ul
             style={{ color: `${linkColor}` }}
-            className={`hidden md:flex gap-10 dark:text-[#ecf0f3] transition-all duration-300`}
+            className={`hidden md:flex gap-10 dark:text-[#ecf0f3] transition-all`}
           >
             <Link href="/" className="text-sm uppercase group">
               Home

@@ -1,16 +1,16 @@
-import Image from "next/image";
-import html from "../public/assets/skills/html.png";
-import css from "../public/assets/skills/css.png";
-import javascript from "../public/assets/skills/javascript.png";
-import react from "../public/assets/skills/react.png";
-import next from "../public/assets/skills/nextjs.png";
-import tailwind from "../public/assets/skills/tailwind.png";
-import materialUI from "../public/assets/skills/material-ui.svg";
-import supabase from "../public/assets/skills/supabase.svg";
-import mongodb from "../public/assets/skills/MongoDB.svg";
-import postgresql from "../public/assets/skills/PostgreSQL.svg";
-import node from "../public/assets/skills/node.png";
-import prisma from "../public/assets/skills/Prisma.svg";
+import Image from 'next/image';
+import html from '../public/assets/skills/html.png';
+import css from '../public/assets/skills/css.png';
+import javascript from '../public/assets/skills/javascript.png';
+import react from '../public/assets/skills/react.png';
+import next from '../public/assets/skills/nextjs.png';
+import tailwind from '../public/assets/skills/tailwind.png';
+import materialUI from '../public/assets/skills/material-ui.svg';
+import supabase from '../public/assets/skills/supabase.svg';
+import mongodb from '../public/assets/skills/MongoDB.svg';
+import postgresql from '../public/assets/skills/PostgreSQL.svg';
+import node from '../public/assets/skills/node.png';
+import prisma from '../public/assets/skills/Prisma.svg';
 
 const Skills = () => {
   return (

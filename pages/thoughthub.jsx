@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import thatseriesIMG from '../public/projects/thatseries.png';
+import ThoughthubIMG from '../public/projects/thoughthub.png';
 import { RiArrowLeftSLine, RiRadioButtonFill } from 'react-icons/ri';
 import Link from 'next/link';
 import Head from 'next/head';
-const ThatSeries = () => {
+const Thoughthub = () => {
   return (
     <div className="w-full">
       <Head>
-        <title>André Pichardo | ThatSeriesApp</title>
+        <title>André Pichardo | ThoughtHub</title>
         <meta
           name="description"
           content="Dominican front-end web developer, specializing in building great digital experiences."
@@ -18,12 +18,12 @@ const ThatSeries = () => {
         <div className="absolute top-0 left-0 w-full h-[40vh] lg:h-[50vh] bg-black/80 z-10"></div>
         <Image
           className="absolute object-cover w-full h-[40vh] lg:h-[50vh]"
-          src={thatseriesIMG}
+          src={ThoughthubIMG}
           alt=""
         />
         <div className="absolute text-white p-2 z-10 top-[70%] px-5 xs:px-10 xl:px-0 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
-          <h2 className="py-2">ThatSeriesApp</h2>
-          <h3>NextJS / Tailwind / React Query </h3>
+          <h2 className="py-2">ThoughtHub</h2>
+          <h3>NextJS / PostgreSQL / Prisma </h3>
         </div>
       </div>
 
@@ -31,25 +31,23 @@ const ThatSeries = () => {
         <div className="flex flex-col col-span-5 gap-3 text-justify">
           <h2 className="mb-2">Overview</h2>
           <p>
-            A simple and friendly application built with Next.js that connects
-            to the <i>EpisoDate API</i>, allowing users to search for and
-            navigate through many TV shows. Users can also view detailed
-            information about a specific TV show, including the release date,
-            genre, episodes, and more. It is worth mentioning that this has a
-            nice pagination, showing 20 results per query and keeping the
-            information of the pages already seen cached, thanks to{' '}
-            <i>React Query</i>.
+            A fullstack thoughts sharing app built in React with Next.js,
+            TailwindCSS, PostgreSQL, Prisma & Next Auth. Users are able to add
+            posts into the timeline with a max of 300 characters per posts,
+            access to their own profile page to manage all your posts,
+            edit/delete options for any of your posts, and the ability to add
+            comments to any post you want.
           </p>
           <div className="flex flex-wrap items-center justify-center w-full gap-4 mt-4 xs:justify-start">
             <a
-              href="https://thatseries-app.vercel.app/"
+              href="https://thought-hub.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="w-full px-8 py-2">DEMO</button>
             </a>
             <a
-              href="https://github.com/andrepichardo/thatseries-app"
+              href="https://github.com/andrepichardo/thoughthub"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -71,7 +69,11 @@ const ThatSeries = () => {
               </p>
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
-                DaisyUI
+                HeadlessUI
+              </p>
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
+                <RiRadioButtonFill className="shrink-0" />
+                PostgreSQL
               </p>
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
@@ -80,6 +82,10 @@ const ThatSeries = () => {
               <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
                 <RiRadioButtonFill className="shrink-0" />
                 TypeScript
+              </p>
+              <p className="text-gray-600 dark:text-[#ecf0f3] transition-all py-2 flex items-center gap-1">
+                <RiRadioButtonFill className="shrink-0" />
+                Prisma
               </p>
             </div>
           </div>
@@ -95,4 +101,4 @@ const ThatSeries = () => {
   );
 };
 
-export default ThatSeries;
+export default Thoughthub;

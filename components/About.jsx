@@ -15,7 +15,7 @@ const About = () => {
             About
           </p>
           <h2 className="py-4">Who I Am</h2>
-          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
+          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all">
             Graduated as an Electronics and Communications engineer in 2019, my
             career as a programmer began that same year when I started working
             as a QA Software Tester for a local telecom company. There I started
@@ -25,7 +25,7 @@ const About = () => {
             company I currently work for. In my spare time, I like to play
             videogames, exercise, watch movies and hang out with friends.
           </p>
-          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all duration-300">
+          <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all">
             I am concentrated on building awesome web applications that connect
             with API&apos;s and other backend technologies. Though I am most
             proficient in creating websites using primarily React with Next.js,
@@ -39,14 +39,14 @@ const About = () => {
             className="flex w-fit items-center text-gray-600 dark:text-[#abb8c2] hover:text-gray-400 dark:hover:text-[#78848d] transition-all duration-300"
             href="/#projects"
           >
-            <p className="py-2 underline underline-offset-2 text-sm md:text-base cursor-pointer">
+            <p className="py-2 text-sm underline cursor-pointer underline-offset-2 md:text-base">
               Check out some of my latest projects.
             </p>
             <FiChevronDown />
           </Link>
         </div>
-        <div className="w-full h-auto m-auto shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300">
-          <Image className="rounded-md w-full" src={andrePP} alt="Andre" />
+        <div className="flex items-center justify-center w-full h-auto p-4 m-auto duration-300 ease-in shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl hover:scale-105">
+          <Image className="w-full rounded-md" src={andrePP} alt="Andre" />
         </div>
       </div>
     </div>
