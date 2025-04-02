@@ -1,29 +1,32 @@
 {
-  "name": "my-portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@sendgrid/mail": "^7.7.0",
-    "next": "^13.0.0",
-    "next-themes": "^0.2.1",
-    "nextjs-progressbar": "^0.0.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.0",
-    "react-icons": "^4.4.0",
-    "sharp": "^0.31.3"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "eslint": "8.23.0",
-    "eslint-config-next": "^13.0.0",
-    "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
-  }
+	"name": "my-portfolio",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"engines": {
+		"node": "18.x"
+	},
+	"dependencies": {
+		"@sendgrid/mail": "^7.7.0",
+		"next": "^13.0.0",
+		"next-themes": "^0.2.1",
+		"nextjs-progressbar": "^0.0.16",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-hot-toast": "^2.4.0",
+		"react-icons": "^4.4.0",
+		"sharp": "^0.31.3"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.8",
+		"eslint": "8.23.0",
+		"eslint-config-next": "^13.0.0",
+		"postcss": "^8.4.16",
+		"tailwindcss": "^3.1.8"
+	}
 }
