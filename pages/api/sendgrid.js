@@ -1,12 +1,12 @@
-import sendgrid from '@sendgrid/mail';
+import sendgrid from "@sendgrid/mail";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 async function sendEmail(req, res) {
   try {
     await sendgrid.send({
-      to: 'andrep97@hotmail.com', // Your email where you'll receive emails
-      from: 'contact@andrepichardo.com', // your website email address here
+      to: "andre.pichardo@outlook.com", // Your email where you'll receive emails
+      from: "contact@andrepichardo.com", // your website email address here
       subject: `[Message from Portfolio] : ${req.body.subject}`,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html lang="en">
@@ -39,7 +39,7 @@ async function sendEmail(req, res) {
     return res.status(error.statusCode || 500).json({ error: error.message });
   }
 
-  return res.status(200).json({ status: 'Message Sent!' });
+  return res.status(200).json({ status: "Message Sent!" });
 }
 
 export default sendEmail;
