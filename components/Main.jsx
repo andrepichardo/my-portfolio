@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Link from 'next/link';
+import { AiOutlineMail } from 'react-icons/ai';
+import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 const Main = () => {
   return (
@@ -21,9 +21,8 @@ const Main = () => {
             A Front-End Web Developer
           </h1>
           <p className="text-gray-600 dark:text-[#ecf0f3] transition-all max-w-[90%] md:max-w-[60%] m-auto font-light">
-            I&apos;m a 26 years old dominican front-end web developer,
-            specializing in building (and occasionally designing) great digital
-            experiences.
+            I&apos;m a passionate dominican software developer, specializing in
+            building (and occasionally designing) great digital experiences.
           </p>
           <div className="flex items-center justify-around w-full gap-1 xs:gap-4 max-w-[330px] m-auto mt-3">
             <a
