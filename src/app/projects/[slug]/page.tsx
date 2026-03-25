@@ -1,9 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { RiArrowLeftSLine, RiRadioButtonFill } from "react-icons/ri";
-import { prisma } from "@/lib/prisma";
-import type { Metadata } from "next";
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { RiArrowLeftSLine, RiRadioButtonFill } from 'react-icons/ri';
+import { prisma } from '@/lib/prisma';
+import type { Metadata } from 'next';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -12,11 +12,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = await prisma.project.findUnique({ where: { slug } });
-  if (!project) return { title: "Project Not Found" };
+  if (!project) return { title: 'Project Not Found' };
   return {
     title: `André Pichardo | ${project.title}`,
     description:
-      "Dominican front-end web developer, specializing in building great digital experiences.",
+      'Dominican front-end web developer, specializing in building great digital experiences.',
   };
 }
 
@@ -38,13 +38,13 @@ export default async function ProjectPage({ params }: Props) {
           height={600}
           priority
         />
-        <div className="absolute text-white p-2 z-10 top-[70%] px-5 xs:px-10 xl:px-0 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <div className="absolute text-white p-2 z-10 top-[70%] px-5 xs:px-10 xl:px-0 max-w-310 w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%]">
           <h2 className="py-2">{project.title}</h2>
-          <h3>{project.technologies.replace(/\|/g, "/")}</h3>
+          <h3>{project.technologies.replace(/\|/g, '/')}</h3>
         </div>
       </div>
 
-      <div className="max-w-[1240px] mb-4 mx-auto py-2 px-5 xs:px-10 xl:px-0 grid md:grid-cols-7 gap-8 pt-4">
+      <div className="max-w-310 mb-4 mx-auto py-2 px-5 xs:px-10 xl:px-0 grid md:grid-cols-7 gap-8 pt-4">
         <div className="flex flex-col col-span-5 gap-3 text-justify">
           <h2 className="mb-2">Overview</h2>
           <p>{project.description}</p>

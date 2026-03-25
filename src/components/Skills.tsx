@@ -1,18 +1,18 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const skills = [
-  { name: "HTML", src: "/assets/skills/html.png", size: 64 },
-  { name: "CSS", src: "/assets/skills/css.png", size: 64 },
-  { name: "Javascript", src: "/assets/skills/javascript.png", size: 64 },
-  { name: "React", src: "/assets/skills/react.png", size: 64 },
-  { name: "Next.js", src: "/assets/skills/nextjs.png", size: 64 },
-  { name: "Tailwind", src: "/assets/skills/tailwind.png", size: 64 },
-  { name: "Material UI", src: "/assets/skills/material-ui.svg", size: 64 },
-  { name: "Node.js", src: "/assets/skills/node.png", size: 64 },
-  { name: "Supabase", src: "/assets/skills/supabase.svg", size: 64 },
-  { name: "PostgreSQL", src: "/assets/skills/PostgreSQL.svg", size: 64 },
-  { name: "MongoDB", src: "/assets/skills/MongoDB.svg", size: 32 },
-  { name: "Prisma", src: "/assets/skills/Prisma.svg", size: 40 },
+  { name: 'HTML', src: '/assets/skills/html.png', size: 64 },
+  { name: 'CSS', src: '/assets/skills/css.png', size: 64 },
+  { name: 'Javascript', src: '/assets/skills/javascript.png', size: 64 },
+  { name: 'React', src: '/assets/skills/react.png', size: 64 },
+  { name: 'Next.js', src: '/assets/skills/nextjs.png', size: 64 },
+  { name: 'Tailwind', src: '/assets/skills/tailwind.png', size: 64 },
+  { name: 'Material UI', src: '/assets/skills/material-ui.svg', size: 64 },
+  { name: 'Node.js', src: '/assets/skills/node.png', size: 64 },
+  { name: 'Supabase', src: '/assets/skills/supabase.svg', size: 64 },
+  { name: 'PostgreSQL', src: '/assets/skills/PostgreSQL.svg', size: 64 },
+  { name: 'MongoDB', src: '/assets/skills/MongoDB.svg', size: 32 },
+  { name: 'Prisma', src: '/assets/skills/Prisma.svg', size: 40 },
 ];
 
 const Skills = () => {
@@ -21,7 +21,7 @@ const Skills = () => {
       id="skills"
       className="w-full h-full md:min-h-screen flex items-center border-b-2 dark:border-[#2a374a] py-24"
     >
-      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 mx-auto flex flex-col justify-center w-full h-full">
+      <div className="max-w-310 px-5 xs:px-10 xl:px-0 mx-auto flex flex-col justify-center w-full h-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Skills
         </p>

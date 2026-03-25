@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { useTheme } from "next-themes";
-import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from "react-icons/ai";
-import { FaGithub, FaLinkedinIn, FaSpinner } from "react-icons/fa";
-import { BsMoon, BsPersonLinesFill, BsSun } from "react-icons/bs";
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useTheme } from 'next-themes';
+import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
+import { FaGithub, FaLinkedinIn, FaSpinner } from 'react-icons/fa';
+import { BsMoon, BsPersonLinesFill, BsSun } from 'react-icons/bs';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -21,8 +21,8 @@ const Navbar = () => {
     setMounted(true);
   }, []);
 
-  const isProjectPage = pathname.startsWith("/projects/");
-  const navBg = isProjectPage && !scrolled ? "transparent" : "#ecf0f3";
+  const isProjectPage = pathname.startsWith('/projects/');
+  const navBg = isProjectPage && !scrolled ? 'transparent' : '#ecf0f3';
 
   useEffect(() => {
     const handleShadow = () => {
@@ -35,8 +35,8 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-    window.addEventListener("scroll", handleShadow);
-    return () => window.removeEventListener("scroll", handleShadow);
+    window.addEventListener('scroll', handleShadow);
+    return () => window.removeEventListener('scroll', handleShadow);
   }, [isProjectPage]);
 
   const handleNav = () => {
@@ -45,24 +45,24 @@ const Navbar = () => {
 
   useEffect(() => {
     if (nav) {
-      document.documentElement.style.overflowY = "hidden";
+      document.documentElement.style.overflowY = 'hidden';
     } else {
-      document.documentElement.style.overflowY = "auto";
+      document.documentElement.style.overflowY = 'auto';
     }
     return () => {
-      document.documentElement.style.overflowY = "auto";
+      document.documentElement.style.overflowY = 'auto';
     };
   }, [nav]);
 
   const renderThemeChanger = () => {
     if (!mounted) return <FaSpinner className="animate-spin" />;
-    const currentTheme = theme === "system" ? systemTheme : theme;
-    if (currentTheme === "dark") {
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+    if (currentTheme === 'dark') {
       return (
         <BsSun
           className="w-6 h-6 text-[#5651e5] hover:text-[#807cf2] transition-all active:scale-90"
           role="button"
-          onClick={() => setTheme("light")}
+          onClick={() => setTheme('light')}
         />
       );
     }
@@ -70,30 +70,28 @@ const Navbar = () => {
       <BsMoon
         className="w-6 h-6 text-[#5651e5] hover:text-[#9592f3] transition-all active:scale-90"
         role="button"
-        onClick={() => setTheme("dark")}
+        onClick={() => setTheme('dark')}
       />
     );
   };
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/#about", label: "About" },
-    { href: "/#skills", label: "Skills" },
-    { href: "/#projects", label: "Projects" },
-    { href: "/resume", label: "Resume" },
-    { href: "/#contact", label: "Contact" },
+    { href: '/', label: 'Home' },
+    { href: '/#about', label: 'About' },
+    { href: '/#skills', label: 'Skills' },
+    { href: '/#projects', label: 'Projects' },
+    { href: '/resume', label: 'Resume' },
+    { href: '/#contact', label: 'Contact' },
   ];
 
   return (
     <div
       style={{ backgroundColor: navBg }}
-      className={`fixed w-full h-20 z-[100] transition-all duration-300 ${
-        shadow ? "shadow-xl dark:shadow-[#0b1120]/50" : ""
-      } ${
-        isProjectPage && !scrolled ? "" : "dark:bg-[#1f2937]!"
-      }`}
+      className={`fixed w-full h-20 z-100 transition-all duration-300 ${
+        shadow ? 'shadow-xl dark:shadow-[#0b1120]/50' : ''
+      } ${isProjectPage && !scrolled ? '' : 'dark:bg-[#1f2937]!'}`}
     >
-      <div className="flex justify-between items-center max-w-[1750px] mx-auto w-full h-full px-6 2xl:px-16">
+      <div className="flex justify-between items-center max-w-437.5 mx-auto w-full h-full px-6 2xl:px-16">
         <Link href="/">
           <Image
             className="cursor-pointer"
@@ -108,8 +106,8 @@ const Navbar = () => {
           <ul
             className={`hidden md:flex gap-10 transition-all ${
               isProjectPage && !scrolled
-                ? "text-[#ecf0f3]"
-                : "text-[#1f2937] dark:text-[#ecf0f3]"
+                ? 'text-[#ecf0f3]'
+                : 'text-[#1f2937] dark:text-[#ecf0f3]'
             }`}
           >
             {navLinks.map((link) => (
@@ -127,8 +125,8 @@ const Navbar = () => {
             onClick={handleNav}
             className={`md:hidden cursor-pointer transition-all duration-300 ${
               isProjectPage && !scrolled
-                ? "text-[#ecf0f3]"
-                : "text-[#1f2937] dark:text-[#ecf0f3]"
+                ? 'text-[#ecf0f3]'
+                : 'text-[#1f2937] dark:text-[#ecf0f3]'
             }`}
           >
             <AiOutlineMenu size={28} />
@@ -140,16 +138,16 @@ const Navbar = () => {
       <div
         className={
           nav
-            ? "fixed left-0 top-0 w-full h-full min-h-screen bg-black/60 transition-all duration-500"
-            : "fixed left-0 top-0 w-full h-full min-h-screen bg-none transition-all duration-500 invisible"
+            ? 'fixed left-0 top-0 w-full h-full min-h-screen bg-black/60 transition-all duration-500'
+            : 'fixed left-0 top-0 w-full h-full min-h-screen bg-none transition-all duration-500 invisible'
         }
       >
         <div className="flex">
           <div
             className={
               nav
-                ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] dark:bg-[#1f2937] h-full min-h-full px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000"
-                : "fixed left-[-100%] top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] dark:bg-[#1f2937] h-full min-h-full px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000"
+                ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] dark:bg-[#1f2937] h-full min-h-full px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000'
+                : 'fixed -left-full top-0 w-[75%] sm:w-[60%] md:w-[45%] lg:w-[30%] xl:w-[25%] flex flex-col overflow-y-auto bg-[#ecf0f3] dark:bg-[#1f2937] h-full min-h-full px-5 pt-5 pb-8 xs:px-10 transition-all duration-1000'
             }
           >
             <div className="flex flex-col">
@@ -241,8 +239,8 @@ const Navbar = () => {
           onClick={handleNav}
           className={
             nav
-              ? "w-full h-full min-h-screen"
-              : "w-full h-full min-h-screen hidden"
+              ? 'w-full h-full min-h-screen'
+              : 'w-full h-full min-h-screen hidden'
           }
         ></div>
       </div>

@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn, FaSpinner } from "react-icons/fa";
-import { HiOutlineChevronDoubleUp } from "react-icons/hi";
-import { useState } from "react";
-import { toast } from "sonner";
+import Image from 'next/image';
+import Link from 'next/link';
+import { AiOutlineMail } from 'react-icons/ai';
+import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { FaGithub, FaLinkedinIn, FaSpinner } from 'react-icons/fa';
+import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 const Contact = () => {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [fullname, setFullname] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [sending, setSending] = useState(false);
 
@@ -22,19 +22,19 @@ const Contact = () => {
     let isValid = true;
 
     if (fullname.length <= 0) {
-      tempErrors["fullname"] = true;
+      tempErrors['fullname'] = true;
       isValid = false;
     }
     if (email.length <= 0) {
-      tempErrors["email"] = true;
+      tempErrors['email'] = true;
       isValid = false;
     }
     if (subject.length <= 0) {
-      tempErrors["subject"] = true;
+      tempErrors['subject'] = true;
       isValid = false;
     }
     if (message.length <= 0) {
-      tempErrors["message"] = true;
+      tempErrors['message'] = true;
       isValid = false;
     }
 
@@ -49,26 +49,26 @@ const Contact = () => {
 
     setSending(true);
     try {
-      const res = await fetch("/api/sendgrid", {
+      const res = await fetch('/api/sendgrid', {
         body: JSON.stringify({ email, fullname, subject, message }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
       });
 
       const data = await res.json();
       if (data.error) {
-        toast.error("Message could not be sent.");
+        toast.error('Message could not be sent.');
       } else {
-        toast.success("Message sent successfully!");
+        toast.success('Message sent successfully!');
       }
     } catch {
-      toast.error("Message could not be sent.");
+      toast.error('Message could not be sent.');
     } finally {
       setSending(false);
-      setFullname("");
-      setEmail("");
-      setMessage("");
-      setSubject("");
+      setFullname('');
+      setEmail('');
+      setMessage('');
+      setSubject('');
     }
   };
 
@@ -77,7 +77,7 @@ const Contact = () => {
       id="contact"
       className="flex flex-col items-center justify-center w-full h-full md:min-h-screen"
     >
-      <div className="max-w-[1240px] m-auto px-5 xs:px-10 xl:px-0 pt-24 pb-10 w-full">
+      <div className="max-w-310 m-auto px-5 xs:px-10 xl:px-0 pt-24 pb-10 w-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Contact
         </p>
@@ -109,7 +109,7 @@ const Contact = () => {
                 <p className="uppercase pt-8 pb-3 text-lg font-light text-black dark:text-[#ecf0f3] transition-all">
                   Connect With Me
                 </p>
-                <div className="flex items-center justify-between max-w-[400px] flex-wrap gap-1 gap-y-4 xs:gap-0 m-auto py-4 w-full">
+                <div className="flex items-center justify-between max-w-100 flex-wrap gap-1 gap-y-4 xs:gap-0 m-auto py-4 w-full">
                   <a
                     className="rounded-full"
                     href="https://www.linkedin.com/in/andre-pichardo/"
@@ -189,7 +189,7 @@ const Contact = () => {
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="border-2 resize-none w-full px-2 py-3 rounded-lg transition-all border-gray-300 dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none min-h-[175px] max-h-[175px] sm:min-h-[225px] sm:max-h-[225px]"
+                    className="border-2 resize-none w-full px-2 py-3 rounded-lg transition-all border-gray-300 dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none min-h-43.75 max-h-43.75 sm:min-h-56.25 sm:max-h-56.25"
                   />
                   {errors?.message && (
                     <p className="text-red-500">
@@ -208,7 +208,7 @@ const Contact = () => {
                         Sending <FaSpinner className="animate-spin" />
                       </span>
                     ) : (
-                      "Send Message"
+                      'Send Message'
                     )}
                   </button>
                 </div>

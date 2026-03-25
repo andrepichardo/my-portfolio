@@ -7,8 +7,12 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function createPrismaClient() {
+  const connectionString = process.env.DATABASE_URL?.replace(
+    "sslmode=require",
+    "sslmode=verify-full"
+  );
   const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString,
     ssl: { rejectUnauthorized: false },
   });
   // Cast needed due to @types/pg version mismatch between pg and @prisma/adapter-pg

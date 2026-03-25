@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Link from 'next/link';
+import { AiOutlineMail } from 'react-icons/ai';
+import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 const Main = () => {
   return (
@@ -9,7 +9,7 @@ const Main = () => {
       id="home"
       className="w-full border-b-2 dark:border-[#2a374a] h-screen text-center"
     >
-      <div className="max-w-[1240px] w-full mx-auto h-full flex justify-center items-center">
+      <div className="max-w-310 w-full mx-auto h-full flex justify-center items-center">
         <div className="flex flex-col gap-1">
           <p className="uppercase text-sm tracking-widest text-gray-600 dark:text-[#ecf0f3] transition-all mb-2">
             Let&apos;s build something together
@@ -24,7 +24,7 @@ const Main = () => {
             I&apos;m a passionate dominican software developer, specializing in
             building (and occasionally designing) great digital experiences.
           </p>
-          <div className="flex items-center justify-around w-full gap-1 xs:gap-4 max-w-[330px] m-auto mt-3">
+          <div className="flex items-center justify-around w-full gap-1 xs:gap-4 max-w-82.5 m-auto mt-3">
             <a
               className="rounded-full"
               href="https://www.linkedin.com/in/andre-pichardo/"

@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma";
-import ProjectItem from "./ProjectItem";
+import { prisma } from '@/lib/prisma';
+import ProjectItem from './ProjectItem';
 
 const Projects = async () => {
   let projects: {
@@ -13,7 +13,7 @@ const Projects = async () => {
   try {
     projects = await prisma.project.findMany({
       where: { published: true },
-      orderBy: { displayOrder: "asc" },
+      orderBy: { displayOrder: 'asc' },
       select: {
         id: true,
         title: true,
@@ -32,7 +32,7 @@ const Projects = async () => {
       id="projects"
       className="w-full md:min-h-screen h-full flex items-center border-b-2 dark:border-[#2a374a]"
     >
-      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 w-full mx-auto py-24">
+      <div className="max-w-310 px-5 xs:px-10 xl:px-0 w-full mx-auto py-24">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
           Projects
         </p>

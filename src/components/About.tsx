@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import { FiChevronDown } from "react-icons/fi";
+import Image from 'next/image';
+import Link from 'next/link';
+import { FiChevronDown } from 'react-icons/fi';
 
 const About = () => {
   return (
@@ -8,7 +8,7 @@ const About = () => {
       id="about"
       className="w-full md:min-h-screen h-full border-b-2 dark:border-[#2a374a] flex items-center py-24"
     >
-      <div className="max-w-[1240px] px-5 xs:px-10 xl:px-0 m-auto md:grid grid-cols-3 gap-8">
+      <div className="max-w-310 px-5 xs:px-10 xl:px-0 m-auto md:grid grid-cols-3 gap-8">
         <div className="col-span-2">
           <p className="uppercase text-xl tracking-widest text-[#5651e5]">
             About
@@ -16,8 +16,8 @@ const About = () => {
           <h2 className="py-4">Who I Am</h2>
           <p className="py-2 text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all">
             Graduated as an Electronics and Communications engineer in 2019, my
-            career as a programmer began that same year when I started working as
-            a QA Software Tester for a local telecom company. There I started
+            career as a programmer began that same year when I started working
+            as a QA Software Tester for a local telecom company. There I started
             learning HTML, CSS and Javascript to fix some minor UI and
             programming issues in some of their projects. Some time later in
             2021, I officially got my first job as a frontend developer at the

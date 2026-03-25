@@ -1,10 +1,10 @@
-import { prisma } from "@/lib/prisma";
-import Link from "next/link";
-import DeleteProjectButton from "@/components/admin/DeleteProjectButton";
+import { prisma } from '@/lib/prisma';
+import Link from 'next/link';
+import DeleteProjectButton from '@/components/admin/DeleteProjectButton';
 
 export default async function AdminPage() {
   const projects = await prisma.project.findMany({
-    orderBy: { displayOrder: "asc" },
+    orderBy: { displayOrder: 'asc' },
   });
 
   return (
@@ -15,7 +15,7 @@ export default async function AdminPage() {
             Projects
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            {projects.length} project{projects.length !== 1 ? "s" : ""} total
+            {projects.length} project{projects.length !== 1 ? 's' : ''} total
           </p>
         </div>
         <Link href="/admin/projects/new">
@@ -76,18 +76,18 @@ export default async function AdminPage() {
                   <td className="px-6 py-4 text-gray-500 dark:text-gray-400 hidden md:table-cell font-mono text-xs">
                     {project.slug}
                   </td>
-                  <td className="px-6 py-4 text-gray-500 dark:text-gray-400 hidden lg:table-cell max-w-[200px] truncate">
+                  <td className="px-6 py-4 text-gray-500 dark:text-gray-400 hidden lg:table-cell max-w-50 truncate">
                     {project.technologies}
                   </td>
                   <td className="px-6 py-4 text-center">
                     <span
                       className={`inline-flex px-2 py-1 rounded-full text-xs font-medium ${
                         project.published
-                          ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                          : "bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400"
+                          ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                          : 'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400'
                       }`}
                     >
-                      {project.published ? "Published" : "Draft"}
+                      {project.published ? 'Published' : 'Draft'}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
@@ -95,16 +95,16 @@ export default async function AdminPage() {
                       <Link href={`/admin/projects/${project.id}/edit`}>
                         <button
                           style={{
-                            background: "none",
-                            backgroundImage: "none",
-                            backgroundColor: "#5651e5",
-                            boxShadow: "none",
-                            borderRadius: "6px",
-                            padding: "4px 12px",
-                            color: "white",
-                            fontSize: "13px",
-                            textTransform: "none",
-                            cursor: "pointer",
+                            background: 'none',
+                            backgroundImage: 'none',
+                            backgroundColor: '#5651e5',
+                            boxShadow: 'none',
+                            borderRadius: '6px',
+                            padding: '4px 12px',
+                            color: 'white',
+                            fontSize: '13px',
+                            textTransform: 'none',
+                            cursor: 'pointer',
                           }}
                         >
                           Edit
