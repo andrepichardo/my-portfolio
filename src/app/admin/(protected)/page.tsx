@@ -36,6 +36,7 @@ export default async function AdminPage() {
         </div>
       ) : (
         <div className="bg-white dark:bg-[#1f2937] rounded-xl shadow overflow-hidden">
+          <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="bg-gray-50 dark:bg-[#111827] border-b border-gray-200 dark:border-gray-700">
               <tr>
@@ -117,6 +118,7 @@ export default async function AdminPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
