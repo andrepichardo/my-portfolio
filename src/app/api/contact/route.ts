@@ -29,8 +29,8 @@ export async function POST(req: NextRequest) {
                   <p>${body.message}</p>
                   <br>
                 </div>
-                <img src="https://andrepichardo.com/_next/static/media/AP-Logo2.6a1a928f.svg" class="logo-image" style="height: 50px;width: 50px;border-radius: 5px;overflow: hidden;">
-                <p class="footer" style="font-size: 16px;padding-bottom: 20px;border-bottom: 1px solid #D1D5DB;">Regards<br>${body.fullname}<br></p>
+                <img src="https://andrepichardo.com/assets/AP-Logo2.svg" class="logo-image" style="height: 50px;width: 50px;border-radius: 5px;overflow: hidden;">
+                <p class="footer" style="font-size: 16px;padding-bottom: 20px;border-bottom: 1px solid #D1D5DB;">Regards,<br>${body.fullname}<br></p>
               </div>
       </body>
       </html>`,
