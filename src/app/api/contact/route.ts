@@ -1,18 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import sendgrid from '@sendgrid/mail';
+import { Resend } from 'resend';
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY!);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    await sendgrid.send({
-      to: 'andre.pichardo@outlook.com',
-      from: 'contact@andrepichardo.com',
+    const { data, error } = await resend.emails.send({
+      from: 'Portfolio Contact <contact@andrepichardo.com>',
+      to: process.env.ADMIN_EMAIL || 'andre.pichardo@outlook.com',
       replyTo: body.email,
       subject: `[Message from Portfolio] : ${body.subject}`,
-      text: `You've got a new mail from ${body.fullname}, their email is: ${body.email} \n\nMessage: ${body.message}`,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html lang="en">
       <head>
@@ -37,12 +36,13 @@ export async function POST(req: NextRequest) {
       </html>`,
     });
 
-    return NextResponse.json({ status: 'Message Sent!' });
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
+
+    return NextResponse.json({ status: 'Message Sent!', id: data?.id });
   } catch (error: unknown) {
-    const err = error as { statusCode?: number; message?: string };
-    return NextResponse.json(
-      { error: err.message },
-      { status: err.statusCode || 500 },
-    );
+    const err = error as { message?: string };
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
