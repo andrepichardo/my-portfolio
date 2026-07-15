@@ -8,8 +8,8 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <contact@andrepichardo.com>',
-      to: process.env.ADMIN_EMAIL || 'andre.pichardo@outlook.com',
+      from: 'Portfolio Contact <onboarding@resend.dev>',
+      to: process.env.ADMIN_EMAIL || 'andrep97@hotmail.com',
       replyTo: body.email,
       subject: `[Message from Portfolio] : ${body.subject}`,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
