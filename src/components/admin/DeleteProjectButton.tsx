@@ -28,19 +28,11 @@ export default function DeleteProjectButton({ id }: { id: string }) {
     <button
       onClick={handleDelete}
       disabled={loading}
-      style={{
-        background: "none",
-        backgroundImage: "none",
-        backgroundColor: loading ? "#fca5a5" : "#ef4444",
-        boxShadow: "none",
-        borderRadius: "6px",
-        padding: "4px 12px",
-        color: "white",
-        fontSize: "13px",
-        textTransform: "none",
-        cursor: loading ? "not-allowed" : "pointer",
-        opacity: loading ? 0.7 : 1,
-      }}
+      className={`text-white text-[13px] rounded-md px-3 py-1 transition-colors ${
+        loading
+          ? "bg-red-300 opacity-70 cursor-not-allowed"
+          : "bg-red-500 hover:bg-red-600 cursor-pointer"
+      }`}
     >
       {loading ? "Deleting..." : "Delete"}
     </button>

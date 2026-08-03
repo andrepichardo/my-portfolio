@@ -120,8 +120,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Title *</label>
+          <label htmlFor="title" className={labelClass}>
+            Title *
+          </label>
           <input
+            id="title"
             name="title"
             type="text"
             required
@@ -132,8 +135,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
           />
         </div>
         <div>
-          <label className={labelClass}>Slug *</label>
+          <label htmlFor="slug" className={labelClass}>
+            Slug *
+          </label>
           <input
+            id="slug"
             name="slug"
             type="text"
             required
@@ -149,8 +155,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
       </div>
 
       <div>
-        <label className={labelClass}>Description *</label>
+        <label htmlFor="description" className={labelClass}>
+          Description *
+        </label>
         <textarea
+          id="description"
           name="description"
           required
           rows={4}
@@ -163,8 +172,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Technologies (for card display) *</label>
+          <label htmlFor="technologies" className={labelClass}>
+            Technologies (for card display) *
+          </label>
           <input
+            id="technologies"
             name="technologies"
             type="text"
             required
@@ -178,8 +190,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
           </p>
         </div>
         <div>
-          <label className={labelClass}>Tech List (for detail page) *</label>
+          <label htmlFor="techList" className={labelClass}>
+            Tech List (for detail page) *
+          </label>
           <input
+            id="techList"
             name="techList"
             type="text"
             required
@@ -195,8 +210,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
       </div>
 
       <div>
-        <label className={labelClass}>Image URL *</label>
+        <label htmlFor="imageUrl" className={labelClass}>
+          Image URL *
+        </label>
         <input
+          id="imageUrl"
           name="imageUrl"
           type="text"
           required
@@ -212,8 +230,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Demo URL</label>
+          <label htmlFor="demoUrl" className={labelClass}>
+            Demo URL
+          </label>
           <input
+            id="demoUrl"
             name="demoUrl"
             type="text"
             value={formData.demoUrl}
@@ -223,8 +244,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
           />
         </div>
         <div>
-          <label className={labelClass}>Code URL</label>
+          <label htmlFor="codeUrl" className={labelClass}>
+            Code URL
+          </label>
           <input
+            id="codeUrl"
             name="codeUrl"
             type="text"
             value={formData.codeUrl}
@@ -239,8 +263,11 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
       </div>
 
       <div>
-        <label className={labelClass}>Note (optional)</label>
+        <label htmlFor="note" className={labelClass}>
+          Note (optional)
+        </label>
         <textarea
+          id="note"
           name="note"
           rows={2}
           value={formData.note}
@@ -252,8 +279,12 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-end">
         <div>
-          <label className={labelClass}>Display Order</label>
+          <label htmlFor="displayOrder" className={labelClass}>
+            Display Order
+          </label>
           <input
+            id="displayOrder"
+            title="Display Order"
             name="displayOrder"
             type="number"
             min={0}
@@ -287,7 +318,7 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
         <button
           type="submit"
           disabled={loading}
-          className="px-8 py-3 transition-all disabled:opacity-60"
+          className="btn px-8 py-3 transition-all disabled:opacity-60"
         >
           {loading
             ? "Saving..."
@@ -298,18 +329,7 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
         <button
           type="button"
           onClick={() => router.push("/admin")}
-          style={{
-            background: "none",
-            backgroundImage: "none",
-            backgroundColor: "#6b7280",
-            boxShadow: "none",
-            borderRadius: "12px",
-            padding: "12px 24px",
-            color: "white",
-            textTransform: "uppercase",
-            cursor: "pointer",
-            fontSize: "14px",
-          }}
+          className="bg-gray-500 hover:bg-gray-600 text-white text-sm uppercase rounded-xl px-6 py-3 cursor-pointer transition-colors"
         >
           Cancel
         </button>

@@ -22,7 +22,6 @@ const Navbar = () => {
   }, []);
 
   const isProjectPage = pathname.startsWith('/projects/');
-  const navBg = isProjectPage && !scrolled ? 'transparent' : '#ecf0f3';
 
   useEffect(() => {
     const handleShadow = () => {
@@ -43,6 +42,16 @@ const Navbar = () => {
     setNav(!nav);
   };
 
+  // Keyboard equivalent for the icon/div triggers below, which can't be real
+  // <button> elements without inheriting the global gradient button style.
+  const onActivateKey =
+    (action: () => void) => (e: React.KeyboardEvent<SVGElement | HTMLElement>) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        action();
+      }
+    };
+
   useEffect(() => {
     if (nav) {
       document.documentElement.style.overflowY = 'hidden';
@@ -54,6 +63,15 @@ const Navbar = () => {
     };
   }, [nav]);
 
+  useEffect(() => {
+    if (!nav) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setNav(false);
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [nav]);
+
   const renderThemeChanger = () => {
     if (!mounted) return <FaSpinner className="animate-spin" />;
     const currentTheme = theme === 'system' ? systemTheme : theme;
@@ -62,7 +80,10 @@ const Navbar = () => {
         <BsSun
           className="w-6 h-6 text-[#5651e5] hover:text-[#807cf2] transition-all active:scale-90"
           role="button"
+          tabIndex={0}
+          aria-label="Switch to light theme"
           onClick={() => setTheme('light')}
+          onKeyDown={onActivateKey(() => setTheme('light'))}
         />
       );
     }
@@ -70,7 +91,10 @@ const Navbar = () => {
       <BsMoon
         className="w-6 h-6 text-[#5651e5] hover:text-[#9592f3] transition-all active:scale-90"
         role="button"
+        tabIndex={0}
+        aria-label="Switch to dark theme"
         onClick={() => setTheme('dark')}
+        onKeyDown={onActivateKey(() => setTheme('dark'))}
       />
     );
   };
@@ -86,10 +110,13 @@ const Navbar = () => {
 
   return (
     <div
-      style={{ backgroundColor: navBg }}
       className={`fixed w-full h-20 z-100 transition-all duration-300 ${
         shadow ? 'shadow-xl dark:shadow-[#0b1120]/50' : ''
-      } ${isProjectPage && !scrolled ? '' : 'dark:bg-[#1f2937]!'}`}
+      } ${
+        isProjectPage && !scrolled
+          ? 'bg-transparent'
+          : 'bg-[#ecf0f3] dark:bg-[#1f2937]'
+      }`}
     >
       <div className="flex justify-between items-center max-w-437.5 mx-auto w-full h-full px-6 2xl:px-16">
         <Link href="/">
@@ -111,18 +138,21 @@ const Navbar = () => {
             }`}
           >
             {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm uppercase group"
-              >
-                {link.label}
-                <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
-              </Link>
+              <li key={link.label}>
+                <Link href={link.href} className="text-sm uppercase group">
+                  {link.label}
+                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-blue-400"></span>
+                </Link>
+              </li>
             ))}
           </ul>
           <div
             onClick={handleNav}
+            onKeyDown={onActivateKey(handleNav)}
+            role="button"
+            tabIndex={0}
+            aria-label="Open navigation menu"
+            aria-expanded={nav}
             className={`md:hidden cursor-pointer transition-all duration-300 ${
               isProjectPage && !scrolled
                 ? 'text-[#ecf0f3]'
@@ -163,6 +193,10 @@ const Navbar = () => {
                 </Link>
                 <div
                   onClick={handleNav}
+                  onKeyDown={onActivateKey(handleNav)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Close navigation menu"
                   className="rounded-full shadow-lg shadow-gray-400 dark:shadow-gray-900/80 text-[#1f2937] dark:text-[#ecf0f3] p-3 cursor-pointer active:scale-95 transition-all"
                 >
                   <AiOutlineClose />
@@ -177,14 +211,15 @@ const Navbar = () => {
             <div className="flex flex-col justify-between h-full gap-8 xs:mb-0">
               <ul className="flex flex-col gap-1 uppercase">
                 {navLinks.map((link) => (
-                  <Link key={link.label} href={link.href}>
-                    <li
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
                       onClick={() => setNav(false)}
-                      className="py-4 text-sm rounded-md text-black dark:text-[#ecf0f3] dark:hover:text-[#5651e5] hover:text-[#5651e5] transition-all"
+                      className="block py-4 text-sm rounded-md text-black dark:text-[#ecf0f3] dark:hover:text-[#5651e5] hover:text-[#5651e5] transition-all"
                     >
                       {link.label}
-                    </li>
-                  </Link>
+                    </Link>
+                  </li>
                 ))}
               </ul>
               <div>
@@ -237,6 +272,7 @@ const Navbar = () => {
         </div>
         <div
           onClick={handleNav}
+          aria-hidden="true"
           className={
             nav
               ? 'w-full h-full min-h-screen'

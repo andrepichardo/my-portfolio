@@ -9,16 +9,12 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="max-w-[940px] mx-auto px-5 xs:px-10 xl:px-0 pt-[120px]">
+    <div className="max-w-235 mx-auto px-5 xs:px-10 xl:px-0 pt-30">
       <h2 className="text-center">Resume</h2>
       <div className="bg-[#d0d4d6] dark:bg-[#2a374a] transition-all my-4 p-4 w-full flex justify-between flex-wrap gap-2 items-center">
         <h2 className="text-xl xs:text-3xl md:text-4xl">André Pichardo</h2>
         <div className="flex items-center gap-2">
-          <a
-            href="Resume-André-Pichardo.pdf"
-            download
-            className="p-0.5 xs:p-1"
-          >
+          <a href="Resume-André-Pichardo.pdf" download className="p-0.5 xs:p-1">
             <FaDownload className="w-3.5 h-3.5 xs:w-4 xs:h-4 md:w-5 md:h-5" />
           </a>
           <a
@@ -129,14 +125,12 @@ export default function ResumePage() {
           <span className="italic font-bold">Altice Dominicana</span>
           <span className="px-2">|</span>Distrito Nacional, DO
         </p>
-        <p className="py-1 italic">
-          Software QA Tester (Jul 2019 - Aug 2021)
-        </p>
+        <p className="py-1 italic">Software QA Tester (Jul 2019 - Aug 2021)</p>
         <ul className="py-1 leading-relaxed text-justify list-disc list-outside px-7">
           <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Carrying out different QA tests to guarantee the correct operation of
-            the new FW and SW that were deployed throughout the Headend network
-            (TV clients).
+            Carrying out different QA tests to guarantee the correct operation
+            of the new FW and SW that were deployed throughout the Headend
+            network (TV clients).
           </li>
           <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
             Identification of errors / bugs to later be reported and corrected
@@ -163,9 +157,7 @@ export default function ResumePage() {
           <span className="font-bold">Altice Dominicana</span>
           <span className="px-2">|</span>Distrito Nacional, DO
         </p>
-        <p className="py-1 italic">
-          Warehouse Assistant (May 2019 - Jul 2019)
-        </p>
+        <p className="py-1 italic">Warehouse Assistant (May 2019 - Jul 2019)</p>
         <ul className="py-1 leading-relaxed text-justify list-disc list-outside px-7">
           <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
             Assist with receiving, unloading, counting and stocking physical

@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { AiOutlineMail } from 'react-icons/ai';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
-import { FaGithub, FaLinkedinIn, FaSpinner } from 'react-icons/fa';
-import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
-import { useState } from 'react';
-import { toast } from 'sonner';
+import Image from "next/image";
+import Link from "next/link";
+import { AiOutlineMail } from "react-icons/ai";
+import { BsFillPersonLinesFill } from "react-icons/bs";
+import { FaGithub, FaLinkedinIn, FaSpinner } from "react-icons/fa";
+import { HiOutlineChevronDoubleUp } from "react-icons/hi";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const Contact = () => {
-  const [fullname, setFullname] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [sending, setSending] = useState(false);
 
@@ -22,19 +22,19 @@ const Contact = () => {
     let isValid = true;
 
     if (fullname.length <= 0) {
-      tempErrors['fullname'] = true;
+      tempErrors["fullname"] = true;
       isValid = false;
     }
     if (email.length <= 0) {
-      tempErrors['email'] = true;
+      tempErrors["email"] = true;
       isValid = false;
     }
     if (subject.length <= 0) {
-      tempErrors['subject'] = true;
+      tempErrors["subject"] = true;
       isValid = false;
     }
     if (message.length <= 0) {
-      tempErrors['message'] = true;
+      tempErrors["message"] = true;
       isValid = false;
     }
 
@@ -49,26 +49,26 @@ const Contact = () => {
 
     setSending(true);
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch("/api/contact", {
         body: JSON.stringify({ email, fullname, subject, message }),
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
       });
 
       const data = await res.json();
       if (data.error) {
-        toast.error('Message could not be sent.');
+        toast.error("Message could not be sent.");
       } else {
-        toast.success('Message sent successfully!');
+        toast.success("Message sent successfully!");
       }
     } catch {
-      toast.error('Message could not be sent.');
+      toast.error("Message could not be sent.");
     } finally {
       setSending(false);
-      setFullname('');
-      setEmail('');
-      setMessage('');
-      setSubject('');
+      setFullname("");
+      setEmail("");
+      setMessage("");
+      setSubject("");
     }
   };
 
@@ -149,8 +149,12 @@ const Contact = () => {
             <div className="w-full py-4">
               <form onSubmit={handleSubmit} className="flex flex-col">
                 <div className="flex flex-col p-2">
-                  <label className="py-2 text-sm uppercase">Full Name</label>
+                  <label htmlFor="fullname" className="py-2 text-sm uppercase">
+                    Full Name
+                  </label>
                   <input
+                    id="fullname"
+                    title="Full Name"
                     className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
                     type="text"
                     value={fullname}
@@ -161,8 +165,12 @@ const Contact = () => {
                   )}
                 </div>
                 <div className="flex flex-col p-2">
-                  <label className="py-2 text-sm uppercase">Email</label>
+                  <label htmlFor="email" className="py-2 text-sm uppercase">
+                    Email
+                  </label>
                   <input
+                    id="email"
+                    title="Email"
                     className="border-2 rounded-lg w-full flex px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
                     type="email"
                     value={email}
@@ -173,8 +181,12 @@ const Contact = () => {
                   )}
                 </div>
                 <div className="flex flex-col p-2">
-                  <label className="py-2 text-sm uppercase">Subject</label>
+                  <label htmlFor="subject" className="py-2 text-sm uppercase">
+                    Subject
+                  </label>
                   <input
+                    id="subject"
+                    title="Subject"
                     className="border-2 rounded-lg w-full flex px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
                     type="text"
                     value={subject}
@@ -185,8 +197,12 @@ const Contact = () => {
                   )}
                 </div>
                 <div className="flex flex-col p-2">
-                  <label className="py-2 text-sm uppercase">Message</label>
+                  <label htmlFor="message" className="py-2 text-sm uppercase">
+                    Message
+                  </label>
                   <textarea
+                    id="message"
+                    title="Message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="border-2 resize-none w-full px-2 py-3 rounded-lg transition-all border-gray-300 dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none min-h-43.75 max-h-43.75 sm:min-h-56.25 sm:max-h-56.25"
@@ -201,14 +217,14 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="w-full p-4 mt-4 transition-all buttonForm"
+                    className="btn w-full p-4 mt-4 transition-all"
                   >
                     {sending ? (
                       <span className="w-full flex justify-center items-center gap-1.5">
                         Sending <FaSpinner className="animate-spin" />
                       </span>
                     ) : (
-                      'Send Message'
+                      "Send Message"
                     )}
                   </button>
                 </div>

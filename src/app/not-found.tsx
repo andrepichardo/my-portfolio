@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className="w-full min-h-screen flex flex-col justify-center items-center">
-      <div className="max-w-[1240px] m-auto px-5 xs:px-10 xl:px-0 py-24 w-full flex flex-col justify-center items-center gap-6 md:gap-12 text-[#5651e5]">
+      <div className="max-w-310 m-auto px-5 xs:px-10 xl:px-0 py-24 w-full flex flex-col justify-center items-center gap-6 md:gap-12 text-[#5651e5]">
         <h4 className="text-3xl sm:text-4xl md:text-6xl text-center">
           404 | Page not Found
         </h4>

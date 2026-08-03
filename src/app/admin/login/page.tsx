@@ -58,10 +58,14 @@ export default function LoginPage() {
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
+            >
               Email
             </label>
             <input
+              id="email"
               type="email"
               required
               value={email}
@@ -72,10 +76,14 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
+            >
               Password
             </label>
             <input
+              id="password"
               type="password"
               required
               value={password}
@@ -88,7 +96,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 mt-2 transition-all disabled:opacity-60"
+            className="btn w-full py-3 mt-2 transition-all disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>

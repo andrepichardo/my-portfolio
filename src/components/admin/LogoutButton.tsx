@@ -6,19 +6,7 @@ export default function LogoutButton() {
   return (
     <button
       onClick={() => signOut({ callbackUrl: "/admin/login" })}
-      style={{
-        background: "none",
-        backgroundImage: "none",
-        backgroundColor: "#374151",
-        boxShadow: "none",
-        borderRadius: "8px",
-        padding: "8px 16px",
-        color: "#f9fafb",
-        fontSize: "14px",
-        textTransform: "none",
-        cursor: "pointer",
-      }}
-      className="hover:bg-gray-600 transition-colors"
+      className="bg-gray-700 hover:bg-gray-600 text-gray-50 text-sm rounded-lg px-4 py-2 cursor-pointer transition-colors"
     >
       Logout
     </button>
