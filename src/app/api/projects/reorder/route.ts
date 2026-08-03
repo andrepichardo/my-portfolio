@@ -19,11 +19,34 @@ export async function PATCH(req: NextRequest) {
   try {
     const { ids, startOrder } = reorderSchema.parse(await req.json());
 
+    // Splice the page's new order into the full list and rewrite every row, so
+    // displayOrder stays a gapless 0..n-1 sequence. Writing only the page's
+    // rows would let its values collide with another page's whenever the
+    // existing numbers have gaps, making the order across pages unstable.
+    const all = await prisma.project.findMany({
+      orderBy: { displayOrder: "asc" },
+      select: { id: true },
+    });
+    const orderedIds = all.map((project) => project.id);
+
+    const slice = orderedIds.slice(startOrder, startOrder + ids.length);
+    const sameSet =
+      slice.length === ids.length && ids.every((id) => slice.includes(id));
+
+    if (!sameSet) {
+      return NextResponse.json(
+        { error: "The project list changed. Refresh and try again." },
+        { status: 409 }
+      );
+    }
+
+    orderedIds.splice(startOrder, ids.length, ...ids);
+
     await prisma.$transaction(
-      ids.map((id, index) =>
+      orderedIds.map((id, index) =>
         prisma.project.update({
           where: { id },
-          data: { displayOrder: startOrder + index },
+          data: { displayOrder: index },
         })
       )
     );

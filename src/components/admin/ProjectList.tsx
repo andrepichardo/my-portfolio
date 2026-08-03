@@ -77,7 +77,7 @@ function Row({
           </svg>
         </button>
       ) : (
-        <span className="shrink-0 w-[26px]" />
+        <span className="shrink-0 w-6.5" />
       )}
 
       <div className="relative w-14 h-10 sm:w-20 sm:h-14 shrink-0 rounded-md overflow-hidden bg-gray-100 dark:bg-[#111827]">
@@ -168,11 +168,19 @@ export default function ProjectList({
           startOrder,
         }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error);
+      }
       router.refresh();
-    } catch {
+    } catch (err) {
       setItems(previous);
-      toast.error("Could not save the new order.");
+      toast.error(
+        err instanceof Error && err.message
+          ? err.message
+          : "Could not save the new order."
+      );
+      router.refresh();
     }
   };
 
