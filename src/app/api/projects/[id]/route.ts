@@ -13,7 +13,6 @@ const updateSchema = z.object({
   demoUrl: z.string().optional().default(""),
   codeUrl: z.string().optional().default(""),
   note: z.string().optional().default(""),
-  displayOrder: z.coerce.number().default(0),
   published: z.boolean().default(true),
 });
 

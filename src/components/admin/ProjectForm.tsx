@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ImageUpload from "./ImageUpload";
 
 interface ProjectData {
   id?: string;
@@ -14,7 +15,6 @@ interface ProjectData {
   demoUrl: string;
   codeUrl: string;
   note: string;
-  displayOrder: number;
   published: boolean;
 }
 
@@ -45,7 +45,6 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
     demoUrl: initialData?.demoUrl ?? "",
     codeUrl: initialData?.codeUrl ?? "",
     note: initialData?.note ?? "",
-    displayOrder: initialData?.displayOrder ?? 0,
     published: initialData?.published ?? true,
   });
 
@@ -210,22 +209,13 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
       </div>
 
       <div>
-        <label htmlFor="imageUrl" className={labelClass}>
-          Image URL *
-        </label>
-        <input
-          id="imageUrl"
-          name="imageUrl"
-          type="text"
-          required
+        <span className={labelClass}>Image *</span>
+        <ImageUpload
           value={formData.imageUrl}
-          onChange={handleChange}
-          className={inputClass}
-          placeholder="/projects/thoughthub.png"
+          onChange={(imageUrl) =>
+            setFormData((prev) => ({ ...prev, imageUrl }))
+          }
         />
-        <p className="text-xs text-gray-500 mt-1">
-          Path from /public (e.g. /projects/image.png) or full URL.
-        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -277,25 +267,7 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-end">
-        <div>
-          <label htmlFor="displayOrder" className={labelClass}>
-            Display Order
-          </label>
-          <input
-            id="displayOrder"
-            title="Display Order"
-            name="displayOrder"
-            type="number"
-            min={0}
-            value={formData.displayOrder}
-            onChange={handleChange}
-            className={inputClass}
-          />
-          <p className="text-xs text-gray-500 mt-1">
-            Lower = shows first on homepage.
-          </p>
-        </div>
+      <div>
         <div className="flex items-center gap-3 pb-1">
           <input
             id="published"

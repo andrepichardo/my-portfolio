@@ -60,7 +60,9 @@ export default async function ProjectPage({ params }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="btn w-full px-8 py-2">DEMO</button>
+                <button type="button" className="btn w-full px-8 py-2">
+                  DEMO
+                </button>
               </a>
             )}
             {project.codeUrl && (
@@ -69,7 +71,9 @@ export default async function ProjectPage({ params }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="btn w-full px-8 py-2">CODE</button>
+                <button type="button" className="btn w-full px-8 py-2">
+                  CODE
+                </button>
               </a>
             )}
           </div>

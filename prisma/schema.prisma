@@ -14,6 +14,19 @@ model User {
   createdAt DateTime @default(now())
 }
 
+// Uploaded project images, stored in Postgres and served by /api/images/[id].
+// Project.imageUrl keeps holding a plain string, so existing /projects/*.png
+// paths and external URLs keep working alongside uploads.
+model Image {
+  id        String   @id @default(cuid())
+  data      Bytes
+  mimeType  String
+  width     Int
+  height    Int
+  size      Int
+  createdAt DateTime @default(now())
+}
+
 model Project {
   id           String   @id @default(cuid())
   title        String

@@ -28,7 +28,6 @@ export default async function EditProjectPage({ params }: Props) {
     demoUrl: project.demoUrl ?? "",
     codeUrl: project.codeUrl ?? "",
     note: project.note ?? "",
-    displayOrder: project.displayOrder,
     published: project.published,
   };
 

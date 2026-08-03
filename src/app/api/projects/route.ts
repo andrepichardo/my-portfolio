@@ -13,7 +13,6 @@ const projectSchema = z.object({
   demoUrl: z.string().optional().default(""),
   codeUrl: z.string().optional().default(""),
   note: z.string().optional().default(""),
-  displayOrder: z.coerce.number().default(0),
   published: z.boolean().default(true),
 });
 
@@ -41,9 +40,16 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const data = projectSchema.parse(body);
 
+    // Ordering is managed by drag-and-drop, so new projects go to the end.
+    const last = await prisma.project.findFirst({
+      orderBy: { displayOrder: "desc" },
+      select: { displayOrder: true },
+    });
+
     const project = await prisma.project.create({
       data: {
         ...data,
+        displayOrder: (last?.displayOrder ?? -1) + 1,
         techList: data.techList
           .split(",")
           .map((t: string) => t.trim())
