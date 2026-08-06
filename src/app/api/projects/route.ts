@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import {
   PROJECTS_MAX_PAGE_SIZE,
   PROJECTS_PAGE_SIZE,
+  projectCardOrderBy,
   projectCardSelect,
 } from "@/lib/projects";
 import { z } from "zod";
@@ -44,7 +45,7 @@ export async function GET(req: NextRequest) {
 
     const projects = await prisma.project.findMany({
       where,
-      orderBy: { displayOrder: "asc" },
+      orderBy: projectCardOrderBy,
       skip: (page - 1) * limit,
       take: limit,
       select: projectCardSelect,

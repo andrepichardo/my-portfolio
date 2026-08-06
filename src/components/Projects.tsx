@@ -1,5 +1,9 @@
 import { prisma } from '@/lib/prisma';
-import { PROJECTS_PAGE_SIZE, projectCardSelect } from '@/lib/projects';
+import {
+  PROJECTS_PAGE_SIZE,
+  projectCardOrderBy,
+  projectCardSelect,
+} from '@/lib/projects';
 import ProjectsGrid, { type ProjectCard } from './ProjectsGrid';
 
 const Projects = async () => {
@@ -15,7 +19,7 @@ const Projects = async () => {
       prisma.project.count({ where }),
       prisma.project.findMany({
         where,
-        orderBy: { displayOrder: 'asc' },
+        orderBy: projectCardOrderBy,
         take: PROJECTS_PAGE_SIZE,
         select: projectCardSelect,
       }),
