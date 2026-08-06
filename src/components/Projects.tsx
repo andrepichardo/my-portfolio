@@ -1,31 +1,32 @@
 import { prisma } from '@/lib/prisma';
-import ProjectItem from './ProjectItem';
+import { PROJECTS_PAGE_SIZE, projectCardSelect } from '@/lib/projects';
+import ProjectsGrid, { type ProjectCard } from './ProjectsGrid';
 
 const Projects = async () => {
-  let projects: {
-    id: string;
-    title: string;
-    slug: string;
-    technologies: string;
-    imageUrl: string;
-  }[] = [];
+  let projects: ProjectCard[] = [];
+  let total = 0;
 
   try {
-    projects = await prisma.project.findMany({
-      where: { published: true },
-      orderBy: { displayOrder: 'asc' },
-      select: {
-        id: true,
-        title: true,
-        slug: true,
-        technologies: true,
-        imageUrl: true,
-      },
-    });
+    const where = { published: true };
+
+    // Only the first page is rendered on the server; the rest is fetched on
+    // demand, so the homepage never ships every project image up front.
+    [total, projects] = await Promise.all([
+      prisma.project.count({ where }),
+      prisma.project.findMany({
+        where,
+        orderBy: { displayOrder: 'asc' },
+        take: PROJECTS_PAGE_SIZE,
+        select: projectCardSelect,
+      }),
+    ]);
   } catch {
-    // Database not available - use empty array
+    // Database not available - render the empty state.
     projects = [];
+    total = 0;
   }
+
+  const totalPages = Math.max(1, Math.ceil(total / PROJECTS_PAGE_SIZE));
 
   return (
     <div
@@ -37,22 +38,18 @@ const Projects = async () => {
           Projects
         </p>
         <h2 className="py-4">What I&apos;ve Built</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectItem
-              key={project.id}
-              title={project.title}
-              imageUrl={project.imageUrl}
-              projectUrl={`/projects/${project.slug}`}
-              technologies={project.technologies}
-            />
-          ))}
-          {projects.length === 0 && (
-            <p className="text-gray-500 col-span-2 text-center py-8">
-              No projects yet. Add some from the admin panel.
-            </p>
-          )}
-        </div>
+
+        {projects.length === 0 ? (
+          <p className="text-gray-500 text-center py-8">
+            No projects yet. Add some from the admin panel.
+          </p>
+        ) : (
+          <ProjectsGrid
+            initialProjects={projects}
+            totalPages={totalPages}
+            pageSize={PROJECTS_PAGE_SIZE}
+          />
+        )}
       </div>
     </div>
   );

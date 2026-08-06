@@ -4,6 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 
+/** Shared with the loading skeleton so a page change never shifts the layout. */
+export const projectCardSize =
+  'w-full h-full xl:min-h-97.5 lg:min-h-87.5 lg:max-h-100 md:min-h-71.25 md:max-h-71.25 sm:min-h-75 xs:min-h-62.5 xs:max-h-62.5 min-h-55 max-h-55';
+
 interface ProjectItemProps {
   title: string;
   imageUrl: string;
@@ -33,7 +37,7 @@ const ProjectItem = ({
   return (
     <div
       ref={cardRef}
-      className={`relative flex items-center justify-center w-full h-full shadow-xl xl:min-h-97.5 lg:min-h-87.5 lg:max-h-100 md:min-h-71.25 md:max-h-71.25 sm:min-h-75 xs:min-h-62.5 xs:max-h-62.5 min-h-55 max-h-55 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl group hover:bg-linear-to-r from-[#5651e5] to-[#709dff] ${touched ? 'bg-linear-to-r' : ''}`}
+      className={`relative flex items-center justify-center shadow-xl ${projectCardSize} shadow-gray-400 dark:shadow-gray-900/80 rounded-xl group hover:bg-linear-to-r from-[#5651e5] to-[#709dff] ${touched ? 'bg-linear-to-r' : ''}`}
       onTouchStart={() => { if (!touched) setTouched(true); }}
     >
       <Image

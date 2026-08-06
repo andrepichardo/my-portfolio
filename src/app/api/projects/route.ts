@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import {
+  PROJECTS_MAX_PAGE_SIZE,
+  PROJECTS_PAGE_SIZE,
+  projectCardSelect,
+} from "@/lib/projects";
 import { z } from "zod";
 
 const projectSchema = z.object({
@@ -16,12 +21,36 @@ const projectSchema = z.object({
   published: z.boolean().default(true),
 });
 
-export async function GET() {
+/**
+ * Public, paginated feed for the homepage grid. Only published projects and
+ * only the fields a card needs, so a page change stays a small payload.
+ */
+export async function GET(req: NextRequest) {
   try {
+    const { searchParams } = req.nextUrl;
+
+    const limit = Math.min(
+      Math.max(1, Number(searchParams.get("limit")) || PROJECTS_PAGE_SIZE),
+      PROJECTS_MAX_PAGE_SIZE
+    );
+
+    const where = { published: true };
+    const total = await prisma.project.count({ where });
+    const totalPages = Math.max(1, Math.ceil(total / limit));
+    const page = Math.min(
+      Math.max(1, Number(searchParams.get("page")) || 1),
+      totalPages
+    );
+
     const projects = await prisma.project.findMany({
+      where,
       orderBy: { displayOrder: "asc" },
+      skip: (page - 1) * limit,
+      take: limit,
+      select: projectCardSelect,
     });
-    return NextResponse.json(projects);
+
+    return NextResponse.json({ projects, page, totalPages, total });
   } catch {
     return NextResponse.json(
       { error: "Failed to fetch projects" },
