@@ -46,6 +46,7 @@ export default function ImageUpload({ value, onChange }: ImageUploadProps) {
   return (
     <div>
       <input
+        title="Input para subir imágenes"
         ref={inputRef}
         type="file"
         accept="image/png,image/jpeg,image/webp,image/avif,image/gif"
