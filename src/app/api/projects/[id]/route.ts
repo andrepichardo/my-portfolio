@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
@@ -48,6 +49,13 @@ export async function PUT(req: NextRequest, { params }: RouteParams) {
     const body = await req.json();
     const data = updateSchema.parse(body);
 
+    // Read the slug before the update: if it changed, the old detail page is
+    // still cached under the previous path and has to be dropped too.
+    const previous = await prisma.project.findUnique({
+      where: { id },
+      select: { slug: true },
+    });
+
     const project = await prisma.project.update({
       where: { id },
       data: {
@@ -61,6 +69,12 @@ export async function PUT(req: NextRequest, { params }: RouteParams) {
         note: data.note || null,
       },
     });
+
+    revalidatePath("/");
+    revalidatePath(`/projects/${project.slug}`);
+    if (previous && previous.slug !== project.slug) {
+      revalidatePath(`/projects/${previous.slug}`);
+    }
 
     return NextResponse.json(project);
   } catch (error) {
@@ -86,7 +100,14 @@ export async function DELETE(_req: NextRequest, { params }: RouteParams) {
   const { id } = await params;
 
   try {
-    await prisma.project.delete({ where: { id } });
+    const project = await prisma.project.delete({
+      where: { id },
+      select: { slug: true },
+    });
+
+    revalidatePath("/");
+    revalidatePath(`/projects/${project.slug}`);
+
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(

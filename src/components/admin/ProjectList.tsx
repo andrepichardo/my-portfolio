@@ -185,7 +185,12 @@ export default function ProjectList({
   };
 
   return (
+    // A fixed id keeps the aria-describedby dnd-kit generates identical on the
+    // server and the client. Without it the ids come from a module-level
+    // counter that starts fresh in each environment, so React reports a
+    // hydration mismatch on every reload of this page.
     <DndContext
+      id="admin-project-list"
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}

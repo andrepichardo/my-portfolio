@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
@@ -50,6 +51,9 @@ export async function PATCH(req: NextRequest) {
         })
       )
     );
+
+    // Reordering only changes the homepage grid, but that page is static.
+    revalidatePath("/");
 
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import {
@@ -89,6 +90,10 @@ export async function POST(req: NextRequest) {
         note: data.note || null,
       },
     });
+
+    // The homepage is statically rendered, so it would keep serving the old
+    // project list until the next deploy unless we revalidate it here.
+    revalidatePath("/");
 
     return NextResponse.json(project, { status: 201 });
   } catch (error) {
