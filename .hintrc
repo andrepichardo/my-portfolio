@@ -12,7 +12,8 @@
     "disown-opener": "off",
     "no-inline-styles": "off",
     "axe/aria": "off",
-    "compat-api/css": "off"
+    "compat-api/css": "off",
+    "typescript-config/consistent-casing": "off"
   },
   "browserslist": [
     "defaults",
