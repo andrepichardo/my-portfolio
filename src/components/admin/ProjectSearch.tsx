@@ -5,8 +5,11 @@ import { useEffect, useState } from "react";
 
 export default function ProjectSearch({
   initialQuery,
+  showAll = false,
 }: {
   initialQuery: string;
+  /** Kept in the URL so searching does not silently turn paging back on. */
+  showAll?: boolean;
 }) {
   const router = useRouter();
   const [value, setValue] = useState(initialQuery);
@@ -17,11 +20,15 @@ export default function ProjectSearch({
 
     const timeout = setTimeout(() => {
       const query = value.trim();
-      router.replace(query ? `/admin?q=${encodeURIComponent(query)}` : "/admin");
+      const sp = new URLSearchParams();
+      if (query) sp.set("q", query);
+      if (showAll) sp.set("all", "1");
+      const qs = sp.toString();
+      router.replace(qs ? `/admin?${qs}` : "/admin");
     }, 300);
 
     return () => clearTimeout(timeout);
-  }, [value, initialQuery, router]);
+  }, [value, initialQuery, showAll, router]);
 
   return (
     <div className="relative">

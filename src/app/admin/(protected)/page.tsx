@@ -6,12 +6,15 @@ import ProjectSearch from "@/components/admin/ProjectSearch";
 const PAGE_SIZE = 10;
 
 interface Props {
-  searchParams: Promise<{ page?: string; q?: string }>;
+  searchParams: Promise<{ page?: string; q?: string; all?: string }>;
 }
 
 export default async function AdminPage({ searchParams }: Props) {
   const params = await searchParams;
   const query = (params.q ?? "").trim();
+  // Paging keeps drag-and-drop from reaching across pages, so this drops it and
+  // renders the whole list when you need to reorder freely.
+  const showAll = params.all === "1";
 
   const where = query
     ? {
@@ -24,14 +27,15 @@ export default async function AdminPage({ searchParams }: Props) {
     : {};
 
   const total = await prisma.project.count({ where });
-  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-  const page = Math.min(Math.max(1, Number(params.page) || 1), totalPages);
+  const totalPages = showAll ? 1 : Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const page = showAll
+    ? 1
+    : Math.min(Math.max(1, Number(params.page) || 1), totalPages);
 
   const projects: ProjectRow[] = await prisma.project.findMany({
     where,
     orderBy: { displayOrder: "asc" },
-    skip: (page - 1) * PAGE_SIZE,
-    take: PAGE_SIZE,
+    ...(showAll ? {} : { skip: (page - 1) * PAGE_SIZE, take: PAGE_SIZE }),
     select: {
       id: true,
       title: true,
@@ -50,8 +54,16 @@ export default async function AdminPage({ searchParams }: Props) {
     return qs ? `/admin?${qs}` : "/admin";
   };
 
-  const rangeStart = total === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
-  const rangeEnd = Math.min(page * PAGE_SIZE, total);
+  const rangeStart = total === 0 ? 0 : showAll ? 1 : (page - 1) * PAGE_SIZE + 1;
+  const rangeEnd = showAll ? total : Math.min(page * PAGE_SIZE, total);
+
+  const toggleHref = () => {
+    const sp = new URLSearchParams();
+    if (query) sp.set("q", query);
+    if (!showAll) sp.set("all", "1");
+    const qs = sp.toString();
+    return qs ? `/admin?${qs}` : "/admin";
+  };
 
   return (
     <div>
@@ -74,8 +86,36 @@ export default async function AdminPage({ searchParams }: Props) {
         </Link>
       </div>
 
-      <div className="mb-4">
-        <ProjectSearch initialQuery={query} />
+      <div className="mb-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between">
+        <ProjectSearch initialQuery={query} showAll={showAll} />
+
+        {total > PAGE_SIZE && (
+          <Link
+            href={toggleHref()}
+            aria-pressed={showAll}
+            title={
+              showAll
+                ? "Back to pages of 10"
+                : "Drop paging and show every project, so you can drag between any two positions"
+            }
+            className="group shrink-0 inline-flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#5651e5] dark:hover:text-[#709dff] transition-colors"
+          >
+            <span
+              className={`relative w-9 h-5 rounded-full transition-colors ${
+                showAll
+                  ? "bg-[#5651e5]"
+                  : "bg-gray-300 dark:bg-gray-600 group-hover:bg-gray-400 dark:group-hover:bg-gray-500"
+              }`}
+            >
+              <span
+                className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow-xs transition-all ${
+                  showAll ? "left-4.5" : "left-0.5"
+                }`}
+              />
+            </span>
+            Show all
+          </Link>
+        )}
       </div>
 
       {projects.length === 0 ? (
@@ -96,15 +136,18 @@ export default async function AdminPage({ searchParams }: Props) {
           <div className="bg-white dark:bg-[#1f2937] rounded-xl shadow overflow-hidden">
             <ProjectList
               projects={projects}
-              startOrder={(page - 1) * PAGE_SIZE}
+              startOrder={showAll ? 0 : (page - 1) * PAGE_SIZE}
               sortable={!query}
+              total={total}
             />
           </div>
 
           <p className="text-xs text-gray-400 dark:text-gray-500 mt-3">
             {query
               ? "Clear the search to reorder projects."
-              : "Drag the handle to reorder. The order here is the order on your homepage."}
+              : showAll
+                ? "Drag the handle to reorder, or type a position number. The order here is the order on your homepage."
+                : "Drag the handle to reorder within this page, or type a position number to move a project to any page. The order here is the order on your homepage."}
           </p>
 
           {totalPages > 1 && (
