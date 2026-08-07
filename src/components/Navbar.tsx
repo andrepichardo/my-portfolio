@@ -3,13 +3,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
-import { FaGithub, FaLinkedinIn, FaSpinner } from 'react-icons/fa';
-import { BsMoon, BsPersonLinesFill, BsSun } from 'react-icons/bs';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { FaSpinner } from 'react-icons/fa';
+import { BsMoon, BsSun } from 'react-icons/bs';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import SocialIcon from './SocialIcon';
+import type { SocialLinkItem } from '@/lib/content-defaults';
 
-const Navbar = () => {
+interface NavbarProps {
+  /** Managed in the CMS; the layout fetches them and passes them down. */
+  links: SocialLinkItem[];
+}
+
+const Navbar = ({ links }: NavbarProps) => {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [nav, setNav] = useState(false);
@@ -227,44 +234,40 @@ const Navbar = () => {
                   Let&apos;s Connect
                 </p>
                 <div className="flex flex-wrap items-center justify-between w-full gap-2 mt-4">
-                  <a
-                    className="rounded-full"
-                    href="https://www.linkedin.com/in/andre-pichardo/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
-                      <FaLinkedinIn className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </a>
-                  <a
-                    className="rounded-full"
-                    href="https://github.com/andrepichardo"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
-                      <FaGithub className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </a>
-                  <Link
-                    className="rounded-full"
-                    onClick={() => setNav(false)}
-                    href="/#contact"
-                  >
-                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
-                      <AiOutlineMail className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </Link>
-                  <Link
-                    className="rounded-full"
-                    onClick={() => setNav(false)}
-                    href="/resume"
-                  >
-                    <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
-                      <BsPersonLinesFill className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </Link>
+                  {links.map((link) => {
+                    const internal = link.url.startsWith('/');
+                    const circle = (
+                      <div className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-5 hover:scale-110">
+                        <SocialIcon
+                          icon={link.icon}
+                          className="w-5 h-5 text-blue-800"
+                        />
+                      </div>
+                    );
+
+                    return internal ? (
+                      <Link
+                        key={link.id}
+                        className="rounded-full"
+                        onClick={() => setNav(false)}
+                        href={link.url}
+                        aria-label={link.label}
+                      >
+                        {circle}
+                      </Link>
+                    ) : (
+                      <a
+                        key={link.id}
+                        className="rounded-full"
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={link.label}
+                      >
+                        {circle}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>

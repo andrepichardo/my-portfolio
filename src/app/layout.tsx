@@ -1,25 +1,30 @@
 import type { Metadata } from "next";
 import { Providers } from "./providers";
 import Navbar from "@/components/Navbar";
+import { getSettings, getSocialLinks } from "@/lib/content";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "André Pichardo | Front-End Developer",
-  description:
-    "Dominican front-end web developer, specializing in building great digital experiences.",
-  icons: { icon: "/favicon.ico" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSettings();
+  return {
+    title: settings.metaTitle,
+    description: settings.metaDescription,
+    icons: { icon: "/favicon.ico" },
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const links = await getSocialLinks();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <Navbar />
+          <Navbar links={links} />
           {children}
         </Providers>
       </body>

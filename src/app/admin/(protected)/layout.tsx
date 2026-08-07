@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import LogoutButton from "@/components/admin/LogoutButton";
+import AdminNav from "@/components/admin/AdminNav";
 
 export const metadata = {
   title: "Admin Panel | André Pichardo",
@@ -47,7 +48,12 @@ export default async function AdminLayout({
       </header>
 
       {/* Content */}
-      <main className="max-w-6xl mx-auto px-5 py-8">{children}</main>
+      <main className="max-w-6xl mx-auto px-5 py-8">
+        <div className="mb-8">
+          <AdminNav />
+        </div>
+        {children}
+      </main>
     </div>
   );
 }

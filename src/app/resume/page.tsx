@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
 import { FaDownload, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { getSettings } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "André Pichardo | Resume",
-  description:
-    "Dominican front-end web developer, specializing in building great digital experiences.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSettings();
+  return {
+    title: `${settings.metaTitle.split("|")[0].trim()} | Resume`,
+    description: settings.metaDescription,
+  };
+}
 
-export default function ResumePage() {
+export default async function ResumePage() {
+  // The rendered CV below stays in code; only the downloadable PDF is managed
+  // from the CMS.
+  const { resumeUrl } = await getSettings();
+
   return (
     <div className="max-w-235 mx-auto px-5 xs:px-10 xl:px-0 pt-30">
       <h2 className="text-center">Resume</h2>
       <div className="bg-[#d0d4d6] dark:bg-[#2a374a] transition-all my-4 p-4 w-full flex justify-between flex-wrap gap-2 items-center">
         <h2 className="text-xl xs:text-3xl md:text-4xl">André Pichardo</h2>
         <div className="flex items-center gap-2">
-          <a href="Resume-André-Pichardo.pdf" download className="p-0.5 xs:p-1">
+          <a href={resumeUrl} download className="p-0.5 xs:p-1">
             <FaDownload className="w-3.5 h-3.5 xs:w-4 xs:h-4 md:w-5 md:h-5" />
           </a>
           <a

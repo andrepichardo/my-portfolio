@@ -1,76 +1,17 @@
-"use client";
+import Image from 'next/image';
+import Link from 'next/link';
+import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import { getSection, getSocialLinks } from '@/lib/content';
+import ContactForm from './ContactForm';
+import SocialIcon from './SocialIcon';
 
-import Image from "next/image";
-import Link from "next/link";
-import { AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { FaGithub, FaLinkedinIn, FaSpinner } from "react-icons/fa";
-import { HiOutlineChevronDoubleUp } from "react-icons/hi";
-import { useState } from "react";
-import { toast } from "sonner";
+const Contact = async () => {
+  const [contact, links] = await Promise.all([
+    getSection('contact'),
+    getSocialLinks(),
+  ]);
 
-const Contact = () => {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
-  const [sending, setSending] = useState(false);
-
-  const handleValidation = () => {
-    const tempErrors: Record<string, boolean> = {};
-    let isValid = true;
-
-    if (fullname.length <= 0) {
-      tempErrors["fullname"] = true;
-      isValid = false;
-    }
-    if (email.length <= 0) {
-      tempErrors["email"] = true;
-      isValid = false;
-    }
-    if (subject.length <= 0) {
-      tempErrors["subject"] = true;
-      isValid = false;
-    }
-    if (message.length <= 0) {
-      tempErrors["message"] = true;
-      isValid = false;
-    }
-
-    setErrors({ ...tempErrors });
-    return isValid;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!handleValidation()) return;
-
-    setSending(true);
-    try {
-      const res = await fetch("/api/contact", {
-        body: JSON.stringify({ email, fullname, subject, message }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      });
-
-      const data = await res.json();
-      if (data.error) {
-        toast.error("Message could not be sent.");
-      } else {
-        toast.success("Message sent successfully!");
-      }
-    } catch {
-      toast.error("Message could not be sent.");
-    } finally {
-      setSending(false);
-      setFullname("");
-      setEmail("");
-      setMessage("");
-      setSubject("");
-    }
-  };
+  const [role, ...paragraphs] = contact.body;
 
   return (
     <div
@@ -79,67 +20,82 @@ const Contact = () => {
     >
       <div className="max-w-310 m-auto px-5 xs:px-10 xl:px-0 pt-24 pb-10 w-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-          Contact
+          {contact.eyebrow}
         </p>
-        <h2 className="py-4">Get In Touch</h2>
+        <h2 className="py-4">{contact.heading}</h2>
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-5">
           {/* left */}
           <div className="flex w-full h-full px-5 py-10 shadow-xl lg:col-span-2 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl">
             <div className="flex flex-col justify-between h-full lg:p-4">
-              <div className="flex duration-300 ease-in rounded-xl hover:scale-95">
-                <Image
-                  className="rounded-xl"
-                  src="/assets/contact.jpg"
-                  alt="Contact"
-                  width={600}
-                  height={400}
-                />
-              </div>
+              {contact.imageUrl && (
+                <div className="flex duration-300 ease-in rounded-xl hover:scale-95">
+                  {/* unoptimized: the src can be a CMS upload or any URL. */}
+                  <Image
+                    className="rounded-xl"
+                    src={contact.imageUrl}
+                    alt={contact.subheading || 'Contact'}
+                    width={600}
+                    height={400}
+                    unoptimized
+                  />
+                </div>
+              )}
               <div className="flex flex-col justify-center pb-4">
-                <h2 className="py-2">André Pichardo</h2>
-                <p className="text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all">
-                  Front-End Developer
-                </p>
-                <p className="py-4 text-lg text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all">
-                  I am available for freelance &amp; full-time positions. Feel
-                  free to contact me and let&apos;s talk.
-                </p>
+                {contact.subheading && (
+                  <h2 className="py-2">{contact.subheading}</h2>
+                )}
+                {role && (
+                  <p className="text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all">
+                    {role}
+                  </p>
+                )}
+                {paragraphs.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="py-4 text-lg text-justify font-light text-[17px] text-black dark:text-[#ecf0f3] transition-all"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
               <div className="flex flex-col">
                 <p className="uppercase pt-8 pb-3 text-lg font-light text-black dark:text-[#ecf0f3] transition-all">
                   Connect With Me
                 </p>
                 <div className="flex items-center justify-between max-w-100 flex-wrap gap-1 gap-y-4 xs:gap-0 m-auto py-4 w-full">
-                  <a
-                    className="rounded-full"
-                    href="https://www.linkedin.com/in/andre-pichardo/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                      <FaLinkedinIn className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </a>
-                  <a
-                    className="rounded-full"
-                    href="https://github.com/andrepichardo"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                      <FaGithub className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </a>
-                  <Link className="rounded-full" href="/#contact">
-                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                      <AiOutlineMail className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </Link>
-                  <Link className="rounded-full" href="/resume">
-                    <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                      <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
-                    </div>
-                  </Link>
+                  {links.map((link) => {
+                    const internal = link.url.startsWith('/');
+                    const circle = (
+                      <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
+                        <SocialIcon
+                          icon={link.icon}
+                          className="w-5 h-5 text-blue-800"
+                        />
+                      </div>
+                    );
+
+                    return internal ? (
+                      <Link
+                        key={link.id}
+                        className="rounded-full"
+                        href={link.url}
+                        aria-label={link.label}
+                      >
+                        {circle}
+                      </Link>
+                    ) : (
+                      <a
+                        key={link.id}
+                        className="rounded-full"
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={link.label}
+                      >
+                        {circle}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -147,88 +103,7 @@ const Contact = () => {
           {/* right */}
           <div className="w-full h-auto px-3 shadow-xl lg:col-span-3 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl lg:p-4">
             <div className="w-full py-4">
-              <form onSubmit={handleSubmit} className="flex flex-col">
-                <div className="flex flex-col p-2">
-                  <label htmlFor="fullname" className="py-2 text-sm uppercase">
-                    Full Name
-                  </label>
-                  <input
-                    id="fullname"
-                    title="Full Name"
-                    className="border-2 w-full rounded-lg flex px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
-                    type="text"
-                    value={fullname}
-                    onChange={(e) => setFullname(e.target.value)}
-                  />
-                  {errors?.fullname && (
-                    <p className="text-red-500">Full name cannot be empty.</p>
-                  )}
-                </div>
-                <div className="flex flex-col p-2">
-                  <label htmlFor="email" className="py-2 text-sm uppercase">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    title="Email"
-                    className="border-2 rounded-lg w-full flex px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  {errors?.email && (
-                    <p className="text-red-500">Email cannot be empty.</p>
-                  )}
-                </div>
-                <div className="flex flex-col p-2">
-                  <label htmlFor="subject" className="py-2 text-sm uppercase">
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    title="Subject"
-                    className="border-2 rounded-lg w-full flex px-2 py-3 border-gray-300 transition-all dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none"
-                    type="text"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                  />
-                  {errors?.subject && (
-                    <p className="text-red-500">Subject cannot be empty.</p>
-                  )}
-                </div>
-                <div className="flex flex-col p-2">
-                  <label htmlFor="message" className="py-2 text-sm uppercase">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    title="Message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="border-2 resize-none w-full px-2 py-3 rounded-lg transition-all border-gray-300 dark:border-[#3e4b60] dark:focus:border-[#5651e5]/50 focus:border-[#5651e5]/50 outline-none min-h-43.75 max-h-43.75 sm:min-h-56.25 sm:max-h-56.25"
-                  />
-                  {errors?.message && (
-                    <p className="text-red-500">
-                      Message body cannot be empty.
-                    </p>
-                  )}
-                </div>
-                <div className="flex p-2">
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="btn w-full p-4 mt-4 transition-all"
-                  >
-                    {sending ? (
-                      <span className="w-full flex justify-center items-center gap-1.5">
-                        Sending <FaSpinner className="animate-spin" />
-                      </span>
-                    ) : (
-                      "Send Message"
-                    )}
-                  </button>
-                </div>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </div>
@@ -236,9 +111,10 @@ const Contact = () => {
           <Link
             className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900/80 animate-bounce hover:scale-110"
             href="/"
+            aria-label="Back to top"
           >
             <HiOutlineChevronDoubleUp
-              className="m-auto text-[#5651e5]"
+              className="text-[#5651e5]"
               size={30}
             />
           </Link>

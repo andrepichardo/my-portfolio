@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/prisma';
+import { getSection } from '@/lib/content';
 import {
   PROJECTS_PAGE_SIZE,
   projectCardOrderBy,
@@ -7,6 +8,7 @@ import {
 import ProjectsGrid, { type ProjectCard } from './ProjectsGrid';
 
 const Projects = async () => {
+  const section = await getSection('projects');
   let projects: ProjectCard[] = [];
   let total = 0;
 
@@ -39,9 +41,9 @@ const Projects = async () => {
     >
       <div className="max-w-310 px-5 xs:px-10 xl:px-0 w-full mx-auto py-24">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-          Projects
+          {section.eyebrow}
         </p>
-        <h2 className="py-4">What I&apos;ve Built</h2>
+        <h2 className="py-4">{section.heading}</h2>
 
         {projects.length === 0 ? (
           <p className="text-gray-500 text-center py-8">

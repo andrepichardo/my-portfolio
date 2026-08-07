@@ -13,8 +13,16 @@ npx tsc --noEmit     # typecheck without building — fastest correctness gate
 
 npm run db:push      # push prisma/schema.prisma to the database
 npm run db:seed      # upsert the admin user + the original 6 projects (tsx prisma/seed.ts)
+npm run db:seed:content   # fill the CMS tables; never overwrites edited copy
 npm run db:studio    # Prisma Studio
+
+SEED_FORCE=1 npm run db:seed:content   # realign sections + settings to the defaults
 ```
+
+After changing `prisma/schema.prisma`, run `npx prisma generate` **and restart any
+running dev server** — a process that booted with the old client will have `undefined`
+where the new models should be, and the content getters will silently serve their
+fallbacks instead of the database.
 
 There is no test framework in this project — no runner, no test files. `tsc --noEmit`,
 `next lint` and a real `next build` are the available verification. Behaviour that depends
@@ -90,6 +98,36 @@ receives the ids of one admin page plus that page's `startOrder`, splices them i
 ordered list, and rewrites every row in a transaction. Writing only the page's rows would
 let values collide across pages. `POST /api/projects` appends with `max(displayOrder) + 1`.
 
+### The CMS
+
+Everything on the public site is editable from `/admin`. Four tables back it:
+
+- **`SiteSection`** — one row per block of the homepage, keyed `hero` / `about` / `skills` /
+  `projects` / `contact`. One generic shape (eyebrow, heading, highlight, subheading,
+  `body[]`, image, cta) covers all five; `SECTION_FIELDS` in `src/lib/content-defaults.ts`
+  decides which inputs the editor shows per key, so `skills` and `projects` only offer their
+  two headings. `highlight` is a substring of `heading` that `Main` paints in the brand
+  colour — that is how "Hi, I'm **André**" stays editable without HTML in the database.
+- **`Skill`** and **`SocialLink`** — ordered collections, drag-sorted through
+  `SortableList`, each rewritten to a gapless 0..n-1 sequence by its `reorder` endpoint.
+  The social links render in three places (hero, mobile menu, contact card) that used to
+  hardcode the same URLs.
+- **`SiteSettings`** — a single `singleton` row with the metadata and the resume PDF path.
+
+`src/lib/content.ts` is the only reader. **Every getter falls back to the copy the
+components used to hardcode** (`src/lib/content-defaults.ts`), so an empty table or an
+unreachable database renders the site as it looked before the CMS rather than blanking a
+section. That safety net is also what hides a stale Prisma client, so don't take a
+correct-looking page as proof the database is being read.
+
+`content-defaults.ts` deliberately imports nothing: the seed script loads it outside Next,
+and the admin client components need its labels without pulling Prisma into the browser
+bundle.
+
+Shared route-handler plumbing lives in `src/lib/cms.ts` (`requireAdmin`, `revalidateSite`,
+`zodError`) and the payload shapes in `src/lib/cms-schemas.ts` — schemas cannot live in a
+`route.ts`, since Next rejects exports from a route module that are not handlers.
+
 ### Caching — the easiest thing to break
 
 `/` is **statically prerendered** (confirm with the `○` marker in `next build` output). It
@@ -105,16 +143,31 @@ If you add another way to mutate projects, it needs the same call, otherwise the
 silently keeps serving the build-time snapshot until the next deploy. This is not visible
 in `npm run dev` — only in `next build && next start`.
 
+The CMS endpoints go through `revalidateSite()` in `src/lib/cms.ts`, which busts `/` **and
+`/resume`** — both are prerendered (`○` in the build output), and `/resume` reads the
+resume PDF path from settings.
+
 `/projects/[slug]` is currently dynamic (`ƒ`), so revalidating it is defensive; it becomes
 load-bearing the moment `generateStaticParams` is added.
 
+Revalidation only clears the cache of the server that runs it. Editing against localhost
+does **not** refresh the deployed site: production keeps its build-time HTML until a
+mutation goes through the production admin, or the project is redeployed.
+
 ### Admin CMS
 
-`/admin` lists projects 10 per page with search over title/slug/technologies, and
-drag-to-reorder via dnd-kit (disabled while a search filter is active, since ordering a
-filtered list is meaningless). `DndContext` **must keep its stable `id`** — without it
-dnd-kit derives `aria-describedby` from a module-level counter that differs between server
-and client, producing a hydration error on every reload.
+`/admin` is tabbed: Projects · Content · Skills · Social · Settings (`AdminNav`).
+
+The projects list shows 10 per page with search over title/slug/technologies. Ordering has
+two paths: drag-to-reorder within the page, and a **position input** per row showing the
+project's global position, which moves it to any page. Both hit
+`PATCH /api/projects/reorder`, which accepts either `{ids, startOrder}` or `{id, position}`.
+A **Show all** toggle (`?all=1`) drops paging so dragging can reach every row. Ordering is
+disabled while a search filter is active, since ordering a filtered list is meaningless.
+
+Every `DndContext` **must keep its stable `id`** — without it dnd-kit derives
+`aria-describedby` from a module-level counter that differs between server and client,
+producing a hydration error on every reload.
 
 Contact form posts to `/api/contact`, which sends through Resend.
 
@@ -138,7 +191,26 @@ its left and right edges.
 - The README is the untouched `create-next-app` boilerplate and describes a `pages/`
   router this project does not use — ignore it.
 
-## Recent work (2026-08-06)
+## Recent work (2026-08-07) — the CMS
+
+`/admin` became a full CMS for the whole site: `SiteSection`, `Skill`, `SocialLink` and
+`SiteSettings` were added (additive push, `Project` untouched), the public components now
+read through `src/lib/content.ts`, `Contact` was split so only the form ships as a client
+component, and the social links were de-duplicated out of four files into `SocialIcon` plus
+one table. `/resume`'s rendered CV stays in code by choice; only its PDF path is managed.
+
+Nine projects were also added or re-shot from the live sites (Villa del Arte, Propio,
+Portal 311, CRM 311, EM Store; Becas and Gob.do re-captured after redesigns).
+
+Open threads:
+
+- `prisma/seed.ts` still pins `imageUrl` for **becas** and **gobdo** to the old static PNGs,
+  so a `db:seed` would revert those two cards to pre-redesign screenshots.
+- Production has never been revalidated since these edits were made against localhost, so
+  the deployed homepage is stale — and Propio's card points at an image row that was
+  deleted, which 404s.
+
+## Earlier work (2026-08-06)
 
 Four commits, `a5bc797..415f023`, all already committed:
 

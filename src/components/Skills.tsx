@@ -1,21 +1,12 @@
 import Image from 'next/image';
+import { getSection, getSkills } from '@/lib/content';
 
-const skills = [
-  { name: 'HTML', src: '/assets/skills/html.png', size: 64 },
-  { name: 'CSS', src: '/assets/skills/css.png', size: 64 },
-  { name: 'Javascript', src: '/assets/skills/javascript.png', size: 64 },
-  { name: 'React', src: '/assets/skills/react.png', size: 64 },
-  { name: 'Next.js', src: '/assets/skills/nextjs.png', size: 64 },
-  { name: 'Tailwind', src: '/assets/skills/tailwind.png', size: 64 },
-  { name: 'Material UI', src: '/assets/skills/material-ui.svg', size: 64 },
-  { name: 'Node.js', src: '/assets/skills/node.png', size: 64 },
-  { name: 'Supabase', src: '/assets/skills/supabase.svg', size: 64 },
-  { name: 'PostgreSQL', src: '/assets/skills/PostgreSQL.svg', size: 64 },
-  { name: 'MongoDB', src: '/assets/skills/MongoDB.svg', size: 32 },
-  { name: 'Prisma', src: '/assets/skills/Prisma.svg', size: 40 },
-];
+const Skills = async () => {
+  const [section, skills] = await Promise.all([
+    getSection('skills'),
+    getSkills(),
+  ]);
 
-const Skills = () => {
   return (
     <div
       id="skills"
@@ -23,22 +14,25 @@ const Skills = () => {
     >
       <div className="max-w-310 px-5 xs:px-10 xl:px-0 mx-auto flex flex-col justify-center w-full h-full">
         <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-          Skills
+          {section.eyebrow}
         </p>
-        <h2 className="py-4">What I Can Do</h2>
+        <h2 className="py-4">{section.heading}</h2>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((skill) => (
             <div
-              key={skill.name}
+              key={skill.id}
               className="flex justify-center p-6 duration-300 ease-in shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105"
             >
               <div className="grid items-center justify-center w-full grid-cols-2 gap-4">
                 <div className="flex m-auto">
+                  {/* unoptimized: logos can be uploaded through the CMS and land
+                      on /api/images, or point at an arbitrary URL. */}
                   <Image
-                    src={skill.src}
-                    width={skill.size}
-                    height={skill.size}
+                    src={skill.imageUrl}
+                    width={skill.iconSize}
+                    height={skill.iconSize}
                     alt={skill.name}
+                    unoptimized
                   />
                 </div>
                 <div className="flex flex-col items-center justify-center">
@@ -48,6 +42,9 @@ const Skills = () => {
             </div>
           ))}
         </div>
+        {skills.length === 0 && (
+          <p className="text-gray-500 py-8">No skills yet.</p>
+        )}
       </div>
     </div>
   );

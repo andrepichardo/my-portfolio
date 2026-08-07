@@ -17,6 +17,7 @@
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
+    "db:seed:content": "tsx prisma/seed-content.ts",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate"
   },

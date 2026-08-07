@@ -27,6 +27,65 @@ model Image {
   createdAt DateTime @default(now())
 }
 
+// Editable copy for each block of the one-page site, keyed by section. One
+// shape covers all of them: not every section fills every field (skills and
+// projects only need the two headings), which keeps this to a single table and
+// a single editor instead of one model per section.
+//
+//   hero      eyebrow, heading + highlight, subheading, body[0]
+//   about     eyebrow, heading, body[], imageUrl, cta
+//   skills    eyebrow, heading
+//   projects  eyebrow, heading
+//   contact   eyebrow, heading, body[0], imageUrl
+model SiteSection {
+  key        String   @id
+  eyebrow    String   @default("")
+  heading    String   @default("")
+  // Substring of `heading` painted in the brand colour, e.g. the name in
+  // "Hi, I'm André". Empty means the heading renders plain.
+  highlight  String   @default("")
+  subheading String   @default("")
+  body       String[]
+  imageUrl   String   @default("")
+  ctaLabel   String   @default("")
+  ctaHref    String   @default("")
+  updatedAt  DateTime @updatedAt
+}
+
+model Skill {
+  id           String   @id @default(cuid())
+  name         String
+  imageUrl     String
+  // The logos are not optically equal at the same box, so each keeps its own.
+  iconSize     Int      @default(64)
+  displayOrder Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// One row per link, reused by the hero, the navbar and the contact card, which
+// used to hardcode the same two URLs in four different files.
+model SocialLink {
+  id           String   @id @default(cuid())
+  label        String
+  url          String
+  // Key into the icon map in src/components/SocialIcon.tsx.
+  icon         String
+  displayOrder Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteSettings {
+  id              String   @id @default("singleton")
+  metaTitle       String
+  metaDescription String
+  resumeUrl       String   @default("")
+  updatedAt       DateTime @updatedAt
+}
+
 model Project {
   id           String   @id @default(cuid())
   title        String

@@ -1,9 +1,28 @@
 import Link from 'next/link';
-import { AiOutlineMail } from 'react-icons/ai';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { getSection, getSocialLinks } from '@/lib/content';
+import SocialIcon from './SocialIcon';
 
-const Main = () => {
+/** Paints the configured substring of the heading in the brand colour. */
+function renderHeading(heading: string, highlight: string) {
+  if (!highlight) return heading;
+  const at = heading.indexOf(highlight);
+  if (at === -1) return heading;
+
+  return (
+    <>
+      {heading.slice(0, at)}
+      <span className="text-[#5651e5]">{highlight}</span>
+      {heading.slice(at + highlight.length)}
+    </>
+  );
+}
+
+const Main = async () => {
+  const [hero, links] = await Promise.all([
+    getSection('hero'),
+    getSocialLinks(),
+  ]);
+
   return (
     <div
       id="home"
@@ -11,50 +30,58 @@ const Main = () => {
     >
       <div className="max-w-310 w-full mx-auto h-full flex justify-center items-center">
         <div className="flex flex-col gap-1">
-          <p className="uppercase text-sm tracking-widest text-gray-600 dark:text-[#ecf0f3] transition-all mb-2">
-            Let&apos;s build something together
-          </p>
+          {hero.eyebrow && (
+            <p className="uppercase text-sm tracking-widest text-gray-600 dark:text-[#ecf0f3] transition-all mb-2">
+              {hero.eyebrow}
+            </p>
+          )}
           <h1 className="py-0 text-gray-700 dark:text-[#ecf0f3] transition-all">
-            Hi, I&apos;m <span className="text-[#5651e5]">André</span>
+            {renderHeading(hero.heading, hero.highlight)}
           </h1>
-          <h1 className="text-gray-700 dark:text-[#ecf0f3] transition-all mb-3 px-3">
-            A Front-End Web Developer
-          </h1>
-          <p className="text-gray-600 dark:text-[#ecf0f3] transition-all max-w-[90%] md:max-w-[60%] m-auto font-light">
-            I&apos;m a passionate dominican software developer, specializing in
-            building (and occasionally designing) great digital experiences.
-          </p>
+          {hero.subheading && (
+            <h1 className="text-gray-700 dark:text-[#ecf0f3] transition-all mb-3 px-3">
+              {hero.subheading}
+            </h1>
+          )}
+          {hero.body[0] && (
+            <p className="text-gray-600 dark:text-[#ecf0f3] transition-all max-w-[90%] md:max-w-[60%] m-auto font-light">
+              {hero.body[0]}
+            </p>
+          )}
           <div className="flex items-center justify-around w-full gap-1 xs:gap-4 max-w-82.5 m-auto mt-3">
-            <a
-              className="rounded-full"
-              href="https://www.linkedin.com/in/andre-pichardo/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                <FaLinkedinIn className="w-5 h-5 text-blue-800" />
-              </div>
-            </a>
-            <a
-              className="rounded-full"
-              href="https://github.com/andrepichardo"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                <FaGithub className="w-5 h-5 text-blue-800" />
-              </div>
-            </a>
-            <Link className="rounded-full" href="/#contact">
-              <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                <AiOutlineMail className="w-5 h-5 text-blue-800" />
-              </div>
-            </Link>
-            <Link className="rounded-full" href="/resume">
-              <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
-                <BsFillPersonLinesFill className="w-5 h-5 text-blue-800" />
-              </div>
-            </Link>
+            {links.map((link) => {
+              const internal = link.url.startsWith('/');
+              const circle = (
+                <div className="p-5 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900 xs:p-6 hover:scale-110">
+                  <SocialIcon
+                    icon={link.icon}
+                    className="w-5 h-5 text-blue-800"
+                  />
+                </div>
+              );
+
+              return internal ? (
+                <Link
+                  key={link.id}
+                  className="rounded-full"
+                  href={link.url}
+                  aria-label={link.label}
+                >
+                  {circle}
+                </Link>
+              ) : (
+                <a
+                  key={link.id}
+                  className="rounded-full"
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={link.label}
+                >
+                  {circle}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
