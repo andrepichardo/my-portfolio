@@ -26,7 +26,7 @@ const SKILLS: { group: string; items: string }[] = [
   },
   {
     group: "Backend & Databases",
-    items: "Node.js | MongoDB | PostgreSQL | Firebase | REST APIs",
+    items: "Node.js | MongoDB | PostgreSQL | Supabase | Prisma",
   },
   {
     group: "CMS & Builders",
