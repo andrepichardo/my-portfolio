@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { FaDownload, FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { getSettings } from "@/lib/content";
+import { FaDownload } from "react-icons/fa";
+import { getSettings, getSocialLinks } from "@/lib/content";
+import SocialIcon from "@/components/SocialIcon";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings();
@@ -10,179 +11,250 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+const SUMMARY = [
+  "Frontend Developer with 4+ years of experience building scalable web applications across different sectors (government, telecommunications, marketing and more).",
+  "Specialist in React, Next.js, TypeScript and TailwindCSS; focus on performance (Core Web Vitals), accessibility (WCAG 2.1), and responsive UX.",
+  "Former QA Tester with a strong quality-first mindset, experienced in designing automated test cases and ensuring stable, reliable releases.",
+  "Proven track record building citizen-facing digital services impacting 150,000+ users, with expertise in REST API integrations and Agile collaboration.",
+];
+
+const SKILLS: { group: string; items: string }[] = [
+  {
+    group: "Frontend",
+    items:
+      "React | Next.js | TypeScript | TailwindCSS | HTML5 | CSS3 | React Query/TanStack | Zod | shadcn/ui | Radix UI",
+  },
+  {
+    group: "Backend & Databases",
+    items: "Node.js | MongoDB | PostgreSQL | Firebase | REST APIs",
+  },
+  {
+    group: "CMS & Builders",
+    items: "WordPress | Elementor | ACF | WooCommerce",
+  },
+  { group: "DevOps & QA", items: "Git | CI/CD | Docker | Jest | Cypress" },
+  {
+    group: "SEO & Performance",
+    items:
+      "Technical SEO | Core Web Vitals | Accessibility (WCAG) | Responsive Design",
+  },
+  {
+    group: "Hosting & Analytics",
+    items: "AWS/cPanel | Google Analytics | Search Console",
+  },
+  { group: "Languages", items: "Spanish (Native) | English (Professional)" },
+];
+
+const OGTIC_BULLETS = [
+  "Developed and maintained large-scale government platforms using React, Next.js, and TailwindCSS, delivering modern, responsive, and scalable user interfaces.",
+  "Implemented SEO, accessibility (WCAG 2.1), and performance optimizations, improving user engagement and Core Web Vitals scores.",
+  "Engineered multi-step form flows with robust validations, state management, and seamless API integrations, streamlining online service applications.",
+  "Partnered with designers, backend developers, and QA teams in Agile sprints to ship production-ready features on time.",
+];
+
+const GOV_PROJECTS = [
+  {
+    name: "International Scholarships Portal (becas.gob.do)",
+    detail:
+      "Responsive layout and backend API integration for online applications, benefitting more than 157,000 users and nearly 10,000 scholarship recipients.",
+  },
+  {
+    name: "Gob.do",
+    detail:
+      "Contributed to the central government services portal; mobile-first UI and multi-step form logic, enabling digital access to 300+ services for thousands of citizens and families.",
+  },
+  {
+    name: "SAIP Portal (Public Information Access)",
+    detail:
+      "Sole frontend developer; integrated endpoints into the new design, strengthening transparency and streamlining requests across hundreds of institutions.",
+  },
+  {
+    name: "311 Portal & CRM",
+    detail:
+      "UI, data fetching and endpoint integrations for citizen reports and case management, improving national handling of complaints, claims and suggestions.",
+  },
+];
+
+const ALTICE_BULLETS = [
+  "Designed and executed comprehensive manual and automated test cases for web and mobile applications, ensuring high-quality releases.",
+  "Identified, documented, and tracked critical defects, collaborating closely with developers to accelerate resolution and improve system stability.",
+  "Contributed to the standardization of test plans and regression suites, reducing release cycles and increasing overall testing efficiency.",
+];
+
+const EDUCATION = [
+  {
+    school: "Instituto Tecnológico de Santo Domingo (INTEC)",
+    detail: "B.S. in Electronics & Communications Engineering (2015–2019)",
+  },
+  {
+    school: "Colegio APEC Fernando Arturo de Meriño (CAFAM)",
+    detail:
+      "Technical High School Diploma in Electronics & Microcomputing (2015)",
+  },
+];
+
+const CERTIFICATIONS = [
+  "React.js (Hooks & MERN) — Udemy — 2021",
+  "Professional Web Development (HTML/CSS/JavaScript) — Udemy — 2020",
+];
+
+const bullet =
+  "p-2 cursor-pointer hover:shadow-md hover:rounded-lg transition-all";
+const list =
+  "py-1 leading-relaxed text-justify list-disc list-outside px-7";
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h5 className="text-center underline text-[18px] py-4">{children}</h5>
+  );
+}
+
 export default async function ResumePage() {
-  // The rendered CV below stays in code; only the downloadable PDF is managed
-  // from the CMS.
-  const { resumeUrl } = await getSettings();
+  // The rendered CV stays in code; only the downloadable PDF and the social
+  // links come from the CMS.
+  const [{ resumeUrl }, links] = await Promise.all([
+    getSettings(),
+    getSocialLinks(),
+  ]);
+  // Only the outbound profiles belong up here — the mail and resume shortcuts
+  // point back into the site.
+  const profiles = links.filter((link) => !link.url.startsWith("/"));
 
   return (
-    <div className="max-w-235 mx-auto px-5 xs:px-10 xl:px-0 pt-30">
+    <div className="max-w-235 mx-auto px-5 xs:px-10 xl:px-0 pt-30 pb-16">
       <h2 className="text-center">Resume</h2>
+
       <div className="bg-[#d0d4d6] dark:bg-[#2a374a] transition-all my-4 p-4 w-full flex justify-between flex-wrap gap-2 items-center">
         <h2 className="text-xl xs:text-3xl md:text-4xl">André Pichardo</h2>
         <div className="flex items-center gap-2">
-          <a href={resumeUrl} download className="p-0.5 xs:p-1">
+          <a
+            href={resumeUrl}
+            download
+            className="p-0.5 xs:p-1"
+            aria-label="Download resume as PDF"
+          >
             <FaDownload className="w-3.5 h-3.5 xs:w-4 xs:h-4 md:w-5 md:h-5" />
           </a>
-          <a
-            href="https://www.linkedin.com/in/andre-pichardo/"
-            target="_blank"
-            rel="noreferrer"
-            className="p-0.5 xs:p-1"
-          >
-            <FaLinkedinIn className="w-4 h-4 xs:w-5 xs:h-5 md:w-6 md:h-6" />
-          </a>
-          <a
-            href="https://github.com/andrepichardo"
-            target="_blank"
-            rel="noreferrer"
-            className="p-0.5 xs:p-1"
-          >
-            <FaGithub className="w-4 h-4 xs:w-5 xs:h-5 md:w-6 md:h-6" />
-          </a>
+          {profiles.map((profile) => (
+            <a
+              key={profile.id}
+              href={profile.url}
+              target="_blank"
+              rel="noreferrer"
+              className="p-0.5 xs:p-1"
+              aria-label={profile.label}
+            >
+              <SocialIcon
+                icon={profile.icon}
+                className="w-4 h-4 xs:w-5 xs:h-5 md:w-6 md:h-6"
+              />
+            </a>
+          ))}
         </div>
       </div>
-      <div className="py-4 text-xl font-bold tracking-wider text-center uppercase">
-        <div className="hidden sm:block">
-          <p>
-            Teamwork <span className="px-1">|</span> Web Development{" "}
-            <span className="px-1">|</span>Problem Solving
-          </p>
-        </div>
-        <div className="block sm:hidden">
-          <p>Teamwork</p>
-          <p className="py-2">Web Development</p>
-          <p>Problem Solving</p>
-        </div>
-      </div>
-      <p className="text-justify">
-        Electronics and Communications Engineer based in Dominican Republic,
-        currently specialized in Frontend Web Development field, constantly
-        learning new technologies to grow in this great industry. Passionate,
-        innovative, and motivated professional with experience in team
-        collaboration, problem solving, and organizational effectiveness in
-        fast-paced and challenging environments.
-      </p>
 
-      {/* Skills */}
       <div className="py-4 text-center">
-        <h5 className="text-center underline text-[18px] py-2">Skills</h5>
-        <p className="py-2">
-          <span className="font-bold">Technical Skills</span>
-          <span className="px-2">|</span> Web Development
-          <span className="px-2">|</span> HTML
-          <span className="px-2">|</span> CSS
-          <span className="px-2">|</span> Javascript
-          <span className="px-2">|</span> React
-          <span className="px-2">|</span> NextJS
-          <span className="px-2">|</span> PostgreSQL
-          <span className="px-2">|</span> Redux
-          <span className="px-2">|</span> TailwindCSS
-          <span className="px-2">|</span> MongoDB
-          <span className="px-2">|</span> Supabase
-          <span className="px-2">|</span> RESTAPI
+        <p className="text-lg font-bold tracking-wider uppercase">
+          Software Developer
         </p>
-        <p className="py-2">
-          <span className="font-bold">Soft Skills</span>
-          <span className="px-2">|</span> Communication
-          <span className="px-2">|</span> Teamwork
-          <span className="px-2">|</span> Organization
-          <span className="px-2">|</span> Problem Solving
-          <span className="px-2">|</span> Flexibility
+        <p className="pt-2 text-sm tracking-wider uppercase text-gray-600 dark:text-[#abb8c2]">
+          React <span className="px-1">•</span> Next.js
+          <span className="px-1">•</span> TypeScript
+          <span className="px-1">•</span> Node.js
+        </p>
+        <p className="pt-3 text-sm text-gray-600 dark:text-[#abb8c2]">
+          Santo Domingo, Dominican Republic
         </p>
       </div>
 
-      <h5 className="text-center underline text-[18px] py-4">
-        Professional Experience
-      </h5>
-      {/* Experience 1 */}
+      <SectionTitle>Summary</SectionTitle>
+      <ul className={list}>
+        {SUMMARY.map((line) => (
+          <li key={line} className={bullet}>
+            {line}
+          </li>
+        ))}
+      </ul>
+
+      <SectionTitle>Technical Skills</SectionTitle>
+      <div className="flex flex-col gap-1">
+        {SKILLS.map((skill) => (
+          <p key={skill.group} className="py-2">
+            <span className="font-bold">{skill.group}</span>
+            <span className="px-2">|</span>
+            {skill.items}
+          </p>
+        ))}
+      </div>
+
+      <SectionTitle>Professional Experience</SectionTitle>
+
       <div className="py-6">
         <p className="italic">
           <span className="italic font-bold">
-            Oficina Gubernamental De Tecnologías De La Información Y
-            Comunicación (OGTIC)
+            Government Office of Information and Communication Technologies of
+            the Dominican Republic (OGTIC)
           </span>
-          <span className="px-2">|</span>Distrito Nacional, DO
+          <span className="px-2">|</span>Santo Domingo, DO
         </p>
-        <p className="py-1 italic">
-          Front End Web Developer (Aug 2021 - Current)
+        <p className="py-1 italic">Frontend Developer (Aug 2021 – Present)</p>
+        <ul className={list}>
+          {OGTIC_BULLETS.map((line) => (
+            <li key={line} className={bullet}>
+              {line}
+            </li>
+          ))}
+        </ul>
+
+        <p className="pt-4 pb-1 font-bold uppercase text-sm tracking-wider">
+          Highlighted Government Projects
         </p>
-        <ul className="py-1 leading-relaxed text-justify list-disc list-outside px-7">
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Development using mostly React.js, TypeScript &amp; TailwindCSS.
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Create mobile responsive web applications with special attention and
-            implementation of SEO, UI/UX and clean code.
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Troubleshoot issues and concerns found in QA Testing process, such
-            as functionality and design changes as needed.
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Work along with other developers to create and implement multiple
-            technologies and programs.
-          </li>
+        <ul className={list}>
+          {GOV_PROJECTS.map((project) => (
+            <li key={project.name} className={bullet}>
+              <span className="font-bold">{project.name}</span>: {project.detail}
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Experience 2 */}
       <div className="py-6">
         <p className="italic">
           <span className="italic font-bold">Altice Dominicana</span>
-          <span className="px-2">|</span>Distrito Nacional, DO
+          <span className="px-2">|</span>Santo Domingo, DO
         </p>
-        <p className="py-1 italic">Software QA Tester (Jul 2019 - Aug 2021)</p>
-        <ul className="py-1 leading-relaxed text-justify list-disc list-outside px-7">
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Carrying out different QA tests to guarantee the correct operation
-            of the new FW and SW that were deployed throughout the Headend
-            network (TV clients).
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Identification of errors / bugs to later be reported and corrected
-            with the developer team.
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Constant communication with foreign developers from Europe (in
-            English).
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Weekly reports with the results of the tests carried out on the
-            latest version of FW / SW released.
-          </li>
+        <p className="py-1 italic">
+          Software Quality Assurance Tester (Nov 2019 – Aug 2021)
+        </p>
+        <ul className={list}>
+          {ALTICE_BULLETS.map((line) => (
+            <li key={line} className={bullet}>
+              {line}
+            </li>
+          ))}
         </ul>
       </div>
 
-      <h5 className="text-center underline text-[18px] py-4">
-        Other Professional Experience
-      </h5>
-
-      {/* Experience 3 */}
-      <div className="py-6">
-        <p className="italic">
-          <span className="font-bold">Altice Dominicana</span>
-          <span className="px-2">|</span>Distrito Nacional, DO
-        </p>
-        <p className="py-1 italic">Warehouse Assistant (May 2019 - Jul 2019)</p>
-        <ul className="py-1 leading-relaxed text-justify list-disc list-outside px-7">
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Assist with receiving, unloading, counting and stocking physical
-            inventory in the warehouse.
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Ensure orders are processed efficiently and that the delivery of
-            materials meets business timelines.
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Pack item according to specified packing guidelines.
-          </li>
-          <li className="p-2 cursor-pointer hover:shadow-md hover:rounded-lg">
-            Inspect items to ensure they&apos;re not damaged or faulty and
-            adjust inventory accordingly.
-          </li>
-        </ul>
+      <SectionTitle>Education</SectionTitle>
+      <div className="flex flex-col gap-4 py-2">
+        {EDUCATION.map((entry) => (
+          <div key={entry.school}>
+            <p className="font-bold">{entry.school}</p>
+            <p className="italic text-gray-600 dark:text-[#abb8c2]">
+              {entry.detail}
+            </p>
+          </div>
+        ))}
       </div>
+
+      <SectionTitle>Certifications</SectionTitle>
+      <ul className={list}>
+        {CERTIFICATIONS.map((cert) => (
+          <li key={cert} className={bullet}>
+            {cert}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
