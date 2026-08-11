@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { getSection, getSkills } from '@/lib/content';
+import Reveal from './Reveal';
 
 const Skills = async () => {
   const [section, skills] = await Promise.all([
@@ -13,14 +14,18 @@ const Skills = async () => {
       className="w-full h-full md:min-h-screen flex items-center border-b-2 dark:border-[#2a374a] py-24"
     >
       <div className="max-w-310 px-5 xs:px-10 xl:px-0 mx-auto flex flex-col justify-center w-full h-full">
-        <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-          {section.eyebrow}
-        </p>
-        <h2 className="py-4">{section.heading}</h2>
+        <Reveal>
+          <p className="uppercase text-xl tracking-widest text-[#5651e5]">
+            {section.eyebrow}
+          </p>
+          <h2 className="py-4">{section.heading}</h2>
+        </Reveal>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {skills.map((skill) => (
-            <div
+          {skills.map((skill, index) => (
+            <Reveal
               key={skill.id}
+              // Capped so a long list doesn't leave the last card waiting.
+              delay={Math.min(index, 7) * 70}
               className="flex justify-center p-6 duration-300 ease-in shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105"
             >
               <div className="grid items-center justify-center w-full grid-cols-2 gap-4">
@@ -39,7 +44,7 @@ const Skills = async () => {
                   <h3>{skill.name}</h3>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
         {skills.length === 0 && (

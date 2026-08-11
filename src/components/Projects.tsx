@@ -6,6 +6,7 @@ import {
   projectCardSelect,
 } from '@/lib/projects';
 import ProjectsGrid, { type ProjectCard } from './ProjectsGrid';
+import Reveal from './Reveal';
 
 const Projects = async () => {
   const section = await getSection('projects');
@@ -40,21 +41,25 @@ const Projects = async () => {
       className="w-full md:min-h-screen h-full flex items-center border-b-2 dark:border-[#2a374a]"
     >
       <div className="max-w-310 px-5 xs:px-10 xl:px-0 w-full mx-auto py-24">
-        <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-          {section.eyebrow}
-        </p>
-        <h2 className="py-4">{section.heading}</h2>
+        <Reveal>
+          <p className="uppercase text-xl tracking-widest text-[#5651e5]">
+            {section.eyebrow}
+          </p>
+          <h2 className="py-4">{section.heading}</h2>
+        </Reveal>
 
         {projects.length === 0 ? (
           <p className="text-gray-500 text-center py-8">
             No projects yet. Add some from the admin panel.
           </p>
         ) : (
-          <ProjectsGrid
-            initialProjects={projects}
-            totalPages={totalPages}
-            pageSize={PROJECTS_PAGE_SIZE}
-          />
+          <Reveal delay={120}>
+            <ProjectsGrid
+              initialProjects={projects}
+              totalPages={totalPages}
+              pageSize={PROJECTS_PAGE_SIZE}
+            />
+          </Reveal>
         )}
       </div>
     </div>

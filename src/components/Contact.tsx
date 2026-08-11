@@ -4,6 +4,7 @@ import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { getSection, getSocialLinks } from '@/lib/content';
 import ContactForm from './ContactForm';
 import SocialIcon from './SocialIcon';
+import Reveal from './Reveal';
 
 const Contact = async () => {
   const [contact, links] = await Promise.all([
@@ -19,13 +20,15 @@ const Contact = async () => {
       className="flex flex-col items-center justify-center w-full h-full md:min-h-screen"
     >
       <div className="max-w-310 m-auto px-5 xs:px-10 xl:px-0 pt-24 pb-10 w-full">
-        <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-          {contact.eyebrow}
-        </p>
-        <h2 className="py-4">{contact.heading}</h2>
+        <Reveal>
+          <p className="uppercase text-xl tracking-widest text-[#5651e5]">
+            {contact.eyebrow}
+          </p>
+          <h2 className="py-4">{contact.heading}</h2>
+        </Reveal>
         <div className="flex flex-col gap-8 lg:grid lg:grid-cols-5">
           {/* left */}
-          <div className="flex w-full h-full px-5 py-10 shadow-xl lg:col-span-2 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl">
+          <Reveal className="flex w-full h-full px-5 py-10 shadow-xl lg:col-span-2 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl">
             <div className="flex flex-col justify-between h-full lg:p-4">
               {contact.imageUrl && (
                 <div className="flex duration-300 ease-in rounded-xl hover:scale-95">
@@ -99,13 +102,16 @@ const Contact = async () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
           {/* right */}
-          <div className="w-full h-auto px-3 shadow-xl lg:col-span-3 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl lg:p-4">
+          <Reveal
+            delay={150}
+            className="w-full h-auto px-3 shadow-xl lg:col-span-3 shadow-gray-400 dark:shadow-gray-900/80 rounded-xl lg:p-4"
+          >
             <div className="w-full py-4">
               <ContactForm />
             </div>
-          </div>
+          </Reveal>
         </div>
         <div className="flex justify-center pt-16">
           <Link

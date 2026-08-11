@@ -22,6 +22,13 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* The scroll reveal hides its content until JavaScript observes it.
+            Without this, a reader with JS disabled would get a blank page. */}
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </head>
       <body>
         <Providers>
           <Navbar links={links} />

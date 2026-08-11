@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FiChevronDown } from 'react-icons/fi';
 import { getSection } from '@/lib/content';
+import Reveal from './Reveal';
 
 const About = async () => {
   const about = await getSection('about');
@@ -12,7 +13,7 @@ const About = async () => {
       className="w-full md:min-h-screen h-full border-b-2 dark:border-[#2a374a] flex items-center py-24"
     >
       <div className="max-w-310 px-5 xs:px-10 xl:px-0 m-auto md:grid grid-cols-3 gap-8">
-        <div className="col-span-2">
+        <Reveal className="col-span-2">
           <p className="uppercase text-xl tracking-widest text-[#5651e5]">
             {about.eyebrow}
           </p>
@@ -36,9 +37,12 @@ const About = async () => {
               <FiChevronDown />
             </Link>
           )}
-        </div>
+        </Reveal>
         {about.imageUrl && (
-          <div className="flex items-center justify-center w-full h-auto p-4 m-auto duration-300 ease-in shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl hover:scale-105">
+          <Reveal
+            delay={150}
+            className="flex items-center justify-center w-full h-auto p-4 m-auto duration-300 ease-in shadow-xl shadow-gray-400 dark:shadow-gray-900/80 rounded-xl hover:scale-105"
+          >
             {/* unoptimized: the src may be an uploaded /api/images path or an
                 arbitrary URL set from the CMS. */}
             <Image
@@ -49,7 +53,7 @@ const About = async () => {
               height={500}
               unoptimized
             />
-          </div>
+          </Reveal>
         )}
       </div>
     </div>

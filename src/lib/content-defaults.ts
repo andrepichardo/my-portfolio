@@ -97,12 +97,12 @@ export const SOCIAL_ICONS = [
 export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
   hero: {
     key: "hero",
-    eyebrow: "Let's build something together",
+    eyebrow: "Let's build something worth using",
     heading: "Hi, I'm André",
     highlight: "André",
-    subheading: "A Front-End Web Developer",
+    subheading: "A Full-Stack Software Developer",
     body: [
-      "I'm a passionate dominican software developer, specializing in building (and occasionally designing) great digital experiences.",
+      "From government platforms serving 150,000+ citizens to SaaS products, e-commerce stores, blogs and landing pages. I build them with React, Next.js and TypeScript — or WordPress, when that is the right tool for the job.",
     ],
     imageUrl: "",
     ctaLabel: "",
@@ -115,8 +115,9 @@ export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
     highlight: "",
     subheading: "",
     body: [
-      "Graduated as an Electronics and Communications engineer in 2019, my career as a programmer began that same year when I started working as a QA Software Tester for a local telecom company. There I started learning HTML, CSS and Javascript to fix some minor UI and programming issues in some of their projects. Some time later in 2021, I officially got my first job as a frontend developer at the company I currently work for. In my spare time, I like to play videogames, exercise, watch movies and hang out with friends.",
-      "I am concentrated on building awesome web applications that connect with API's and other backend technologies. Though I am most proficient in creating websites using primarily React with Next.js, TailwindCSS and MongoDB, I am a quick learner and can pick up new tech stacks as needed. I believe that being a great developer is not using one specific language, but choosing the best tool for the job. At the moment, focused on front-end development, while learning back-end technologies.",
+      "I studied Electronics and Communications engineering at INTEC and graduated in 2019, but I got into software through the back door: two years as a QA tester at Altice Dominicana, breaking other people's code for a living. It turned out to be the best training I could have asked for — I learned what fragile software looks like from the outside, and I still write code like someone is about to try to break it.",
+      "In 2021 I joined OGTIC, the Dominican government's technology office, as a frontend developer, and I have been there five years. Most of what I build is public: portals where people apply for a scholarship, file a complaint, or reach any of the 300+ services the State offers online. That audience is the whole point — these platforms get opened on old phones and slow connections, so performance, accessibility and multi-step forms that never lose your data are the problems I actually care about. Day to day that means React, Next.js, TypeScript and TailwindCSS against a REST API.",
+      "Alongside that I take on client work — WordPress and e-commerce builds for businesses that need a site that actually sells — and I am building Propio, my own SaaS for independent landlords. Away from the keyboard you will find me gaming, at the gym, or catching a movie with friends.",
     ],
     imageUrl: "/assets/PortfolioPicture.jpg",
     ctaLabel: "Check out some of my latest projects.",

@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const SUMMARY = [
-  "Frontend Developer with 4+ years of experience building scalable web applications across different sectors (government, telecommunications, marketing and more).",
+  "Frontend Developer with 5+ years of experience building scalable web applications across different sectors (government, telecommunications, marketing and more).",
   "Specialist in React, Next.js, TypeScript and TailwindCSS; focus on performance (Core Web Vitals), accessibility (WCAG 2.1), and responsive UX.",
   "Former QA Tester with a strong quality-first mindset, experienced in designing automated test cases and ensuring stable, reliable releases.",
   "Proven track record building citizen-facing digital services impacting 150,000+ users, with expertise in REST API integrations and Agile collaboration.",
@@ -100,13 +100,10 @@ const CERTIFICATIONS = [
 
 const bullet =
   "p-2 cursor-pointer hover:shadow-md hover:rounded-lg transition-all";
-const list =
-  "py-1 leading-relaxed text-justify list-disc list-outside px-7";
+const list = "py-1 leading-relaxed text-justify list-disc list-outside px-7";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h5 className="text-center underline text-[18px] py-4">{children}</h5>
-  );
+  return <h5 className="text-center underline text-[18px] py-4">{children}</h5>;
 }
 
 export default async function ResumePage() {
@@ -161,6 +158,7 @@ export default async function ResumePage() {
           React <span className="px-1">•</span> Next.js
           <span className="px-1">•</span> TypeScript
           <span className="px-1">•</span> Node.js
+          <span className="px-1">•</span> Wordpress
         </p>
         <p className="pt-3 text-sm text-gray-600 dark:text-[#abb8c2]">
           Santo Domingo, Dominican Republic
@@ -181,7 +179,7 @@ export default async function ResumePage() {
         {SKILLS.map((skill) => (
           <p key={skill.group} className="py-2">
             <span className="font-bold">{skill.group}</span>
-            <span className="px-2">|</span>
+            <span className="pr-2">:</span>
             {skill.items}
           </p>
         ))}
@@ -212,7 +210,8 @@ export default async function ResumePage() {
         <ul className={list}>
           {GOV_PROJECTS.map((project) => (
             <li key={project.name} className={bullet}>
-              <span className="font-bold">{project.name}</span>: {project.detail}
+              <span className="font-bold">{project.name}</span>:{" "}
+              {project.detail}
             </li>
           ))}
         </ul>

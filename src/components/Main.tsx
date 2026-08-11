@@ -29,26 +29,39 @@ const Main = async () => {
       className="w-full border-b-2 dark:border-[#2a374a] h-screen text-center"
     >
       <div className="max-w-310 w-full mx-auto h-full flex justify-center items-center">
+        {/* Each line arrives a beat after the one above it. */}
         <div className="flex flex-col gap-1">
           {hero.eyebrow && (
-            <p className="uppercase text-sm tracking-widest text-gray-600 dark:text-[#ecf0f3] transition-all mb-2">
+            <p className="hero-in uppercase text-sm tracking-widest text-gray-600 dark:text-[#ecf0f3] mb-2">
               {hero.eyebrow}
             </p>
           )}
-          <h1 className="py-0 text-gray-700 dark:text-[#ecf0f3] transition-all">
+          <h1
+            className="hero-in py-0 text-gray-700 dark:text-[#ecf0f3]"
+            style={{ animationDelay: '100ms' }}
+          >
             {renderHeading(hero.heading, hero.highlight)}
           </h1>
           {hero.subheading && (
-            <h1 className="text-gray-700 dark:text-[#ecf0f3] transition-all mb-3 px-3">
+            <h1
+              className="hero-in text-gray-700 dark:text-[#ecf0f3] mb-3 px-3"
+              style={{ animationDelay: '200ms' }}
+            >
               {hero.subheading}
             </h1>
           )}
           {hero.body[0] && (
-            <p className="text-gray-600 dark:text-[#ecf0f3] transition-all max-w-[90%] md:max-w-[60%] m-auto font-light">
+            <p
+              className="hero-in text-gray-600 dark:text-[#ecf0f3] max-w-[90%] md:max-w-[60%] m-auto font-light"
+              style={{ animationDelay: '320ms' }}
+            >
               {hero.body[0]}
             </p>
           )}
-          <div className="flex items-center justify-around w-full gap-1 xs:gap-4 max-w-82.5 m-auto mt-3">
+          <div
+            className="hero-in flex items-center justify-around w-full gap-1 xs:gap-4 max-w-82.5 m-auto mt-3"
+            style={{ animationDelay: '440ms' }}
+          >
             {links.map((link) => {
               const internal = link.url.startsWith('/');
               const circle = (
