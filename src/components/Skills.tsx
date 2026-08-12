@@ -20,15 +20,19 @@ const Skills = async () => {
           </p>
           <h2 className="py-4">{section.heading}</h2>
         </Reveal>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Two per row on phones. One column meant ~3.7 screens of scrolling
+            for twenty cards, which reads as a chore rather than a list. */}
+        <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4">
           {skills.map((skill, index) => (
             <Reveal
               key={skill.id}
               // Capped so a long list doesn't leave the last card waiting.
               delay={Math.min(index, 7) * 70}
-              className="flex justify-center p-6 duration-300 ease-in shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105"
+              className="flex justify-center p-4 sm:p-6 duration-300 ease-in shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105"
             >
-              <div className="grid items-center justify-center w-full grid-cols-2 gap-4">
+              {/* Logo above the name while the card is narrow; side by side
+                  from sm up, where there is room for both. */}
+              <div className="grid items-center justify-center w-full grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                 <div className="flex m-auto">
                   {/* unoptimized: logos can be uploaded through the CMS and land
                       on /api/images, or point at an arbitrary URL. */}
@@ -37,11 +41,20 @@ const Skills = async () => {
                     width={skill.iconSize}
                     height={skill.iconSize}
                     alt={skill.name}
+                    // Cap the logo on phones only. This has to be max-width /
+                    // max-height, not width / height: a CSS `width` overrides
+                    // the img's width attribute entirely, which drops every
+                    // logo to its intrinsic size — the simple-icons SVGs have
+                    // none and vanish, the rest blow up. A max-* only clamps,
+                    // so above sm each logo keeps its own tuned size.
+                    className="max-w-10 max-h-10 sm:max-w-none sm:max-h-none"
                     unoptimized
                   />
                 </div>
                 <div className="flex flex-col items-center justify-center">
-                  <h3>{skill.name}</h3>
+                  <h3 className="text-sm sm:text-base text-center">
+                    {skill.name}
+                  </h3>
                 </div>
               </div>
             </Reveal>
