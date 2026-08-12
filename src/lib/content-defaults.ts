@@ -97,12 +97,12 @@ export const SOCIAL_ICONS = [
 export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
   hero: {
     key: "hero",
-    eyebrow: "Let's build something worth using",
+    eyebrow: "5+ years · Santo Domingo, Dominican Republic",
     heading: "Hi, I'm André",
     highlight: "André",
-    subheading: "A Full-Stack Software Developer",
+    subheading: "Full-Stack Software Developer",
     body: [
-      "From government platforms serving 150,000+ citizens to SaaS products, e-commerce stores, blogs and landing pages. I build them with React, Next.js and TypeScript — or WordPress, when that is the right tool for the job.",
+      "I build web applications with React, Next.js and TypeScript — from government platforms serving 150,000+ citizens to SaaS products, online stores and WordPress sites.",
     ],
     imageUrl: "",
     ctaLabel: "",
@@ -115,9 +115,10 @@ export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
     highlight: "",
     subheading: "",
     body: [
-      "I studied Electronics and Communications engineering at INTEC and graduated in 2019, but I got into software through the back door: two years as a QA tester at Altice Dominicana, breaking other people's code for a living. It turned out to be the best training I could have asked for — I learned what fragile software looks like from the outside, and I still write code like someone is about to try to break it.",
-      "In 2021 I joined OGTIC, the Dominican government's technology office, as a frontend developer, and I have been there five years. Most of what I build is public: portals where people apply for a scholarship, file a complaint, or reach any of the 300+ services the State offers online. That audience is the whole point — these platforms get opened on old phones and slow connections, so performance, accessibility and multi-step forms that never lose your data are the problems I actually care about. Day to day that means React, Next.js, TypeScript and TailwindCSS against a REST API.",
-      "Alongside that I take on client work — WordPress and e-commerce builds for businesses that need a site that actually sells — and I am building Propio, my own SaaS for independent landlords. Away from the keyboard you will find me gaming, at the gym, or catching a movie with friends.",
+      "I graduated as an Electronics and Communications engineer from INTEC in 2019, but I got into software through the back door: two years as a QA tester at Altice Dominicana, breaking other people's code for a living. It was the best training I could have asked for. I learned what fragile software looks like from the outside, and I still write code expecting someone to try to break it.",
+      "In 2021 I moved into development at OGTIC, the Dominican government's technology office, and I have been building public services there ever since. My work runs on platforms most Dominicans have used at least once: the national scholarships portal, with more than 157,000 users; gob.do, the single entry point to 300+ state services; the 311 system for citizen complaints and the internal CRM that institutions use to resolve them; and the public information access portal, where I was the only frontend developer.",
+      "That audience shapes how I build. These platforms get opened on old phones and slow connections, by people who need something from the State and cannot afford a form that loses their data on step four — so performance, accessibility and solid validation are not polish, they are the job. Day to day that means React, Next.js and TypeScript, TanStack Query for server state and Zod for validation. I work in Agile sprints alongside designers, backend developers and QA teams, and I have owned architecture and performance decisions on the frontend of systems used by institutions across the country.",
+      "Outside the office I build for clients and for myself: WordPress and e-commerce sites for local businesses, and Propio, my own SaaS for independent landlords, where I own the whole stack from Postgres to the interface. I work in Spanish and English. Away from the keyboard you will find me gaming, at the gym, or catching a movie with friends.",
     ],
     imageUrl: "/assets/PortfolioPicture.jpg",
     ctaLabel: "Check out some of my latest projects.",
