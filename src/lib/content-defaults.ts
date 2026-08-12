@@ -97,7 +97,7 @@ export const SOCIAL_ICONS = [
 export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
   hero: {
     key: "hero",
-    eyebrow: "5+ years · Santo Domingo, Dominican Republic",
+    eyebrow: "5+ years of experience · Santo Domingo, Dominican Republic",
     heading: "Hi, I'm André",
     highlight: "André",
     subheading: "Full-Stack Software Developer",

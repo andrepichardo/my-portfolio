@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { getSection, getSocialLinks } from '@/lib/content';
 import SocialIcon from './SocialIcon';
@@ -31,9 +32,21 @@ const Main = async () => {
       <div className="max-w-310 w-full mx-auto h-full flex justify-center items-center">
         {/* Each line arrives a beat after the one above it. */}
         <div className="flex flex-col gap-1">
+          {/* Each "·" separated fact stays whole: stacked on phones, on one
+              line with the separator from sm up. Letting the string wrap on its
+              own split "Santo Domingo, Dominican / Republic" across lines. */}
           {hero.eyebrow && (
-            <p className="hero-in uppercase text-sm tracking-widest text-gray-600 dark:text-[#ecf0f3] mb-2">
-              {hero.eyebrow}
+            <p className="hero-in flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 px-5 uppercase text-sm tracking-widest text-gray-600 dark:text-[#ecf0f3] mb-2">
+              {hero.eyebrow.split('·').map((part, index) => (
+                <Fragment key={index}>
+                  {index > 0 && (
+                    <span aria-hidden="true" className="hidden sm:inline opacity-60">
+                      ·
+                    </span>
+                  )}
+                  <span>{part.trim()}</span>
+                </Fragment>
+              ))}
             </p>
           )}
           <h1
