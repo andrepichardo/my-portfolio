@@ -115,11 +115,11 @@ export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
     highlight: "",
     subheading: "",
     body: [
-      "I graduated as an Electronics and Communications engineer from INTEC in 2019, but I got into software through the back door: two years as a QA tester at Altice Dominicana, breaking other people's code for a living. It was the best training I could have asked for — I still write code expecting someone to try to break it.",
-      "In 2021 I moved into development at OGTIC, the Dominican government's technology office. My work runs on platforms most Dominicans have used at least once: the national scholarships portal, with more than 157,000 users; gob.do, the entry point to 300+ state services; the 311 system, both the portal where citizens file complaints and the CRM where institutions resolve them; and the public information access portal, where I was the only frontend developer.",
-      "These platforms get opened on old phones and slow connections, by people who need something from the State — so performance, accessibility and solid validation are not polish, they are the job. Day to day that means React, Next.js and TypeScript, TanStack Query for server state and Zod for validation, in Agile sprints alongside designers, backend developers and QA. I have owned architecture and performance decisions on systems used by institutions across the country.",
-      "Outside the office I take on client work — WordPress and e-commerce sites for local businesses — and I am building Propio, a SaaS where independent landlords manage properties, tenants and rent payments. I have taken it on alone: design, frontend, API, database and deployment. It is the project that keeps me busiest.",
-      "I work in Spanish and English. Away from the keyboard you will find me gaming, working out, or spending time with my wife and family.",
+      "I graduated as an Electronics and Communications engineer from INTEC in 2019, but I got into software through the back door: two years as a QA tester at Altice Dominicana, breaking other people's code for a living. It turned out to be the best training I could have asked for — I still write code expecting someone to try to break it.",
+      "In 2021 I crossed over to building rather than testing, and I have been a frontend developer at OGTIC, the Dominican government's technology office, ever since. Most of what I work on there is public: the national scholarships portal, gob.do and the 311 system, among others. They get opened on old phones and slow connections by people who genuinely need something, and that is where I learned to treat performance, accessibility and careful validation as the work itself rather than as polish.",
+      "What I enjoy most is owning a feature end to end — taking a design, shaping the architecture and the data flow around it, integrating the API, and staying with it through review, QA and release. I would rather ask the uncomfortable question in the first week than discover the answer in production, and I have spent enough time on both sides of that to know which one is cheaper.",
+      "Outside of that I take on client work — WordPress and e-commerce sites for local businesses — and I am building Propio, a SaaS where independent landlords manage their properties, tenants and rent payments. Propio is entirely mine: design, frontend, API, database and deployment. It is the project I learn the most from, and the one that keeps me busiest.",
+      "I work in Spanish and English, which makes it easy to move between local clients and international teams. When I step away from the keyboard, you will usually find me gaming, working out, or spending time with my wife and family.",
     ],
     imageUrl: "/assets/PortfolioPicture.jpg",
     ctaLabel: "Check out some of my latest projects.",
@@ -155,8 +155,8 @@ export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
     // The card beside the form: name, then role and availability as paragraphs.
     subheading: "André Pichardo",
     body: [
-      "Front-End Developer",
-      "I am available for freelance & full-time positions. Feel free to contact me and let's talk.",
+      "Full-Stack Software Developer",
+      "I am open to freelance projects and full-time roles. Tell me what you are building and let's talk.",
     ],
     imageUrl: "/assets/contact.jpg",
     ctaLabel: "",
@@ -197,8 +197,8 @@ export const SOCIAL_DEFAULTS: SocialLinkItem[] = [
 ];
 
 export const SETTINGS_DEFAULTS: SiteSettingsContent = {
-  metaTitle: "André Pichardo | Front-End Developer",
+  metaTitle: "André Pichardo | Software Developer",
   metaDescription:
-    "Dominican front-end web developer, specializing in building great digital experiences.",
+    "Dominican software developer building fast, accessible web applications with React, Next.js and TypeScript.",
   resumeUrl: "/Resume-André-Pichardo.pdf",
 };
