@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
+import type { Prisma } from "@prisma/client";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import {
   PROJECTS_MAX_PAGE_SIZE,
   PROJECTS_PAGE_SIZE,
+  buildPlatformFilters,
   projectCardOrderBy,
   projectCardSelect,
 } from "@/lib/projects";
@@ -36,7 +38,34 @@ export async function GET(req: NextRequest) {
       PROJECTS_MAX_PAGE_SIZE
     );
 
-    const where = { published: true };
+    const where: Prisma.ProjectWhereInput = { published: true };
+
+    // Filtering runs in Postgres rather than on the fetched page, so `total`
+    // and the page count describe the filtered set and the grid stays paged.
+    const platform = searchParams.get("platform");
+    if (platform) {
+      const published = await prisma.project.findMany({
+        where: { published: true },
+        select: { techList: true },
+      });
+      const filter = buildPlatformFilters(
+        published.map((p) => p.techList)
+      ).find((f) => f.slug === platform);
+
+      // An unknown chip is treated as no filter: a stale bookmark should show
+      // the full grid, not an empty one.
+      if (filter) {
+        where.AND = [
+          { techList: { hasSome: filter.match } },
+          // Mirrors the priority order the chip counts were built with, so the
+          // grid can never hold more projects than the chip advertises.
+          ...(filter.exclude.length
+            ? [{ NOT: { techList: { hasSome: filter.exclude } } }]
+            : []),
+        ];
+      }
+    }
+
     const total = await prisma.project.count({ where });
     const totalPages = Math.max(1, Math.ceil(total / limit));
     const page = Math.min(

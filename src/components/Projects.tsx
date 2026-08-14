@@ -2,8 +2,10 @@ import { prisma } from '@/lib/prisma';
 import { getSection } from '@/lib/content';
 import {
   PROJECTS_PAGE_SIZE,
+  buildPlatformFilters,
   projectCardOrderBy,
   projectCardSelect,
+  type PlatformFilter,
 } from '@/lib/projects';
 import ProjectsGrid, { type ProjectCard } from './ProjectsGrid';
 import Reveal from './Reveal';
@@ -12,13 +14,16 @@ const Projects = async () => {
   const section = await getSection('projects');
   let projects: ProjectCard[] = [];
   let total = 0;
+  let filters: PlatformFilter[] = [];
 
   try {
     const where = { published: true };
 
     // Only the first page is rendered on the server; the rest is fetched on
-    // demand, so the homepage never ships every project image up front.
-    [total, projects] = await Promise.all([
+    // demand, so the homepage never ships every project image up front. The
+    // chips do need every project's techList, but that is one small string
+    // column, not the cards themselves.
+    const [count, firstPage, techLists] = await Promise.all([
       prisma.project.count({ where }),
       prisma.project.findMany({
         where,
@@ -26,11 +31,17 @@ const Projects = async () => {
         take: PROJECTS_PAGE_SIZE,
         select: projectCardSelect,
       }),
+      prisma.project.findMany({ where, select: { techList: true } }),
     ]);
+
+    total = count;
+    projects = firstPage;
+    filters = buildPlatformFilters(techLists.map((p) => p.techList));
   } catch {
     // Database not available - render the empty state.
     projects = [];
     total = 0;
+    filters = [];
   }
 
   const totalPages = Math.max(1, Math.ceil(total / PROJECTS_PAGE_SIZE));
@@ -58,6 +69,8 @@ const Projects = async () => {
               initialProjects={projects}
               totalPages={totalPages}
               pageSize={PROJECTS_PAGE_SIZE}
+              filters={filters}
+              total={total}
             />
           </Reveal>
         )}
