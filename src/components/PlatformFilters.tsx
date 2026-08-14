@@ -13,8 +13,10 @@ interface PlatformFiltersProps {
   disabled?: boolean;
 }
 
+// The border is on both states — transparent on the active one — so switching
+// filters never shifts the row by a pixel.
 const chipClasses =
-  'rounded-xl px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60';
+  'rounded-xl border px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60';
 
 const PlatformFilters = ({
   filters,
@@ -51,14 +53,18 @@ const PlatformFilters = ({
             aria-pressed={isActive}
             className={`${chipClasses} ${
               isActive
-                ? 'bg-linear-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3] shadow-lg shadow-gray-400 dark:shadow-gray-900/80 scale-105'
-                : 'text-gray-600 dark:text-[#ecf0f3] bg-white dark:bg-[#2a374a] shadow-md shadow-gray-400/60 dark:shadow-gray-900/60 hover:text-[#5651e5] dark:hover:text-[#709dff] hover:-translate-y-0.5'
+                ? 'bg-linear-to-r from-[#5651e5] to-[#709dff] text-[#ecf0f3] border-transparent shadow-lg shadow-gray-400 dark:shadow-gray-900/80'
+                : 'text-gray-600 dark:text-[#ecf0f3] bg-white dark:bg-[#2a374a] border-gray-200 dark:border-[#3a4a63] hover:text-[#5651e5] dark:hover:text-[#709dff] hover:border-[#5651e5]/40 dark:hover:border-[#709dff]/40 hover:-translate-y-0.5'
             }`}
           >
             {label}
             <span
               className={`ml-2 tabular-nums ${
-                isActive ? 'text-[#ecf0f3]/70' : 'text-gray-400 dark:text-gray-500'
+                isActive
+                  ? 'text-[#ecf0f3]/80'
+                  : // Light on white and dark on the card colour both need the
+                    // darker/lighter end respectively to clear WCAG AA.
+                    'text-gray-500 dark:text-gray-400'
               }`}
             >
               {count}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import type { PlatformFilter } from '@/lib/projects';
 import ProjectItem, { projectCardSize } from './ProjectItem';
@@ -27,6 +27,24 @@ interface ProjectsGridProps {
 /** Cache key for one page of one filter. `null` is the unfiltered grid. */
 const keyFor = (platform: string | null, page: number) =>
   `${platform ?? 'all'}:${page}`;
+
+/**
+ * Reflects the active filter in the address bar so the grid survives a refresh
+ * and can be linked to. `replaceState` rather than `pushState`: on a one-page
+ * site, stacking a history entry per chip would turn Back into "undo my last
+ * five clicks" instead of "leave this page". The `#projects` hash rides along
+ * so a shared link opens on the section rather than at the top of the page.
+ */
+function syncUrl(platform: string | null) {
+  const url = new URL(window.location.href);
+  if (platform) {
+    url.searchParams.set('platform', platform);
+    url.hash = 'projects';
+  } else {
+    url.searchParams.delete('platform');
+  }
+  window.history.replaceState(null, '', url);
+}
 
 const ProjectsGrid = ({
   initialProjects,
@@ -102,12 +120,19 @@ const ProjectsGrid = ({
   }, []);
 
   const show = useCallback(
-    async (targetPlatform: string | null, targetPage: number) => {
-      keepHeaderInView();
+    async (
+      targetPlatform: string | null,
+      targetPage: number,
+      // The mount-time restore skips the scroll: the browser is already
+      // handling the `#projects` hash, and a second scroll fights it.
+      { scroll = true }: { scroll?: boolean } = {}
+    ) => {
+      if (scroll) keepHeaderInView();
 
       if (cache[keyFor(targetPlatform, targetPage)]) {
         setPlatform(targetPlatform);
         setPage(targetPage);
+        syncUrl(targetPlatform);
         return;
       }
 
@@ -116,6 +141,7 @@ const ProjectsGrid = ({
         await fetchPage(targetPlatform, targetPage);
         setPlatform(targetPlatform);
         setPage(targetPage);
+        syncUrl(targetPlatform);
       } catch {
         toast.error('Could not load those projects. Please try again.');
       } finally {
@@ -124,6 +150,22 @@ const ProjectsGrid = ({
     },
     [cache, fetchPage, keepHeaderInView]
   );
+
+  // Adopt the filter from the URL once, after hydration. It cannot be read
+  // during render: the homepage is prerendered without a filter, so the first
+  // paint has to match that HTML or React reports a hydration mismatch.
+  const restored = useRef(false);
+  useEffect(() => {
+    if (restored.current) return;
+    restored.current = true;
+
+    const slug = new URLSearchParams(window.location.search).get('platform');
+    // An unknown slug falls through to the full grid, matching what the API
+    // does with the same value.
+    if (slug && filters.some((f) => f.slug === slug)) {
+      show(slug, 1, { scroll: false });
+    }
+  }, [filters, show]);
 
   const currentPages = pageCounts[platform ?? 'all'] ?? 1;
 
