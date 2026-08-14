@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { getSection, getSocialLinks } from '@/lib/content';
 import ContactForm from './ContactForm';
 import SocialIcon from './SocialIcon';
@@ -112,18 +111,6 @@ const Contact = async () => {
               <ContactForm />
             </div>
           </Reveal>
-        </div>
-        <div className="flex justify-center pt-16">
-          <Link
-            className="p-4 duration-300 ease-in rounded-full shadow-lg cursor-pointer shadow-gray-400 dark:shadow-gray-900/80 animate-bounce hover:scale-110"
-            href="/"
-            aria-label="Back to top"
-          >
-            <HiOutlineChevronDoubleUp
-              className="text-[#5651e5]"
-              size={30}
-            />
-          </Link>
         </div>
       </div>
     </div>

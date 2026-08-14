@@ -3,6 +3,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default async function Home() {
   return (
@@ -12,6 +13,7 @@ export default async function Home() {
       <Skills />
       <Projects />
       <Contact />
+      <ScrollToTop />
     </div>
   );
 }

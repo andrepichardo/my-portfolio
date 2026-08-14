@@ -93,6 +93,44 @@ html {
   transform: none;
 }
 
+/* Staggered reveal for a grid. The delay follows each card's position in its
+   own row, so every row cascades left to right instead of only the first ones.
+   This has to live in CSS: the column count is a breakpoint decision, and a
+   delay computed from the array index cannot know it — it either keeps growing
+   until the last cards crawl in, or gets capped and then lands a whole block of
+   them at the same instant.
+   The column counts below mirror `grid-cols-2 lg:grid-cols-4` on the skills
+   grid; change one and the other has to follow. */
+.reveal-stagger > .reveal:nth-child(2n + 1) {
+  transition-delay: 0ms;
+}
+.reveal-stagger > .reveal:nth-child(2n + 2) {
+  transition-delay: 70ms;
+}
+
+@media (width >= 64rem) {
+  .reveal-stagger > .reveal:nth-child(4n + 1) {
+    transition-delay: 0ms;
+  }
+  .reveal-stagger > .reveal:nth-child(4n + 2) {
+    transition-delay: 70ms;
+  }
+  .reveal-stagger > .reveal:nth-child(4n + 3) {
+    transition-delay: 140ms;
+  }
+  .reveal-stagger > .reveal:nth-child(4n + 4) {
+    transition-delay: 210ms;
+  }
+}
+
+/* The stagger is for arriving, not for hovering: without this the card in the
+   fourth column would sit still for 210ms before it scales under the cursor.
+   Must stay last — it carries the same specificity as the rules above and only
+   wins the tie by coming after them. */
+.reveal-stagger > .reveal:hover {
+  transition-delay: 0ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;

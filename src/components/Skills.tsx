@@ -22,12 +22,13 @@ const Skills = async () => {
         </Reveal>
         {/* Two per row on phones. One column meant ~3.7 screens of scrolling
             for twenty cards, which reads as a chore rather than a list. */}
-        <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4">
-          {skills.map((skill, index) => (
+        <div className="reveal-stagger grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4">
+          {skills.map((skill) => (
             <Reveal
               key={skill.id}
-              // Capped so a long list doesn't leave the last card waiting.
-              delay={Math.min(index, 7) * 70}
+              // The stagger comes from `.reveal-stagger` in globals.css, which
+              // delays each card by its position in its row — a per-item delay
+              // here could not follow the column count across breakpoints.
               className="flex justify-center p-4 sm:p-6 duration-300 ease-in shadow-lg dark:shadow-gray-900/80 rounded-xl hover:scale-105"
             >
               {/* Logo above the name while the card is narrow; side by side
