@@ -126,13 +126,31 @@ const PlatformFilters = ({
     const row = rowRef.current;
     if (!row || row.scrollWidth <= row.clientWidth) return;
 
-    // `nearest` on both axes: nudge the row sideways without ever scrolling
-    // the page vertically.
-    row.querySelector<HTMLElement>('[aria-pressed="true"]')?.scrollIntoView({
-      behavior: 'smooth',
-      inline: 'nearest',
-      block: 'nearest',
-    });
+    const chip = row.querySelector<HTMLElement>('[aria-pressed="true"]');
+    if (!chip) return;
+
+    // Scroll the row itself rather than calling `scrollIntoView` on the chip.
+    // That method walks *every* scrollable ancestor, including the document —
+    // `block: 'nearest'` picks the alignment, not which boxes participate — so
+    // on a phone, where the chip sits far below the fold at load, "nearest"
+    // meant dragging the whole page down to the projects section. Desktop never
+    // saw it: the row wraps from `sm` up and the guard above returns early.
+    const rowBox = row.getBoundingClientRect();
+    const chipBox = chip.getBoundingClientRect();
+    // Mirror `scroll-px-*` so the chip lands beside the heading, not jammed
+    // against the screen edge.
+    const inset = parseFloat(getComputedStyle(row).scrollPaddingLeft) || 0;
+
+    const left = chipBox.left - rowBox.left - inset;
+    const right = chipBox.right - rowBox.right;
+    const delta = left < 0 ? left : right > 0 ? right : 0;
+    // A pixel of slack, for the same reason the edge fades have one: fractional
+    // layout widths would otherwise make an already-visible chip scroll.
+    if (Math.abs(delta) < 1) return;
+
+    // No `behavior`: the default defers to the row's CSS `scroll-behavior`,
+    // which is already `motion-safe:scroll-smooth`.
+    row.scrollBy({ left: delta });
   }, [active]);
 
   // Selecting hands the arrow keys back to the selection.
