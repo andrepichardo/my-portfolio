@@ -16,10 +16,16 @@ interface PlatformFiltersProps {
 
 // The border is on both states — transparent on the active one — so switching
 // filters never shifts the row by a pixel. `shrink-0` keeps the labels intact
-// while the row scrolls, and `snap-start` parks each chip against the row's
-// leading edge instead of leaving it cut in half.
+// while the row scrolls.
+//
+// `snap-center`, not `snap-start`. Start-snapping parked a chip flush against
+// the row's leading edge and left the trailing edge to land wherever it fell —
+// which, more often than not, was another chip ending flush at the other edge.
+// A row of whole chips with clean edges is what a *complete* row looks like, so
+// the platforms still off-screen read as "there are none". Centring guarantees
+// the opposite: whatever is next is always half in view.
 const chipClasses =
-  'shrink-0 snap-start rounded-xl border px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5651e5] dark:focus-visible:outline-[#709dff]';
+  'shrink-0 snap-center rounded-xl border px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5651e5] dark:focus-visible:outline-[#709dff]';
 
 /**
  * Phones scroll the row sideways; from `sm` up it wraps as before.
@@ -32,11 +38,13 @@ const chipClasses =
  * The negative margins cancel the section padding so the row can bleed to both
  * screen edges: a chip clipped by the edge of the phone reads as "there is
  * more", while one clipped 20px short of it just looks broken. `scroll-p-*`
- * repeats those insets for the scroll machinery, so a snapped or focused chip
- * lands beside the heading rather than jammed against the screen edge.
+ * repeats those insets for the scroll machinery — it is symmetric, so it leaves
+ * the centre of the snapport where it was, and it still governs the scroll the
+ * *browser* performs when someone Tabs into the toolbar, which lands the chip
+ * beside the heading rather than jammed against the screen edge.
  */
 const rowClasses = [
-  'flex items-center gap-2 sm:gap-3 mb-8',
+  'flex items-center gap-2 sm:gap-3',
   // Room for the chips' hover lift: overflow-x also clips vertically.
   'py-1',
   'overflow-x-auto sm:flex-wrap sm:overflow-visible',
@@ -80,7 +88,12 @@ const PlatformFilters = ({
 }: PlatformFiltersProps) => {
   const rowRef = useRef<HTMLDivElement>(null);
   const chipsRef = useRef<(HTMLButtonElement | null)[]>([]);
-  const [edges, setEdges] = useState({ start: false, end: false });
+  const thumbRef = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({
+    start: false,
+    end: false,
+    overflowing: false,
+  });
   // Which chip the arrow keys are on. `null` means "wherever the selection is".
   const [focusIndex, setFocusIndex] = useState<number | null>(null);
 
@@ -100,7 +113,30 @@ const PlatformFilters = ({
       const max = row.scrollWidth - row.clientWidth;
       // A pixel of slack: fractional layout widths leave sub-pixel remainders
       // that would otherwise keep a fade switched on at the very end.
-      setEdges({ start: row.scrollLeft > 1, end: row.scrollLeft < max - 1 });
+      const start = row.scrollLeft > 1;
+      const end = row.scrollLeft < max - 1;
+      const overflowing = max > 1;
+      // Returning the previous object when nothing changed lets React bail out.
+      // This runs on every scroll event, and a new object each time would
+      // re-render every chip through a momentum swipe to set booleans that only
+      // flip at the two ends.
+      setEdges((prev) =>
+        prev.start === start &&
+        prev.end === end &&
+        prev.overflowing === overflowing
+          ? prev
+          : { start, end, overflowing }
+      );
+
+      // The thumb is written straight to the DOM instead of going through
+      // state: it moves on every scroll frame, and re-rendering the chips at
+      // that rate to slide a 4px bar is a bad trade on a phone. Percentages of
+      // the scrollable content, so the track's own width never enters into it.
+      const thumb = thumbRef.current;
+      if (thumb) {
+        thumb.style.width = `${(row.clientWidth / row.scrollWidth) * 100}%`;
+        thumb.style.left = `${(row.scrollLeft / row.scrollWidth) * 100}%`;
+      }
     };
 
     measure();
@@ -118,40 +154,71 @@ const PlatformFilters = ({
     0,
     options.findIndex((o) => o.slug === active)
   );
+  // The chip the row is "on": wherever the arrow keys have walked to, and
+  // otherwise the selection. It drives the single Tab stop and the centring.
+  const rovingIndex = focusIndex ?? activeIndex;
 
-  // Bring the selected chip into view. It matters on arrival from a shared
-  // `?platform=` link, where the active chip can start off-screen on a phone
-  // and the grid would look filtered for no visible reason.
-  useEffect(() => {
+  /**
+   * Pulls a chip to the middle of the row.
+   *
+   * Centring rather than the smallest nudge that makes it visible. Nudging
+   * looked reasonable and behaved terribly: tapping the last chip you could see
+   * moved nothing at all — it was already visible, so the minimum was zero —
+   * and the row sat there looking like the whole list while two platforms were
+   * still off-screen to the right. Centring always travels, and it spends that
+   * travel showing you what is on either side of your choice.
+   *
+   * The scroll is done on the row itself, never `chip.scrollIntoView()`: that
+   * walks *every* scrollable ancestor, the document included, so on a phone —
+   * where the row sits thousands of pixels below the fold — it drags the whole
+   * page down to the projects section.
+   */
+  const centerChip = useCallback((index: number) => {
     const row = rowRef.current;
-    if (!row || row.scrollWidth <= row.clientWidth) return;
+    const chip = chipsRef.current[index];
+    // Wrapped at `sm` and up: nothing overflows, so nothing should move.
+    if (!row || !chip || row.scrollWidth <= row.clientWidth) return;
 
-    const chip = row.querySelector<HTMLElement>('[aria-pressed="true"]');
-    if (!chip) return;
-
-    // Scroll the row itself rather than calling `scrollIntoView` on the chip.
-    // That method walks *every* scrollable ancestor, including the document —
-    // `block: 'nearest'` picks the alignment, not which boxes participate — so
-    // on a phone, where the chip sits far below the fold at load, "nearest"
-    // meant dragging the whole page down to the projects section. Desktop never
-    // saw it: the row wraps from `sm` up and the guard above returns early.
     const rowBox = row.getBoundingClientRect();
     const chipBox = chip.getBoundingClientRect();
-    // Mirror `scroll-px-*` so the chip lands beside the heading, not jammed
-    // against the screen edge.
-    const inset = parseFloat(getComputedStyle(row).scrollPaddingLeft) || 0;
+    // Where the chip sits in the scrolled content, rather than on screen.
+    const offset = chipBox.left - rowBox.left - row.clientLeft + row.scrollLeft;
 
-    const left = chipBox.left - rowBox.left - inset;
-    const right = chipBox.right - rowBox.right;
-    const delta = left < 0 ? left : right > 0 ? right : 0;
-    // A pixel of slack, for the same reason the edge fades have one: fractional
-    // layout widths would otherwise make an already-visible chip scroll.
-    if (Math.abs(delta) < 1) return;
+    // Clamped to the row's own range: at either end it simply rests against the
+    // edge. Without this the first and last chips would ask for a scroll
+    // position that does not exist, and the row would fight the request.
+    const max = row.scrollWidth - row.clientWidth;
+    const left = Math.min(
+      Math.max(offset - (row.clientWidth - chipBox.width) / 2, 0),
+      max
+    );
+
+    // A pixel of slack, for the same reason the edge fades have one.
+    if (Math.abs(left - row.scrollLeft) < 1) return;
 
     // No `behavior`: the default defers to the row's CSS `scroll-behavior`,
-    // which is already `motion-safe:scroll-smooth`.
-    row.scrollBy({ left: delta });
-  }, [active]);
+    // which is already `motion-safe:scroll-smooth`, so the reduced-motion
+    // preference stays in one place instead of being restated here.
+    row.scrollTo({ left });
+  }, []);
+
+  /*
+   * Centre on the *selection*, never on focus.
+   *
+   * Focus is the trap: a pointer focuses a button on press, so centring from a
+   * focus change moved the chip out from under the finger while it was still
+   * down. The release then landed on whatever had slid into that spot, and a
+   * press and release on two different elements deliver their click to the
+   * common ancestor — the toolbar — so the button's own handler never ran. The
+   * chip glided to the middle and stayed unselected, which is the worst of both
+   * outcomes: it looks like it worked.
+   *
+   * Everything that centres now does so after the interaction is over: this
+   * effect (which also covers arriving on a shared `?platform=` link, where the
+   * active chip can start off-screen and leave the grid looking filtered for no
+   * visible reason), the click handler, and the arrow keys.
+   */
+  useEffect(() => centerChip(activeIndex), [activeIndex, centerChip]);
 
   // Selecting hands the arrow keys back to the selection.
   useEffect(() => setFocusIndex(null), [active]);
@@ -187,27 +254,33 @@ const PlatformFilters = ({
 
       event.preventDefault();
       setFocusIndex(next);
-      chipsRef.current[next]?.focus();
+      // `preventScroll`, because focusing an element otherwise asks the browser
+      // to scroll it into view through every scrollable ancestor — the same
+      // route that used to drag the page down to this section. We do the
+      // horizontal move ourselves, confined to the row. No pointer is down
+      // during a key press, so there is no click to lose here.
+      chipsRef.current[next]?.focus({ preventScroll: true });
+      centerChip(next);
     },
-    [activeIndex, count, focusIndex]
+    [activeIndex, centerChip, count, focusIndex]
   );
 
   // One chip filters nothing that "All" does not already show.
   if (filters.length < 2) return null;
 
-  const rovingIndex = focusIndex ?? activeIndex;
   const mask = maskFor(edges.start, edges.end);
 
   return (
-    <div
-      ref={rowRef}
-      className={rowClasses}
-      style={mask ? { maskImage: mask, WebkitMaskImage: mask } : undefined}
-      role="toolbar"
-      aria-orientation="horizontal"
-      aria-label="Filter projects by platform"
-      onKeyDown={onKeyDown}
-    >
+    <div className="mb-8">
+      <div
+        ref={rowRef}
+        className={rowClasses}
+        style={mask ? { maskImage: mask, WebkitMaskImage: mask } : undefined}
+        role="toolbar"
+        aria-orientation="horizontal"
+        aria-label="Filter projects by platform"
+        onKeyDown={onKeyDown}
+      >
       {options.map(({ slug, label, count: projects }, index) => {
         const isActive = slug === active;
 
@@ -218,8 +291,17 @@ const PlatformFilters = ({
               chipsRef.current[index] = node;
             }}
             type="button"
-            onClick={() => onChange(slug)}
+            onClick={() => {
+              // Safe to scroll from here: a click only exists once the pointer
+              // has been released, so there is nothing left to interrupt. It
+              // also covers re-tapping the chip that is already selected, which
+              // never reaches the effect above.
+              centerChip(index);
+              onChange(slug);
+            }}
             onMouseEnter={() => onPrefetch?.(slug)}
+            // Roving tabindex bookkeeping only — deliberately not a scroll
+            // trigger. See the centring effect.
             onFocus={() => setFocusIndex(index)}
             disabled={disabled}
             aria-pressed={isActive}
@@ -251,6 +333,36 @@ const PlatformFilters = ({
           </button>
         );
       })}
+      </div>
+
+      {/*
+        A scrollbar, restored. The row hides the native one, which on a phone
+        only ever appears mid-swipe anyway — so nothing announced that the row
+        scrolled until you had already thought to try.
+
+        The fade alone could not carry that job: it only reads as "there is
+        more" when it falls across a chip, and where the chips happen to break
+        is a function of how long the labels are. At rest the row sat with
+        `WordPress` ending flush against the screen edge and PrestaShop wholly
+        off-screen, and a gradient over an empty gap says nothing. This says it
+        outright, at any label width and any number of platforms.
+
+        Aligned to the text column rather than the row's bleed, so it reads as
+        belonging to the section instead of to the screen. `hidden` rather than
+        unmounted: the thumb keeps its ref, so `measure` can position it before
+        the row ever overflows.
+      */}
+      <div
+        className={`relative mt-3 h-1 overflow-hidden rounded-full bg-gray-200 dark:bg-[#2a374a] sm:hidden ${
+          edges.overflowing ? '' : 'hidden'
+        }`}
+        aria-hidden="true"
+      >
+        <div
+          ref={thumbRef}
+          className="absolute inset-y-0 rounded-full bg-gray-400 dark:bg-gray-500"
+        />
+      </div>
     </div>
   );
 };
