@@ -61,7 +61,7 @@ export const SECTION_HINTS: Record<SectionKey, string> = {
   hero: "The first screen visitors land on.",
   about: "Your bio and portrait.",
   skills: "Headings only — the logos are managed under Skills.",
-  projects: "Headings only — the cards come from Projects.",
+  projects: "Headings and the line under them — the cards come from Projects.",
   contact: "Headings and the photo beside the form.",
 };
 
@@ -78,7 +78,7 @@ export const SECTION_FIELDS: Record<SectionKey, SectionFieldConfig> = {
   hero: { highlight: true, subheading: true, body: "single" },
   about: { body: "paragraphs", image: true, cta: true },
   skills: { body: false },
-  projects: { body: false },
+  projects: { subheading: true, body: false },
   contact: { subheading: true, body: "paragraphs", image: true },
 };
 
@@ -141,7 +141,10 @@ export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
     eyebrow: "Projects",
     heading: "What I've Built",
     highlight: "",
-    subheading: "",
+    // Says the grid is a selection without saying what it is not: a visitor
+    // counting the cards would otherwise read them as the whole body of work.
+    subheading:
+      "A pick of the work I'm proudest of — there's plenty more where these came from.",
     body: [],
     imageUrl: "",
     ctaLabel: "",

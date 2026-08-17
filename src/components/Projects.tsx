@@ -56,7 +56,14 @@ const Projects = async () => {
           <p className="uppercase text-xl tracking-widest text-[#5651e5]">
             {section.eyebrow}
           </p>
-          <h2 className="py-4">{section.heading}</h2>
+          <h2 className={section.subheading ? 'pt-4 pb-2' : 'py-4'}>
+            {section.heading}
+          </h2>
+          {section.subheading && (
+            <p className="max-w-2xl mb-6 font-light text-[17px] text-gray-700 dark:text-[#ecf0f3]">
+              {section.subheading}
+            </p>
+          )}
         </Reveal>
 
         {projects.length === 0 ? (
