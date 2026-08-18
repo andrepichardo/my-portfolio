@@ -118,11 +118,13 @@ export const SECTION_DEFAULTS: Record<SectionKey, SectionContent> = {
       "I graduated as an Electronics and Communications engineer from INTEC in 2019, but I got into software through the back door: two years as a QA tester at Altice Dominicana, breaking other people's code for a living. It turned out to be the best training I could have asked for — I still write code expecting someone to try to break it.",
       "In 2021 I crossed over to building rather than testing, and I have been a frontend developer at OGTIC, the Dominican government's technology office, ever since. Most of what I work on there is public: the national scholarships portal, gob.do and the 311 system, among others. They get opened on old phones and slow connections by people who genuinely need something, and that is where I learned to treat performance, accessibility and careful validation as the work itself rather than as polish.",
       "What I enjoy most is owning a feature end to end — taking a design, shaping the architecture and the data flow around it, integrating the API, and staying with it through review, QA and release. I would rather ask the uncomfortable question in the first week than discover the answer in production, and I have spent enough time on both sides of that to know which one is cheaper.",
-      "Outside of that I take on client work — WordPress and e-commerce sites for local businesses — and I am building Propio, a SaaS where independent landlords manage their properties, tenants and rent payments. Propio is entirely mine: design, frontend, API, database and deployment. It is the project I learn the most from, and the one that keeps me busiest.",
+      "Outside of that I take on client work — WordPress and e-commerce sites for local businesses — and I am building Propio, a SaaS where independent landlords manage their properties, tenants and rent payments. Working on it solo means covering every layer — design, frontend, API, database and deployment. It is the project I learn the most from, and the one that keeps me busiest.",
       "I work in Spanish and English, which makes it easy to move between local clients and international teams. When I step away from the keyboard, you will usually find me gaming, working out, or spending time with my wife and family.",
     ],
     imageUrl: "/assets/PortfolioPicture.jpg",
-    ctaLabel: "Check out some of my latest projects.",
+    // Mirrors the projects section: a selection ("a pick of the work I'm
+    // proudest of"), not a feed of the most recent builds.
+    ctaLabel: "Take a look at some of the work I've built.",
     ctaHref: "/#projects",
   },
   skills: {
